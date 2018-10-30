@@ -101,7 +101,7 @@ Usamos comentários quando precisamos comentar determinado trecho que você julg
 É uma má pratica usar comentários onde não for necessário dentro do código.
 
 ### Literais
-São basicamente valores que aprecem direto no programa. São valores que não mudam e que fazem parte do core do Javascript.
+São basicamente valores que aparecem direto no programa. São valores que não mudam e que fazem parte do core do Javascript.
 
 #### Exemplo de literais.
 - 12
