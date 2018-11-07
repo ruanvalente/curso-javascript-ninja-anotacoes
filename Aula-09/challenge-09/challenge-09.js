@@ -123,7 +123,7 @@
   console.log("O resultado da divisão é:");
   console.log(
     division(function(x, y) {
-      return x % y;
+      return x / y;
     })
   );
 
