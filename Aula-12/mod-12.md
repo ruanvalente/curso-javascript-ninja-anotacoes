@@ -290,3 +290,7 @@ arr.sort();
 #### Da2k
 
 - [Objetos - Referências de valores em JavaScript](https://blog.da2k.com.br/2017/01/25/objetos-referencias-de-valores-em-javascript/)
+
+#### Issues Do Curso
+- [Criar objetos com conteúdo igual mas com referência diferente #1075](https://github.com/da2k/curso-javascript-ninja/issues/1075)
+- [Wrapper Objects #882](https://github.com/da2k/curso-javascript-ninja/issues/882)
