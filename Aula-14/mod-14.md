@@ -126,3 +126,5 @@ Podemos usar o método **isArray** quando precisamos verificar se um array passa
 Porém se quisermos ter uma segurança ainda maior podemos usar o método **isArray**.
 
 [Para saber mais: Arrays - MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Array)
+
+[Live: JavaScript: métodos de array - Fernando Daciuk](https://www.youtube.com/watch?v=GDZswgpSYQg)
