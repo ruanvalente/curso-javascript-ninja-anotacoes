@@ -160,3 +160,11 @@ O objeto arguments é uma variável local disponível dentro de todas as funçõ
 })();
 // [Arguments] { '0': 1, '1': 2, '2': 3, '3': 4 }
 ```
+
+Para saber mais:
+
+- [Arguments](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Functions/arguments)
+
+- [this](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Operators/this)
+
+- [Trabalhando com Objetos - Javascript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Trabalhando_com_Objetos)
