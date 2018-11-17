@@ -37,7 +37,7 @@
 
     this.addAge = function addAge() {
       this.age += arguments[0];
-      return this.age;
+      return this;
     };
   }
 
@@ -50,7 +50,7 @@
   console.log("Novas pessoas criadas à partir de Person:");
   var ruan = new Person("Ruan", "Valente", 23);
   var lorena = new Person("Lorena", "Torres", 25);
-  var victoria = new Person("Victória", "Monteiro", 14);
+  var victoria = new Person("Victória", "Monteiro", 12);
 
   console.log(ruan);
   console.log(lorena);
@@ -79,11 +79,16 @@
   - "[NOME COMPLETO] agora tem [NOVA IDADE] anos."
   */
   console.log("\nNova idade das pessoas:");
-  console.log(ruan.getFullName() + " agora tem " + ruan.addAge(5) + " anos.");
   console.log(
-    lorena.getFullName() + " agora tem " + lorena.addAge(-9) + " anos"
+    ruan.getFullName() + " agora tem " + ruan.addAge(5).getAge() + " anos."
   );
   console.log(
-    victoria.getFullName() + " agora tem " + victoria.addAge(5) + " anos"
+    lorena.getFullName() + " agora tem " + lorena.addAge(-9).getAge() + " anos"
+  );
+  console.log(
+    victoria.getFullName() +
+      " agora tem " +
+      victoria.addAge(5).getAge() +
+      " anos"
   );
 })();
