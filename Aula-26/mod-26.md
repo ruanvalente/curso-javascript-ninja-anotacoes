@@ -163,4 +163,4 @@ Retorna o nó que precede o nó especificado na lista de childNodes do nó pai, 
 
 É retornado um **#text** por conta dos espaçamentos e agora se removemos os espaçamentos é retornado **null**.
 
-
+## .nodeType
