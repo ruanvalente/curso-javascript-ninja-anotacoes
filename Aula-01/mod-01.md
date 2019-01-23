@@ -1,7 +1,7 @@
 ## Um giro pela linguagem Javascritpt
 
 ### Variáveis
-É um nome simbolico para atribuir um tipo de valor. Dentro do javascript usamos a palavra chave **var** para declarar uma variável.
+É um nome simbólico para atribuir um tipo de valor. Dentro do javascript usamos a palavra chave **var** para declarar uma variável.
 ```js
   var x;
   x
@@ -18,7 +18,7 @@ Declaramos a variável x e não atribuimos nenhum valor para a mesma. Para reali
 Agora a variável x tem como valor 10. Porém podemos atribuir outro valor para x por exemplo:
 ```js
   var x = 100;
-  x 
+  x
   100
 ```
 Agora a variável x tem como valor 100 e não mais 10. Dai o nome variável, algo que pode mudar conforme for necessário.
@@ -28,7 +28,7 @@ Javascript aceita alguns tipos de dados, por exemplo:
 - Number : São números tanto reais ou com casas decimais.
 ```js
   var x = 100;
-  x 
+  x
   100
   x = 190.0;
   x
@@ -37,7 +37,7 @@ Javascript aceita alguns tipos de dados, por exemplo:
 - String : São cadeia de caracteres envolvidas em uma aspas dupla / simples.
 ```js
   var x = 'Javascript';
-  x 
+  x
   'Javascript'
   x = "Javascript Ninja";
   x
@@ -49,19 +49,19 @@ Javascript aceita alguns tipos de dados, por exemplo:
   x
   true
   x = false;
-  x 
+  x
   false
 ```
 - Null : O valor null é um literal em JavaScript que representa um valor nulo ou "vazio" (p/ex: que aponta para um objeto inexistente).
 ```js
   var x = null;
-  x 
+  x
   null
 ```
 - Undefined : O valor global undefined representa um valor indefinido.
 ```js
   var x;
-  x 
+  x
   undefined
 ```
 
@@ -73,6 +73,8 @@ Também temos outros tipos de dados, que são os **Objetos** em Javascript.
     idade: 23,
   };
 ```
+Neste exemplo temos o objeto **pessoa** com algumas propriedades: nome e idade.
+
 Podemos também acessar as propriedades do objeto usando a anotação de objeto **( pronto )** + a **propriedade** ou a anotação de array **[propriedade]**.
 ```js
   pessoa.nome;
@@ -107,10 +109,10 @@ Como na matemática o Javascript nos fornece os principais operadores aritmétic
 
   3 - 2;
   1
-  
+
   3 * 3;
   9
-  
+
   10 / 2;
   5
 
@@ -123,7 +125,7 @@ Também temos os operadores aritméticos abreviados.
 - Pré-decremento / Pós incremento ( -- )
 ```js
   var soma = 10 + 10;
-  
+
   soma
   20
 
@@ -167,7 +169,7 @@ Usamos os operadores de igualdade / relacionais quando precisamos comparar se va
 - == : Igual à.
 - != : Diferente de.
 
-Exemplo: 
+Exemplo:
 ```js
   1 == 1;
   true
@@ -198,7 +200,7 @@ Como assim retornou true ? Sendo que são tipos diferentes ? Bom, pelo fato do J
   false;
 
   1 !== '1';
-  true 
+  true
 ```
 
 Também temos os operadores relacionais. Um operador relacional compara seus operando e retorna um valor booleano baseando-se na comparação, retornando um valor **true ou false**.
@@ -213,7 +215,7 @@ Também temos os operadores relacionais. Um operador relacional compara seus ope
   false;
 
   1 < 2;
-  true 
+  true
 
   1 >= 1;
   true
@@ -222,21 +224,21 @@ Também temos os operadores relacionais. Um operador relacional compara seus ope
   true
 ```
 
-## Funções 
+## Funções
 São blocos de código Javascript nomeados, e que podem ser invocados usando o operador **()**
 ```js
   var x = 1;
   function soma() {
     x += 1;
-  } 
+  }
 ```
-Agora temos uma função chamada **soma** e usando o operador **()** podemos invocá-la. 
+Agora temos uma função chamada **soma** e usando o operador **()** podemos invocá-la.
 ```js
   soma();
   undefined
 
   x
-  2 
+  2
 ```
 A função em si não retornada nada neste caso um valor, porém quando verificamos a variável x percebemos que o seu valor foi alterado.
 
@@ -280,3 +282,9 @@ Argumentos ou parâmetros de funções são valores ou variáveis que podemos pa
   12
 ```
 Percebemos que definimos dois argumentos para a nossa função **x e y** e passamos dois valores para que quando invocamos essa função ela retorne a soma dos mesmos.
+
+Links:
+
+[JavaScript básico - MDN](https://developer.mozilla.org/pt-BR/docs/Aprender/Getting_started_with_the_web/JavaScript_basico)
+
+[Desvendando a linguagem JavaScript - Rodrigo Branas](https://www.youtube.com/playlist?list=PLQCmSnNFVYnT1-oeDOSBnt164802rkegc)
