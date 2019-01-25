@@ -287,4 +287,6 @@ Links:
 
 [JavaScript básico - MDN](https://developer.mozilla.org/pt-BR/docs/Aprender/Getting_started_with_the_web/JavaScript_basico)
 
+[Guia JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide)
+
 [Desvendando a linguagem JavaScript - Rodrigo Branas](https://www.youtube.com/playlist?list=PLQCmSnNFVYnT1-oeDOSBnt164802rkegc)
