@@ -1,6 +1,6 @@
 # Escopo de funções.
 
-As variáveis definidas no interior de uma função não podem ser acessadas de nenhum lugar fora da função, porque a variável está definida apenas no escopo da função. No entanto, uma função pode acessar todas variáveis e funções definida fora do escopo onde ela está definida. Em outras palavras, a função definida no escopo global pode acessar todas as variáveis definidas no escopo global. A função definida dentro de outra função também pode acessar todas as variáveis definidas na função hospedeira e outras variáveis ao qual a função hospedeira tem acesso.
+As variáveis definidas no interior de uma função não podem ser acessadas de **nenhum lugar fora da função**, porque a variável está definida apenas no **escopo da função**. No entanto, uma função pode acessar **todas variáveis e funções definida fora do escopo onde ela está definida**. Em outras palavras, a função definida no escopo global pode acessar todas as variáveis definidas no escopo global. A função definida dentro de outra função também pode acessar todas as variáveis definidas na função hospedeira e outras variáveis ao qual a função hospedeira tem acesso.
 
 Ex:
 
@@ -59,7 +59,7 @@ console.log( sum() );
 ReferenceError: sum is not defined
 ```
 
-A função _sum_ não está definida, da mesma forma que acontece com o escopo da váriaveis assim também acontece com as funções. A função _sum_ só existe dentro do escopo da função _myFunction_, fora dele a mesma deixa de existir.
+A função _sum_ não está definida, da mesma forma que acontece com o escopo da váriaveis assim também acontece com as funções. A função _sum_ **só existe dentro do escopo da função** _myFunction_, fora dele a **mesma deixa de existir**.
 
 ### Funções aninhadas e closures.
 
@@ -96,10 +96,10 @@ function fora(x) {
   }
   return dentro;
 }
-fn_inside = fora(3); // Pense nisso como: Receba uma função que adicionará 3 ao que quer que você repasse para ela
-result = fn_inside(5); // retorna 8
+var fn_inside = fora(3); // Pense nisso como: Receba uma função que adicionará 3 ao que quer que você repasse para ela
+var result = fn_inside(5); // retorna 8
 
-result1 = fora(3)(5); // retorna 8
+var result1 = fora(3)(5); // retorna 8
 ```
 
 E quando alteramos a ordem das declarações e chamadas de dentro da função ?
@@ -227,7 +227,7 @@ function myFunction() {
 }
 ```
 
-Em outras palavras, a váriavel number1 sofre o processo de hoisted e fica no topo da nossa função myFunction. Sendo assim a mesma tem como seu valor undefined. Depois temos a nossa chamada no console. Somente após isso e extamente onde a mesma foi criada é onde acontece a atribuição do seu valor, e assim na última linha temos o que acontece depois que declaramos a nossa váriavel.
+Em outras palavras, a váriavel number1 sofre o processo de hoisted e fica no topo da nossa função **myFunction**. Sendo assim a mesma tem como seu valor **undefined**. Depois temos a nossa chamada no console. Somente após isso e extamente onde a mesma foi criada é onde acontece a atribuição do seu valor, e assim na última linha temos o que acontece depois que declaramos a nossa váriavel.
 
 # IIFE (Immediately Invoked Function Expression).
 
@@ -241,7 +241,7 @@ A função se torna uma expressão que é imediatamente executada. A variável d
 })();
 ```
 
-As IIFE faz com que uma função se torne uma expressão que é imediatamente executada. E as vantagens disso ? É que tudo que for declarado dentro da IIFE tem como seu escopo local.
+As IIFE faz com que uma função se torne uma expressão que é imediatamente executada. E as vantagens disso ? É que tudo que for declarado dentro da IIFE tem como seu **escopo local**.
 
 Links:
 
