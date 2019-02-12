@@ -4,7 +4,7 @@ Relembrando: Funções são blocos de construção fundamentais em JavaScript. U
 A **definição da função** (também chamada de declaração de função) consiste no uso da palavra chave function, seguida por:
 + Nome da Função.
 + Lista de argumentos para a função, entre parênteses e separados por vírgulas.
-+ Declarações JavaScript que definem a função, entre chaves { }.
++ Declarações que definem a função, entre chaves { }.
 
 Por exemplo, o código a seguir define uma função simples chamada square:
 ```js
@@ -22,7 +22,7 @@ var func = function() {
 ```
 No exemplo a cima definimos uma função anônima que será chamada apartir da variável *func*. Onde não é uma boa prática definir funções anônimas em nossos códigos.
 
-Podemos nomea-las.
+Podemos nomeá-las.
 
 ```js
 var func = function func(){
@@ -60,15 +60,15 @@ func.name; // 'func'
 
 A programação funcional é um paradigma de programação que trata a computação como uma avaliação de funções matemáticas e que evita estados ou dados mutáveis. Ela enfatiza a aplicação de funções, em contraste da programação imperativa, que enfatiza mudanças no estado do programa.
 
-E em Javascript para podemos usufruir desses conceitos até então, a linguagem oferece alguns "super poderes".
+E em Javascript para podemos usufluir desses conceitos até então, a linguagem oferece alguns "super poderes".
 
 + Objetos de primeira classe. Ou cidadões de primeira classe.
 
-Isso basicamente significa que as funções tem o mesmo tratamento que os objetos tem em Javascript.
+Isso basicamente significa que as funções tem o **mesmo tratamento** que os **objetos** tem em Javascript.
 
 > {} :heart: function () {}
 
-Uma pequena ideia de como vamos trabalhar com programação funcional. 
+Uma pequena ideia de como vamos trabalhar com programação funcional.
 
 ```js
 var car = {
@@ -76,11 +76,11 @@ var car = {
   model: 'Silverado'
 };
 ```
-Neste exemplo criamos um objetos literais.
+Neste exemplo criamos um objeto literal.
 
-Da mesma forma podemos fazer com funções :heart: {} 
+Da mesma forma podemos fazer com funções :heart: {}
 
-Exemplo de uma funções literais em Javascript.
+Exemplo de **funções literais**.
 
 ```js
 function sum( x, y ) {
@@ -97,13 +97,12 @@ var obj = {};
 E com funções também :heart: {}
 
 ```js
-var func = function func() {
-};
+var func = function func() {};
 ```
 
 Obs: Podendo ser uma função nomeada ou anônima.
 
-Da mesma forma podemos retornar um objeto dentro de uma função.
+Da mesma forma podemos **retornar um objeto dentro de uma função**.
 
 ```js
 function person() {
@@ -126,7 +125,7 @@ function person() {
 }
 ```
 
-E com o retorno da função podemos pegar as propriedades do objeto retornado.
+E com o retorno da função podemos pegar as **propriedades do objeto retornado**.
 ```js
 console.log( person().name );
 
@@ -138,7 +137,7 @@ console.log( person().lastName );
 ```
 # Introdução à programação funcional II
 
-Vimos que podemos retornar objetos de dentro de funções. E também podemos retornar funções de dentro de funções {} :heart:
+Vimos que podemos retornar objetos de dentro de funções. E também podemos **retornar funções de dentro de funções** {} :heart:
 
 Ex:
 
@@ -149,7 +148,7 @@ function adder( x ) {
   };
 }
 ```
-No exemplo a cima temos uma função chamada *adder* que recebe um valor por parâmetro e o seu retorno é uma outra **função** que também recebe um valor por parâmetro. E retorna a soma dos valores passados para está função.
+No exemplo a cima temos uma função chamada *adder* que recebe um valor por parâmetro e o seu retorno é uma outra **função** que também recebe um valor por parâmetro. E retorna a **soma dos valores** passados para está função.
 
 Usando outra abordagem teriamos o mesmo resultado mas a forma de escrita diferente. Agora criariamos uma outra função dentro da função *adder* e dentro dessa nova função chamada *addOther* retornamos a soma dos valores. E por fim retornamos a função *addOther*.
 

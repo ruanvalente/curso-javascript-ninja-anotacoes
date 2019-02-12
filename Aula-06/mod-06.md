@@ -2,7 +2,7 @@
 o operador vírgula avalia o valor de seus operandos (da esquerda para a direita) e retorna o valor do último operando.
 
 Ex:
-> expr1, expr2, expr3... 
+> expr1, expr2, expr3...
 
 Você pode usar o operador vírgula quando desejar incluir múltiplas expressões em um lugar que requer uma única expressão.
 
@@ -15,10 +15,10 @@ Ex:
   > b
   5
   > c
-  undefined 
+  undefined
 ```
 
-Neste exemplo definimos 2 valores para 3 variáveis usando o operador virgula. 
+Neste exemplo definimos 2 valores para 3 variáveis usando o operador virgula.
 
 ## Switch
 A condicional switch avalia uma expressão, combinando o valor da expressão para um cláusula case, e executa as instruções  associadas ao case.
@@ -51,7 +51,7 @@ Se a condição for correspondida, o programa executa as instruções asssociada
 
 O programa primeiro procura por um caso o qual a expressão avalie como tendo o mesmo valor que o input da expressão **(usando a comparação de igualdade estrita, ===)** transferindo assim o controle para a cláusula encontrada e em seguida execudando as instruções associadas. Caso nenhum caso seja correspondido, então o programa procura pela cláusula opicional **default**, que, se encontrado, tem o controle transferido à ele, executando suas instruções associadas. Se não ouver uma cláusula **default**, o programa continua a execução da instrução seguindo para o final do switch. Por convenção, a cláusula **default é a última**, mas não é algo obrigatório.
 
-A instrução opcional **break** associada com cada case garante que o programa saia da condicional switch assim que a instrução correspondente for executada  e executa a instrução que segue logo após o switch. Caso **break** seja omitido, o programa continua a execução para a próxima instrução dentro de switch. 
+A instrução opcional **break** associada com cada case garante que o programa saia da condicional switch assim que a instrução correspondente for executada  e executa a instrução que segue logo após o switch. Caso **break** seja omitido, o programa continua a execução para a próxima instrução dentro de switch.
 
 Ex:
 
@@ -62,23 +62,19 @@ function convertToHex(color) {
     case 'red':
       hex = '#FF0000';
       return 'O hexadecimal para a cor ' + color + ' é ' + hex + '.';
-      break;
 
     case 'blue':
       hex = '#0000FF';
       return 'O hexadecimal para a cor ' + color + ' é ' + hex + '.';
-      break;
 
     case 'black':
       hex = '#000000';
       return 'O hexadecimal para a cor ' + color + ' é ' + hex + '.';
-      break;
 
     case 'white':
       hex = '#FFFFFF';
       return 'O hexadecimal para a cor ' + color + ' é ' + hex + '.';
-      break;
-      
+
     case 'green':
       hex = '#008000';
       return 'O hexadecimal para a cor ' + color + ' é ' + hex + '.';
@@ -97,7 +93,7 @@ Uma declaração while executa suas instruções, desde que uma condição espec
   }
 ```
 
-Se a condição se tornar falsa,  a declaração dentro do laço para a execução e o controle é passado para a instrução após o laço.
+Se a condição se tornar falsa, a declaração dentro do laço para a execução e o controle é passado para a instrução após o laço.
 
 O teste da condição ocorre antes que o laço seja executado. Desta forma se a condição for verdadeira o laço executará e testará a condição novamente. Se a condição for falsa o laço termina e passa o controle para as instruções após o laço.
 

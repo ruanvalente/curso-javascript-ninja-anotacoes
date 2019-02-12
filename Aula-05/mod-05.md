@@ -1,5 +1,5 @@
 ## Retorno de funções com Arrays e Objetos
-As funções em Javascript são muito poderosas, com isso podemos usufruir do que elas tem de melhor. E uma dessas funcionalidades que as funções tem, é o tipo de retorno onde elas podem retornar além dos tipos primitivos.
+As funções em Javascript são muito poderosas, com isso podemos usufluir do que elas tem de melhor. E uma dessas funcionalidades que as funções tem, é o **tipo de retorno** onde elas podem retornar além dos **tipos primitivos**.
 
 Por exemplo podemos usar uma função para retornar um Array. E já que a função retorna um array, podemos acessar seus valores através dos seus index de forma como um array normal.
 ```js

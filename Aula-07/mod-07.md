@@ -1,7 +1,7 @@
 # O operador módulo ( % ).
 O operador binário ( % ) retorna o inteiro restante da divisão dos dois operandos.
 ```js
-  12 % 5 
+  12 % 5
   2
 ```
 Podemos também usar o operador para retornar apenas números pares entre 0 e 20.
@@ -23,7 +23,7 @@ while( num <= 20 ) {
 14
 16
 18
-20  
+20
 ```
 
 # Arrays - A propriedade length.
@@ -36,7 +36,7 @@ Basicamente conta a quantidade de itens que o array possui.
 ```js
 var arr = [ 1, 'a', { prop: 'JS Ninja' }, function() {} ];
 
-arr.length; 
+arr.length;
 4
 ```
 
@@ -111,16 +111,16 @@ E por ai vai...
 
 # Estrutura de repetição ( Loop ) For.
 
-A instrução for cria um loop que consiste em três expressões opcionais, dentro de parênteses e separadas por ponto e vírgula, seguidas por uma declaração ou uma sequência de declarações executadas em sequência.
+A instrução for cria um loop que consiste em **três expressões opcionais**, dentro de **parênteses** e separadas por **ponto e vírgula**, seguidas por uma declaração ou uma sequência de declarações executadas em sequência.
 
 
 ```
-for ([inicialização]; [condição]; [expressão final]) 
+for ([inicialização]; [condição]; [expressão final])
   declaração
 ```
 **Inicialização**
 
-Uma expressão (incluindo expressões de atribuição) ou declarações variáveis. Geralmente usada para iniciar o contador de variáveis. Esta expressão pode, opcionalmente, declarar novas variáveis com a palavra chave var. Essas variáveis são não locais no loop, isto é, elas estão no mesmo escopo que o loop for está. O resultado desta expressão é descartado.
+Uma expressão **(incluindo expressões de atribuição)** ou declarações variáveis. Geralmente usada para **iniciar o contador de variáveis**. Esta expressão pode, opcionalmente, declarar novas variáveis com a palavra chave var. Essas variáveis são **não locais** no loop, isto é, elas estão no **mesmo escopo** que o loop for está. O resultado desta expressão é descartado.
 
 **Condição**
 
@@ -149,5 +149,5 @@ Ex:
 8
 9
 ```
-
-Usamos o loop for para verificar se a variável **i** for menor que o valor 10, e incrementamos ela dentro ainda do loop for. E a saída é a mesma quando usamos o loop while.
+Neste exemplo o loop **for** se inicializa com o valor da variável **i** com **0**.
+Usamos o loop for para verificar se a variável **i** for menor que o valor **10** isto é a **condição do loop**, e **incrementamos** ela dentro ainda do loop for. E a saída é a mesma quando usamos o loop while.
