@@ -11,7 +11,7 @@ Tipos em Javascript podemos separá-los ou dividi-los em duas categorias.
 
 Pois tudo que não for primitivo será considerado um **Objeto** dentro do Javascript.
 
-## Objeto 
+## Objeto
 Um objeto é um **conjunto de propriedades**, esse conjunto de propriedades deve ser seguida de um **nome** e de um **valor**. Este podendo ser um valor **primitivo** ou um **objeto**.
 Podemos crirar um objeto usando **{}** com a **propriedade** seguida de **:** para setar o seu respectivo **valor**.
 ```js
@@ -20,7 +20,7 @@ Podemos crirar um objeto usando **{}** com a **propriedade** seguida de **:** pa
 Ou podemos colocar isso dentro de uma variável.
 ```js
   var objeto = { propriedade: 'valor' };
-  
+
   objeto
   { propriedade: 'valor' }
 ```
@@ -55,8 +55,8 @@ Onde podemos aplicar o conceito de objetos ? Basicamente quando precisamos organ
 ## Métodos de objeto.
 Em Javascript podemos atribuir um função a uma variável, e assim podemos invocar a função usando a variável que a função foi atribuida.
 ```js
-  var myFunction = function () { 
-    return 'Hello' 
+  var myFunction = function () {
+    return 'Hello'
   };
 ```
 Agora com a função criada e atribuida a *myFunction* podemos simplesmente invocar a função usando o operador **()**.
@@ -64,12 +64,12 @@ Agora com a função criada e atribuida a *myFunction* podemos simplesmente invo
   myFunction();
   'Hello'
 ```
-Sabendo este conceito podemos fácilmente atribuir uma função como uma propriedade de um **objeto**, porém quando uma função é atribuida como propriedade de uma função a mesma se torna-se um **método de um objeto**. 
+Sabendo este conceito podemos fácilmente atribuir uma função como uma propriedade de um **objeto**, porém quando uma função é atribuida como propriedade para um objeto a mesma se torna-se um **método de um objeto**.
 Métodos basicamente são ações que o nosso objeto irá ter.
 
 [Para saber mais sobre o assunto](https://developer.mozilla.org/pt-PT/docs/Javascript_orientado_a_objetos)
 
-OBS: Quando precisamos adicionar mais uma propriedade dentro do Objeto, não podemos usar o operador de atribuição **( = )**. Precisamos informa o objeto e a nova propriedade com seu respectivo valor que desejamos atribuir.
+OBS: Quando precisamos adicionar mais uma propriedade dentro do Objeto, não podemos usar o operador de atribuição **( = )**. Precisamos informa o objeto a sua nova propriedade com seu respectivo valor que desejamos atribuir.
 ```js
   var pessoa = { nome: 'Ruan', idade: 23 };
   pessoa = { sobrenome: 'Valente'};
@@ -110,3 +110,11 @@ Ex:
   'Meu nome é Ruan Valente'
 ```
 Apenas dentro de objetos as funções são chamadas de **métodos**. Quando usamos uma variável e atribuimos ela uma função a mesma ainda continua sendo uma **função** e não um objeto.
+
+### Links:
+
+- ['Desvendando a linguagem JavaScript - #6 - Object - Rodrigo Branas'](https://www.youtube.com/watch?v=A_E-K69j93Q)
+
+- ['Desvendando a linguagem JavaScript - #7 - Function - Parte 1 - Rodrigo Branas'](https://www.youtube.com/watch?v=OqR0hE-DQn4)
+
+- ['Desvendando a linguagem JavaScript - #8 - Function - Parte 2 - Rodrigo Branas'](https://www.youtube.com/watch?v=m9uPpURTI0c)
