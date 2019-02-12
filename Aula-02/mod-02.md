@@ -3,23 +3,23 @@
 Basicamente operadores lógicos combinam ou invertem valores booleanos.
 
 ### && ( and )
-O operador **and** retorna true se as duas expressões forem **verdadeiras** caso ao contrário o mesmo será falso.
+O operador **and** retorna **true** se as duas expressões forem **verdadeiras** caso ao contrário o mesmo será **falso**.
 
 Exemplo:
 ```js
   2 > 1 && 5 > 2;
   true
-  
+
   1 > 2 && 1 < 2;
   false
 ```
 ### || ( OR )
 E quando precisamos testar apenas se uma das expressões satifaz a nossa codição ? Ai precisamos usar o operador **OR**.
-O operador OR, verifica se um ou outro for verdadeiro, se isso for verdade é retornado **true**. Apenas se ambas forem falsa o mesmo retornara **falso**.
+O operador OR, verifica se **um ou** outro valor for **verdadeiro**, se isso for verdade é retornado **true**. Apenas se ambas forem falsas o mesmo retornara **falso**.
 ```js
   2 > 1 || 5 < 2;
   true
-  
+
   3 < 3 || 2 > 10;
   false
 ```
@@ -29,8 +29,8 @@ Usamos o **NOT** quando precisamos inverter o valor de uma afirmação, isso res
 ```js
   !2 > 1 && 5 > 2;
   false
-  
-  !2 < 1;  
+
+  !2 < 1;
   true
 ```
 
@@ -47,7 +47,7 @@ Quando usamos o operador unário **( + )** o mesmo faz a auto conversão de um v
   NaN
 ```
 
-Se tentamos converter uma string, ele converterá para o tipo **NaN** a propriedade global NaN é um valor especial que significa Not-A-Number (não é um número).
+Se tentamos converter uma string, ele converterá para o tipo **NaN** a propriedade global NaN é um valor especial que significa **Not-A-Number** (não é um número).
 
 Usando também o operador unário + podemos concatenar ( juntar ), strings.
 
@@ -70,7 +70,7 @@ Assim como no operador **( + )** o operador **( - )** converte para um tipo **Nu
   -5
 ```
 
-### Estrutura Léxica 
+### Estrutura Léxica
 Basicamente é um conjuto de regras definidas de como vamos escrever os nosso códigos dentro da linguagem. Como definir variáveis, funções, comentários etc.
 
 ### Case sensitive
@@ -80,7 +80,7 @@ Isso significa que o Javascript diferencia letras **Maiúsculas** de letras **Mi
   var nome = 'Um nome';
   var NOME = 'Um nome';
 ```
-Neste exemplo a variável nome ( com letras minúsculas ) é diferente da variável NOME com letras maiúsculas.
+Neste exemplo a variável **nome** ( com letras minúsculas ) é diferente da variável **NOME** com letras maiúsculas.
 
 ### Comentários
 São partes do codigo onde o interpretador do Javascript não irá interpretar aquele determinado trecho de código.
@@ -114,7 +114,7 @@ São basicamente valores que aparecem direto no programa. São valores que não 
 - [ 1, 2 ]
 
 ### Indentificadores
-São nomes que podemos usar em nossas variáveis ou funções. 
+São nomes que podemos usar em nossas variáveis ou funções.
 Podem iniciar com:
 + ( - ) ou $
 + Letras de a a z
@@ -145,10 +145,10 @@ A condicional **if**  é uma estrutura condicional que executa a afirmação, de
   5
 
   y
-  10  
+  10
 ```
 
-Se for falsa, executa as afirmações dentro de **else**.
+Se for falsa, executa as afirmações dentro do bloco **else**.
 ```js
   var x = 5;
   var y = 10;
@@ -161,14 +161,14 @@ Se for falsa, executa as afirmações dentro de **else**.
     y = 10
   }
 
-  x 
+  x
   50
 
   y
   10
 ```
-### ELSE IF 
-Perceba que não existe sintaxe de elseif em JavaScript. Entretanto, você pode escrevê-la com um espaço entre o if e o else. Que serve pra verificar mais condições.
+### ELSE IF
+Perceba que não existe sintaxe de elseif em JavaScript. Entretanto, você pode escrevê-la com um espaço entre o **if** e o **else**. Que serve pra verificar mais condições.
 ```js
   var nota1 = 7.0;
   var nota2 = 7.0;
@@ -195,7 +195,7 @@ Após isso precisamos rodar o comando **git clone** do repositório principal qu
   git clone git@github.com:ruanvalente/curso-javascript-ninja.git
 ```
 
-Após o repositório ser clonado precisamos entrar dentro da pasta e adicionar o repositório principal remotamente para ter os desafios atualizados.
+Após o repositório ser clonado precisamos entrar dentro da pasta que foi clonada e adicionar o repositório principal remotamente para ter os desafios atualizados.
 ```git
    git remote add upstream git@github.com:da2k/curso-javascript-ninja.git
 ```
@@ -225,7 +225,7 @@ From github.com:da2k/curso-javascript-ninja
 Agora atualizar o nosso repositório local com o remoto do curso.
 
 ```git
-  git merge upstream/master 
+  git merge upstream/master
 Updating ed057e5..9b569b7
 Fast-forward
  .github/ISSUE_TEMPLATE.md        |  2 +-
