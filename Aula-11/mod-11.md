@@ -17,9 +17,15 @@ do {
   i += 1;
   console.log(i);
 } while (i < 5);
+/*
+2
+3
+4
+5
+*/
 ```
 
-Neste exemplo o laço é executado pelo menos uma vez e irá executar até que i seja menor que 5.
+Neste exemplo o laço é executado pelo menos **uma vez** e irá executar até que i seja menor que 5.
 
 # For in
 
@@ -47,23 +53,28 @@ for (var prop in car) {
   console.log(prop);
 }
 
-brand;
-model;
-year;
+/*
+brand
+model
+year
+*/
 ```
 
 ```js
 for (var prop in car) {
   console.log(prop, ":", car[prop]);
 }
-brand: Fiat;
-model: Uno;
-year: 2014;
+/*
+brand: Fiat
+model: Uno
+year: 2014
+*/
+
 ```
 
 Basicamente criamos uma váriavel dentro do nosso loop chamada **prop** ( podendo ter qualquer nome ). E pecorremos todas as propriedades do objeto car.
 
-Podemos também usar o **in** para verificar se determinada propriedade existe dentro do nosso objeto retornando true ou false.
+Podemos também usar o **in** para verificar se determinada propriedade existe dentro do nosso objeto retornando **true** ou **false**.
 
 ```js
 console.log("brand" in car); // true
@@ -102,15 +113,15 @@ A instrução **break** faz o interpretador saltar para o final de um laço ou p
 var number = 10;
 switch (number) {
   case 1:
-    console.log("1");
+    console.log(1);
     break;
 
   case 2:
-    console.log("2");
+    console.log(2);
     break;
 
   case 10:
-    console.log("10");
+    console.log(10);
     break;
 
   default:
@@ -118,7 +129,7 @@ switch (number) {
 }
 ```
 
-Neste caso é verificado qual caso ( case ) tem como seu valor 10, caso seja verdadeiro é retornado a String '10' e terminado a instrução switch através da instrução **break**.
+Neste caso é verificado qual caso ( case ) tem como seu valor 10, caso seja verdadeiro é retornado o valor 10 e terminado a instrução switch através da instrução **break**.
 
 OBS: Em casos como o da instrução switch, sem o uso do **break**, será passado por todas as instruções a serem verificadas dentro do switch. Gerando um retorno não esperado.
 
@@ -134,7 +145,7 @@ for (var i = 0; i <= arr.length; i++) {
   if (i % 2 === 0) {
     continue;
   }
-  console.log(i);
+  console.log(i); //1 3 5 7 9
 }
 ```
 

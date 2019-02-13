@@ -25,7 +25,7 @@ obj.prop1 = "outro valor";
 
 Agora a propriedade do objeto _prop1_ tem seu valor modificado.
 
-Podemos também _deletar objetos_, usando o método **delete**.
+Podemos também _deletar objetos_, usando o operador **delete**.
 
 Ex:
 
@@ -106,15 +106,15 @@ var obj = new Object();
 
 ### Object.create()
 
-Objetos podem também ser criados usando-se o método Object.create(). Esse método pode ser muito útil, pois permite que você escolha o objeto **protótipo** para o objeto que você quer criar, sem a necessidade de se definir uma função construtora.
+Objetos podem também ser criados usando-se o método **Object.create()**. Esse método pode ser muito útil, pois permite que você escolha o objeto **protótipo** para o objeto que você quer criar, sem a necessidade de se definir uma função construtora.
 
-Todo o objeto tem como uma propriedade chamada **prototype** que ela é o protótipo do objeto que está sendo criado. Que herdam do seu próprio protótipo
+Todo o objeto tem como uma propriedade chamada **prototype** que ela é o **protótipo do objeto que está sendo** criado. Que herdam do seu próprio protótipo
 
 # Criação de Objetos II - Object.create()
 
 JavaScript é um pouco confuso para desenvolvedores com experiência em linguagens baseadas em classes (como Java ou C++), porque é dinâmico e não dispõe de uma implementação de class (através da palavra-chave reservada class e não pode ser usada com um nome de variável).
 
-Quando se trata de herança, JavaScript tem somente um construtor: objetos. Cada objeto tem um link interno para um outro objeto chamado prototype. Esse objeto prototype também tem um atributo prototype, e assim por diante até que null seja encontrado como em prototype. null 1 que, por definição, não tem prototype, e age como um link final nesta cadeia de protótipos (prototype chain).
+Quando se trata de herança, JavaScript tem somente **um construtor: objetos**. Cada objeto tem um **link interno** para um outro objeto chamado **prototype**. Esse objeto prototype também tem um atributo prototype, e assim por diante até que null seja encontrado como em prototype. null 1 que, por definição, não tem prototype, e age como um link final nesta cadeia de protótipos **(prototype chain)**.
 
 Ex:
 
@@ -123,11 +123,11 @@ var obj = { prop1: "prop1", prop2: "prop2" };
 var obj2 = Object.create(obj);
 ```
 
-Neste exemplo criamos um objeto com algumas propriedades e logo a baixo criamos um outro objeto, porém usando o método _Object.create()_ que herda de obj, suas propriedades.
+Neste exemplo criamos um objeto com algumas propriedades e logo a baixo criamos um outro objeto, porém usando o método _Object.create()_ que **herda de obj**, suas propriedades.
 
-Porém, diferente do que vimos anteriomente os objetos criados são diferentes, não compartilham o mesmo endereço de memória. Sendo assim se formos modificar o obj2 passando alguma outra propriedade o obj ( objeto pai ) **não será** modificado !
+Porém, diferente do que vimos anteriomente os objetos criados **são diferentes**, **não compartilham o mesmo endereço de memória**. Sendo assim se formos modificar o obj2 passando alguma outra propriedade o obj ( objeto pai ) **não será** modificado !
 
-Porém podemo modificar o objeto pai ( obj ) e isso irá refletir no objeto filho ( obj2 ).
+Porém podemos modificar o objeto pai ( obj ) e isso irá refletir no objeto filho ( obj2 ).
 
 PS: Quando criamos um objeto usando o _Object.create()_ o mesmo herda do prototype.
 
@@ -141,8 +141,8 @@ Ex:
 for (var prop in obj2) {
   console.log(prop);
 }
-prop1;
-prop2;
+// prop1
+// prop2
 ```
 
 Neste exemplo usamos o for in para pecorrer o _obj2_, porém o mesmo não tem propriedades próprias e sim, as herdadas de _obj_.
@@ -161,28 +161,28 @@ for (var prop in obj2) {
   }
 }
 
-x;
+// x
 ```
 
-PS: O método hasOwnProperty verifica apenas por propriedades especificas e não propriedades herdadas.
+PS: O método **hasOwnProperty** verifica apenas por propriedades especificas e **não propriedades herdadas**.
 
 # Métodos De Objetos.
 
 ### Object.keys(obj)
 
-Object.keys() retorna um array cujo os elementos são strings correspondentes para a propriedade enumerável encontrada diretamento sobre o objeto. A ordenação das propriedades é a mesma que a dada pelo loop sobre as propriedades do objeto manualmente.
+Object.keys() **retorna um array** cujo os elementos são strings correspondentes para a propriedade enumerável encontrada diretamento sobre o objeto. A ordenação das propriedades é a mesma que a dada pelo loop sobre as propriedades do objeto manualmente.
 
 Ex:
 
 ```js
 Object.keys(obj);
 
-["prop1", "prop2"];
+['prop1', 'prop2'];
 ```
 
 ### obj.isPrototypeOf(obj)
 
-O método isPrototypeOf() checa se um objeto existe em na cadeia de protótipos de um outro objeto.
+O método isPrototypeOf() checa **se um objeto existe em na cadeia de protótipos de um outro objeto**.
 
 ```js
 obj.isPrototypeOf(obj2);
@@ -191,7 +191,7 @@ true;
 
 ### JSON.stringify()
 
-O método JSON.stringify() converte valores em javascript para uma String JSON. Esses valores podem ser substituidos especificando a função replacer, ou incluindo somente as propriedades específicas, quando o array do replacer for especificado.
+O método JSON.stringify() **converte valores em javascript para uma String JSON**. Esses valores podem ser substituidos especificando a função replacer, ou incluindo somente as propriedades específicas, quando o array do replacer for especificado.
 
 ```js
 JSON.stringify(obj);
@@ -201,7 +201,7 @@ JSON.stringify(obj);
 
 PS: Podemos voltar o objeto que convertemos para String em objeto novamente, usando o **JSON.parse(obj)**.
 
-Temos também o método JSON.parse() que converte uma string para JSON, opcionalmente transformando o valor produzido por conversão.
+Temos também o método **JSON.parse() que converte uma string para JSON**, opcionalmente transformando o valor produzido por conversão.
 
 ```js
 JSON.parse("{}"); // {}
@@ -221,7 +221,7 @@ Adiciona um item ao final do array, retornando o tamanho atual do array.
 var arr = [1, 2, 3, 4, 5];
 arr.push(6);
 
-[1, 2, 3, 4, 5, 6];
+// [1, 2, 3, 4, 5, 6]
 ```
 
 Podemos também remover items do array usando o método _pop()_
@@ -239,7 +239,7 @@ arr.pop();
 
 ### Join() - Não modifica o Array.
 
-O método join() junta todos os elementos de uma array (ou um array-like object) em uma string e retorna esta string.
+O método _join()_ junta todos os elementos de uma array (ou um array-like object) em uma string e retorna esta string.
 
 Sintaxe:
 
@@ -252,27 +252,27 @@ Específica uma string para separar cada elemento adjacente do array. O separado
 ```js
 arr.join("-");
 
-("1-2-3-4-5-6");
+// '1-2-3-4-5-6'
 ```
 
 ### Reverse() - Modifica o Array.
 
-O método reverse() inverte os itens de um array. O primeiro elemento do array se torna o último e o último torna-se o primeiro.
+O método _reverse()_ inverte os itens de um array. O primeiro elemento do array se torna o último e o último torna-se o primeiro.
 
 ```js
 arr.reverse();
 
-[6, 5, 4, 3, 2, 1];
+// [6, 5, 4, 3, 2, 1]
 ```
 
 ### Sort() - Modifica o Array.
 
-O método sort() ordena os elementos do próprio array e retorna o array. A ordenação não é necessariamente estável. A ordenação padrão é de acordo com a pontuação de código unicode.
+O método _sort()_ ordena os elementos do próprio array e retorna o array. A ordenação não é necessariamente estável. A ordenação padrão é de acordo com a pontuação de código unicode.
 
 ```js
 arr.sort();
 
-[1, 2, 3, 4, 5, 6];
+// [1, 2, 3, 4, 5, 6]
 ```
 
 ### Links para saber mais
