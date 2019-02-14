@@ -4,7 +4,7 @@ O objeto Array do JavaScript é um objeto global usado na construção de 'array
 
 ### toString() - Não modifica o Array.
 
-O método toString() retorna uma string representando um array específico e seus elementos.
+O método _toString()_ retorna uma string representando um array específico e seus elementos.
 
 O objeto Array substitui o método toString() de Object. Para objetos do tipo Array, o método toString() concatena todos os valores em apenas uma string
 
@@ -12,12 +12,12 @@ O objeto Array substitui o método toString() de Object. Para objetos do tipo Ar
 var numbers = [1, 2, 3, 4];
 
 numbers.toString();
-//"1,2,3,4";
+// "1,2,3,4"
 ```
 
 ### concat() - Não modifica o Array.
 
-O método concat() retorna um novo array contendo todos os arrays ou valores passados como parâmetro
+O método _concat()_ retorna um novo array contendo todos os arrays ou valores passados como parâmetro
 
 concat cria um novo array unindo todos os elementos que foram passados como parâmetro, na ordem dada, para cada argumento e seus elementos (se o elemento passado for um array).
 
@@ -37,7 +37,7 @@ var alphaNumeric = alpha.concat(numeric);
 
 ### unshift() - Modifica o Array.
 
-O método unshift() adiciona um ou mais elementos no início de um array e retorna o número de elementos (propriedade length) atualizado.
+O método _unshift()_ adiciona um ou mais elementos no início de um array e retorna o número de elementos (propriedade length) atualizado.
 
 O método unshift insere os valores fornecidos no início de um objeto do tipo array.
 
@@ -53,7 +53,7 @@ numbers.unshift(0);
 
 ### shift() - Modifica o Array.
 
-O método shift() remove o primeiro elemento de um array e retorna esse elemento. Este método muda o tamanho do array.
+O método _shift()_ remove o primeiro elemento de um array e retorna esse elemento. Este método muda o tamanho do array.
 
 O método shift remove o elemento de índice zero, diminuí em 1 os indices dos demais valores e retorna o valor removido. Se a propriedade length for 0, então undefined é retornado.
 
@@ -74,13 +74,13 @@ numbers;
 
 ### slice() - Não modifica o Array.
 
-O método slice() retorna uma cópia rasa de parte de um array em um novo objeto array.
+O método _slice()_ retorna uma cópia rasa de parte de um array em um novo objeto array.
 
 slice não altera o array original. Retorna uma cópia de elementos do array original.
 
 Elementos do array original são copiados para o array retornado da seguinte maneira:
 
-- Para referências de objeto (e não o objeto real), slice copia referencias de objeto em um novo array. Ambos, o original e o novo array referem-se ao mesmo objeto. Se um objeto referenciado é alterado, as alterações são visiveis em ambos, no novo array e no array original.
+- Para referências de objeto (e não o objeto real), slice copia referências de objeto em um novo array. Ambos, o original e o novo array referem-se ao mesmo objeto. Se um objeto referenciado é alterado, as alterações são visiveis em ambos, no novo array e no array original.
 
 - Para strings e números (não objetos String e Number), slice copia strings e números em um novo array. Alterações na string ou número em um array não afetam o outro array.
 
@@ -96,11 +96,11 @@ numbers.slice(0, 2);
 
 ### splice() - Modifica o Array.
 
-O método splice() altera o conteúdo de uma lista, adicionando novos elementos enquanto remove elementos antigos.
+O método _splice()_ altera o conteúdo de uma lista, adicionando novos elementos enquanto remove elementos antigos.
 
 #### indice
 
-- Índice o qual deve iniciar a alterar a lista. Se maior que o tamanho total da mesma, nenhum elemento será alterado. Se negativo, irá iniciar a partir daquele número de elementos a partir do fim.
+- Índice o qual deve iniciar a alteração da lista. Se maior que o tamanho total da mesma, nenhum elemento será alterado. Se negativo, irá iniciar a partir daquele número de elementos a partir do fim.
 
 #### deleteCount
 
@@ -163,7 +163,7 @@ numbers.splice(1, 3); // podemos passar mais elementos se quisermos adicionar de
 
 ### forEach()
 
-O método forEach() executa uma dada função em cada elemento de um array.
+O método _forEach()_ executa uma dada função em cada elemento de um array.
 
 > arr.forEach(callback[, thisArg])
 
@@ -224,9 +224,9 @@ console.log(sum);
 
 ### every()
 
-O método every() testa se todos os elementos do array passam pelo teste implementado pela função fornecida.
+O método _every()_ testa se todos os elementos do array passam pelo teste implementado pela função fornecida.
 
-true se a função de callback retorna um valor truthy para cada um dos elementos do array; caso contrário, false.
+**true** se a função de callback retorna um valor truthy para cada um dos elementos do array; caso contrário, **false**.
 
 ```js
 var every = arr.every(function(item) {
@@ -241,9 +241,9 @@ Neste exemplo o método every verifica se todos os items são menores do que 5. 
 
 ### some()
 
-O método some() testa se alguns dos elementos no array passam no teste implementado pela função atribuída.
+O método _some()_ testa se alguns dos elementos no array passam no teste implementado pela função atribuída.
 
-Esta função retorna true se a função callback retornar true para qualquer elemento do array; caso contrário, false.
+Esta função retorna **true** se a função callback retornar true **para qualquer elemento** do array; caso contrário, **false**.
 
 ```js
 var some = arr.some(function(item) {
@@ -256,9 +256,9 @@ console.log(some);
 
 Neste exemplo o método **some** verificou se apenas um item do nosso array for divisível por 2 e tiver resto zero, o mesmo já terá como se retorno **true**. Só retornaria **false** se todos não atendesse a condição passada para a função de callback.
 
-# Map
+### Map
 
-O método map() invoca a função callback passada por argumento para cada elemento do Array e devolve um novo Array como resultado.
+O método _map()_ invoca a função de callback passada por argumento para cada elemento do Array e devolve um **novo Array** como resultado.
 
 O método map chama a função callback recebida por parâmetro para cada elemento do Array original, em ordem, e constrói um novo array com base nos retornos de cada chamada.
 
@@ -282,9 +282,9 @@ console.log(map);
 */
 ```
 
-# Filter
+### Filter
 
-O método filter() cria um novo array com todos os elementos que passaram no teste implementado pela função fornecida.
+O método _filter()_ cria um novo array com todos os elementos que passaram no teste implementado pela função fornecida.
 
 E retorna um novo array com os elementos que passaram no teste pela nossa função.
 

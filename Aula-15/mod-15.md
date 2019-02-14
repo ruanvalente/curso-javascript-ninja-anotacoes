@@ -10,6 +10,7 @@ Para executar o Javascript dentro do nosso navegador podemos usar a tag **script
     <title>JS Ninja</title>
   </head>
   <body>
+    <!-- Aqui vai o nosso script -->
     <script src="index.js"></script>
   </body>
 </html>
@@ -17,7 +18,7 @@ Para executar o Javascript dentro do nosso navegador podemos usar a tag **script
 
 OBS: Podemos incluir o nosso arquivo de **script** em qualquer lugar do nosso arquivo **HTML**. Porém é uma boa prática colocar o nosso arquivo dentro da tag **body**.
 
-Pois antigamente era incluido o arquivo de script antes de iniciar a página, isto é dentro da nossa tag **head**. Sendo assim tendo um arquivo muito grande quando era aberto o navegador, o mesmo baixava todo o **script** criado para depois renderizar a página para o usuário, e isso era um processo bem lento.
+Pois antigamente era incluido o arquivo de script antes de iniciar a página, isto é dentro da nossa tag **head**. Sendo assim tendo um arquivo muito grande quando era aberto o navegador. O mesmo baixava todo o **script** criado para depois renderizar a página para o usuário, e isso era um processo bem lento.
 
 Então vamos usar os nossos scripts dentro da tag **body** como boa prática.
 
@@ -46,7 +47,7 @@ Para resolver esse problema podemos usar as IIFE. Para manter um escopo local em
 
 # O objeto this.
 
-JavaScript tem uma palavra-chave especial, this, que você pode usar dentro de um método para referenciar o objeto corrente.
+JavaScript tem uma palavra-chave especial, _this_, que você pode usar dentro de um método para referenciar o objeto corrente.
 
 Encontramos o this e alguns lugares:
 
@@ -66,7 +67,7 @@ Encontramos o this e alguns lugares:
 // Rereênciando o próprio objeto.
 ```
 
-Neste caso o **this** está refêrenciado o próprio objeto, então podemos muito bem usar dentro da função _init_ pegar o valor da propriedade _myProp_ usando:
+Neste caso o **this** está referênciando o próprio objeto, então podemos muito bem dentro da função _init_ retornar o valor da propriedade _myProp_ usando o _this_.
 
 ```js
 (function() {
@@ -84,7 +85,7 @@ Outro lugar que podemos vero o this é:
 
 - Em funções:
   - Podendo ter 2 valores.
-  - Refêrenciar ao **objeto global**.
+  - Referênciar ao **objeto global**.
   - Refereênciar ao o **próprio objeto**.
 
 Dentro do browser temos um objeto global chamado **window**, no **node** temos o **global**.
@@ -97,7 +98,7 @@ Dentro do browser temos um objeto global chamado **window**, no **node** temos o
   console.log(myFun());
 })();
 
-// Window OR Global
+// Window or Global
 ```
 
 Sempre que temos uma função e ela não é um método de um objeto. O **this** aponta para o objeto **global**.
@@ -121,13 +122,13 @@ Sempre que temos uma função e ela não é um método de um objeto. O **this** 
 })();
 ```
 
-Outra forma de encontra o this em funções:
+Outra forma de encontra o _this_ em **funções**:
 
 - Referência ao objeto instanciado.
 
 Usando o operador **new** podemos criar novos objetos dentro do Javascript e podemos criar os nosso próprios construtores de objetos dentro da linguagem.
 
-E o this irá apontar para o objeto criado.
+E o _this_ irá apontar para o objeto criado.
 
 ```js
 (function() {
@@ -142,18 +143,18 @@ E o this irá apontar para o objeto criado.
 //
 ```
 
-E se não passamos o new quando criamos um novo objeto, o objeto será criado de forma global, pois o this aponta para window quando é chamado dentro de um contexto de função.
+E se não passamos o new quando criamos um novo objeto, o objeto será criado de forma **global**, pois o _this_ aponta para **window** quando é chamado dentro de um **contexto de função**.
 
-# Arguments
+### Arguments
 
 O objeto arguments é como um objeto Array correspondendo aos argumentos passados para uma função.
 
-O objeto arguments é uma variável local disponível dentro de todas as funções. Você pode referenciar os argumentos de uma função dentro da função usando o objeto arguments. Esse objeto contém um registro para cada argumento fornecido para a função, com o índice do primeiro registro começando em 0.
+O objeto arguments é uma variável local disponível dentro de todas as funções. Você pode referênciar os argumentos de uma função dentro da função usando o objeto arguments. Esse objeto contém um registro para cada argumento fornecido para a função, com o índice do primeiro registro começando em 0.
 
 ```js
 (function() {
   function func() {
-    return arguments["7"];
+    return arguments;
   }
 
   console.log(func(1, 2, 3, 4));
