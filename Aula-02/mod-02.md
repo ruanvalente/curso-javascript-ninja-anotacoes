@@ -15,7 +15,7 @@ Exemplo:
 ```
 ### || ( OR )
 E quando precisamos testar apenas se uma das expressões satifaz a nossa codição ? Ai precisamos usar o operador **OR**.
-O operador OR, verifica se **um ou** outro valor for **verdadeiro**, se isso for verdade é retornado **true**. Apenas se ambas forem falsas o mesmo retornara **falso**.
+O operador OR, verifica se **um ou outro valor** for **verdadeiro**, se isso for verdade é retornado **true**. Apenas se ambas forem falsas o mesmo retornara **falso**.
 ```js
   2 > 1 || 5 < 2;
   true
@@ -158,7 +158,7 @@ Se for falsa, executa as afirmações dentro do bloco **else**.
     y = 1;
   } else {
     x = 50;
-    y = 10
+    y = 10;
   }
 
   x
