@@ -100,7 +100,7 @@ Podemos também criar uma variável sem utilizar a palavra chave **var** porém 
   }
 
   myFunction()
-  'Global'  
+  'Global'
 
   globalVar;
   'Global'
@@ -124,3 +124,5 @@ Argumentos de funções também são sempre locais.
   c
   ReferenceError: c is not defined
 ```
+
+Neste exemplo os argumentos passados para a função **não estão definidos** fora do escopo de onde a mesma foi criada.

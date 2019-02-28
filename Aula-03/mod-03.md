@@ -1,12 +1,13 @@
 ## Tipos de dados e objetos
 Tipos em Javascript podemos separá-los ou dividi-los em duas categorias.
-+ Tipos primitivos:
+
+### Tipos primitivos:
 + Number
 + String
 + Boolean
 + Undefined e Null
 
-- Tipos de Objeto.
+### Tipos de Objeto.
 - São todos os outros ;)
 
 Pois tudo que não for primitivo será considerado um **Objeto** dentro do Javascript.
