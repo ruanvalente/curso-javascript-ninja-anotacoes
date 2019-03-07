@@ -69,13 +69,9 @@ Neste caso foi passado diretamente um Array como parâmetro da função, porém 
 Podemos fazer o mesmo com objetos.
 ```js
   var obj =  { nome: 'ruan', curso: 'JS Ninja' };
-  function myFunction( param )  {
-    return param;
-  }
 
   myFunction( obj );
   { nome: 'ruan', curso: 'JS Ninja' }
-
 
   myFunction( obj ).nome;
   'ruan'
@@ -83,3 +79,22 @@ Podemos fazer o mesmo com objetos.
   myFunction( obj ).curso;
   'JS Ninja'
 ```
+
+Links:
+
+### MDN:
+- [Funções](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Fun%C3%A7%C3%B5es)
+
+### Braziljs Blog:
+
+- [Você realmente entende as Funções em JavaScript?](https://braziljs.org/blog/funcoes-em-javascript/)
+
+### Eloquente Javascript:
+
+- [Funções](http://braziljs.github.io/eloquente-javascript/chapters/funcoes/)
+
+### Rodrigo Branas:
+- [Desvendando a linguagem JavaScript - #7 - Function - Parte 1 - Rodrigo Branas](https://www.youtube.com/watch?v=OqR0hE-DQn4&list=PLQCmSnNFVYnT1-oeDOSBnt164802rkegc&index=8&t=0s)
+
+- [Desvendando a linguagem JavaScript - #8 - Function - Parte 2 - Rodrigo Branas](https://www.youtube.com/watch?v=m9uPpURTI0c&list=PLQCmSnNFVYnT1-oeDOSBnt164802rkegc&index=9&t=0s)
+
