@@ -4,7 +4,10 @@ O operador binário ( % ) retorna o inteiro restante da divisão dos dois operan
   12 % 5
   2
 ```
-Podemos também usar o operador para retornar apenas números pares entre 0 e 20.
+Um exemplo simples é que podemos também usar o operador para retornar apenas números pares entre 0 e 20.
+
+Ex:
+
 ```js
 var num = 0;
 
@@ -40,7 +43,9 @@ arr.length;
 4
 ```
 
-Podemos pecorrer o array usando o while.
+Podemos pecorrer o array usando o while. Mas temos formas melhores para isso ;).
+
+Ex:
 
 ```js
 var qtd = arr.length;
@@ -92,6 +97,8 @@ Neste exemplo verificamos se o qtd é igual a 2, se isso for verdade o código m
 
 Basicamente o método push do array, adicionar um item ao final do Array modificando o mesmo.
 
+Ex:
+
 ```js
 var frutas = [];
 frutas.push('banana', 'maça', 'pêssego');
@@ -113,8 +120,9 @@ E por ai vai...
 
 A instrução for cria um loop que consiste em **três expressões opcionais**, dentro de **parênteses** e separadas por **ponto e vírgula**, seguidas por uma declaração ou uma sequência de declarações executadas em sequência.
 
+Ex:
 
-```
+```js
 for ([inicialização]; [condição]; [expressão final])
   declaração
 ```
@@ -128,11 +136,12 @@ Uma expressão para ser avaliada antes de cada iteração do loop. Se esta expre
 
 **Expressão final**
 
-Uma expressão que será avaliada no final de cada iteração de loop. Isso ocorre antes da próxima avaliação da condição. Geralmente usado para atualizar ou incrementar a variável do contador.
-declaração
+Uma expressão que será avaliada no final de cada iteração de loop. Isso ocorre antes da próxima avaliação da condição. Geralmente usado para atualizar ou incrementar a variável do contador, declaração
+
 Uma declaração que é executada enquanto a condição for verdadeira. Para executar múltiplas condições dentro do loop, use uma instrução de bloco ({...}) para agrupar essas condições. Para não executar declarações dentro do loop, use uma instrução vazia (;).
 
 Ex:
+
 ```js
   for( var i = 0; i < 10; i++ ) {
     console.log( i );
