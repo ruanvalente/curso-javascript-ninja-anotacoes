@@ -46,26 +46,28 @@ function myFunction() {
 }
 
 console.log(myFunction());
-3;
+// 3
 ```
 
 Neste exemplo temos a função _myFunction_ que dentro dela temos outra função chamada _sum_ que dentro desta função é retornado a soma de dois números. E no final da função _myFunction_, é retornado a invocação de _sum_ retornando o valor _3_.
 
 Porém se formos invocar a função _sum_ ?
 
+Ex:
+
 ```js
 console.log( sum() );
 
-ReferenceError: sum is not defined
+// ReferenceError: sum is not defined
 ```
 
-A função _sum_ não está definida, da mesma forma que acontece com o escopo da váriaveis assim também acontece com as funções. A função _sum_ **só existe dentro do escopo da função** _myFunction_, fora dele a **mesma deixa de existir**.
+A função _sum_ **não está definida**, da mesma forma que acontece com o escopo da váriaveis assim também acontece com as funções. A função _sum_ **só existe dentro do escopo da função** _myFunction_, fora dele a **mesma deixa de existir**.
 
 ### Funções aninhadas e closures.
 
-Você pode aninhar uma função dentro de outra. A função aninhada (interna) é acessível apenas para a função que a contém (exterior). Isso constitui também uma _closure_. Uma _closure_ é uma expressão (tipicamente uma função) que pode ter variáveis livres em conjunto com um ambiente que conecta estas variáveis (que "fecha" a expressão).
+Você pode aninhar uma função dentro de outra. A função aninhada **(interna)** é **acessível apenas para a função que a contém (exterior).** Isso constitui também em uma _closure_. Uma _closure_ é uma expressão (tipicamente uma função) que **pode ter variáveis livres em conjunto com um ambiente que conecta estas variáveis** (que "fecha" a expressão).
 
-Uma vez que uma função aninhada é uma _closure_, isto significa que uma função aninhada pode "herdar" os argumentos e variáveis de sua função de contenção. Em outras palavras, a função interior contém o escopo da função exterior.
+Uma vez que uma função aninhada é uma _closure_, isto significa que uma **função aninhada pode "herdar" os argumentos e variáveis de sua função de contenção.** Em outras palavras, a **função interior contém o escopo da função exterior.**
 
 Em resumo:
 
@@ -75,6 +77,7 @@ Em resumo:
 
 O exemplo a seguir mostra as funções aninhadas:
 
+Ex:
 ```js
 function addSquares(a, b) {
   function square(x) {
@@ -89,6 +92,7 @@ var c = addSquares(4, 5); // retorna 41
 
 Uma vez que a função interna forma uma closure, você pode chamar a função externa e especificar argumentos para a função externa e interna:
 
+Ex:
 ```js
 function fora(x) {
   function dentro(y) {
@@ -96,13 +100,17 @@ function fora(x) {
   }
   return dentro;
 }
-var fn_inside = fora(3); // Pense nisso como: Receba uma função que adicionará 3 ao que quer que você repasse para ela
-var result = fn_inside(5); // retorna 8
+var fn_inside = fora(3);
 
+// Pense nisso como: Receba uma função que adicionará 3 ao que quer que você repasse para ela
+
+var result = fn_inside(5); // retorna 8
 var result1 = fora(3)(5); // retorna 8
 ```
 
 E quando alteramos a ordem das declarações e chamadas de dentro da função ?
+
+Ex:
 
 ```js
 function myFunction() {
@@ -115,7 +123,7 @@ function myFunction() {
 }
 console.log(myFunction());
 
-3;
+// 3
 ```
 
 Neste exemplo temos _myFunction_ e dentro da função temos duas váriaveis. E ainda dentro da função temos um **retorno de uma função ainda não criada** a função _sum_. Logo após criamos a função _sum_ retorna a soma das duas váriaveis criadas a cima na função.
@@ -132,6 +140,8 @@ Isso significa que você é capaz de usar uma função ou variável antes mesmo 
 
 Em outra palavras está função.
 
+Ex:
+
 ```js
 function myFunction() {
   var number1 = 1;
@@ -141,10 +151,12 @@ function myFunction() {
     return number1 + number2;
   }
 }
-console.log(myFunction());
+console.log(myFunction()); // 3
 ```
 
-É interpretada basicamente dessa forma.
+O Javascript interpreta este código basicamente dessa forma.
+
+Ex:
 
 ```js
 function myFunction() {
@@ -158,12 +170,14 @@ function myFunction() {
 
 console.log(myFunction());
 
-3;
+// 3
 ```
 
 Funções literais e váriaveis, são elevadas ( Hoisting ) até o topo do escopo onde foram criadas. Isso significa que você é capaz de usar uma função ou variável antes mesmo de tê-las declaradas.
 
 Porém, para uma **Function Expression** isso não acontece da mesma maneira.
+
+Ex:
 
 ```js
 function myFunction() {
@@ -177,10 +191,12 @@ function myFunction() {
 
 console.log(myFunction());
 
-TypeError: sum is not a function
+// TypeError: sum is not a function
 ```
 
 O Javascrit não consegue fazer o processo de Hoisting, pois já que _sum_ foi atribuida para uma váriavel o processo de hoisted é feito e a mesma tem como seu valor **undefined**.
+
+Ex:
 
 ```js
 function myFunction() {
@@ -210,13 +226,19 @@ function myFunction() {
 
 Temos como retorno da função.
 
+Ex:
+
 ```js
-Antes de declarar undefined
-Depois de declarar 1
-undefined
+/*
+  Antes de declarar undefined
+  Depois de declarar 1
+  undefined
+*/
 ```
 
 Basicamente o que aconteceu foi isso.
+
+Ex:
 
 ```js
 function myFunction() {
@@ -245,16 +267,16 @@ As IIFE faz com que uma função se torne uma expressão que é imediatamente ex
 
 Links:
 
-[Entendendo o uso de escopo no JavaScript - Medium](https://medium.com/weyes/entendendo-o-uso-de-escopo-no-javascript-3669172ca5ba)
+- [Entendendo o uso de escopo no JavaScript - Medium](https://medium.com/weyes/entendendo-o-uso-de-escopo-no-javascript-3669172ca5ba)
 
-[Escopo e Hoisting, como funciona isso no JavaScript? - Medium](https://medium.com/opensanca/hoisting-em-javascript-9f22b1f78448)
+- [Escopo e Hoisting, como funciona isso no JavaScript? - Medium](https://medium.com/opensanca/hoisting-em-javascript-9f22b1f78448)
 
-[Funções - MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Fun%C3%A7%C3%B5es)
+- [Funções - MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Fun%C3%A7%C3%B5es)
 
-[Hoisting - MDN](https://developer.mozilla.org/pt-BR/docs/Glossario/Hoisting)
+- [Hoisting - MDN](https://developer.mozilla.org/pt-BR/docs/Glossario/Hoisting)
 
-[IIFE - MDN](https://developer.mozilla.org/pt-BR/docs/Glossario/IIFE)
+- [IIFE - MDN](https://developer.mozilla.org/pt-BR/docs/Glossario/IIFE)
 
-[Sobre funções imediatas JavaScript (IIFE) - iMasters](https://imasters.com.br/front-end/sobre-funcoes-imediatas-javascript-iife)
+- [Sobre funções imediatas JavaScript (IIFE) - iMasters](https://imasters.com.br/front-end/sobre-funcoes-imediatas-javascript-iife)
 
-[Da2k](https://blog.da2k.com.br/2015/02/20/os-segredos-da-iife/)
+- [Da2k](https://blog.da2k.com.br/2015/02/20/os-segredos-da-iife/)
