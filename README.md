@@ -6,7 +6,7 @@
 
 PS: Aqui você pode ver todo o conteúdo do curso disponível:
 - [x] Variáveis e tipos de dados / revisado
-- [x]'Operadores'aritméticos / revisado
+- [x] Operadores'aritméticos / revisado
 - [x] Operadores de igualdade e relacionais / revisado
 - [x] Funções / revisado
 - [x] Operadores Lógicos / revisado
