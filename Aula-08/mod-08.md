@@ -7,6 +7,8 @@ A **definição da função** (também chamada de declaração de função) cons
 + Declarações que definem a função, entre chaves { }.
 
 Por exemplo, o código a seguir define uma função simples chamada square:
+
+Ex:
 ```js
 function square(number) {
   return number * number;
@@ -15,6 +17,8 @@ function square(number) {
 [Para saber mais](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Fun%C3%A7%C3%B5es)
 
 Precisamos sempre nomear funções ao invés disso:
+
+Ex:
 ```js
 var func = function() {
   // corpo da função.
@@ -24,6 +28,7 @@ No exemplo a cima definimos uma função anônima que será chamada apartir da v
 
 Podemos nomeá-las.
 
+Ex:
 ```js
 var func = function func(){
   // corpo da função.
@@ -34,6 +39,7 @@ Agora não temos mais uma função anônima e sim uma função nomeada. Que faci
 
 Funções em Javascript são muito importantes assim como os objetos as funções também possuem propriedades e métodos.
 
+Ex:
 ```js
 var func = function() {
   return 'Hi';
@@ -46,7 +52,9 @@ func.name; // ''
 No exemplo temos uma função anônima atribuida a uma variável *func*, e essa função retorna a String *'Hi'*. Porém quando não invocamos a função ela é um objeto que contém métodos. Um desses métodos é o *name* que retorna o nome da função. Já que a mesma é uma função anônima é retornado uma string em branco.
 
 
-Agora usando o mesmo exemplo quando nomeamos uma função e usamos o método name, será impresso o nome da função.
+Agora usando o mesmo exemplo, quando nomeamos uma função e usamos o método name, será impresso o nome da função.
+
+Ex:
 ```js
 var func = function func() {
   return 'Hi';
@@ -70,6 +78,7 @@ Isso basicamente significa que as funções tem o **mesmo tratamento** que os **
 
 Uma pequena ideia de como vamos trabalhar com programação funcional.
 
+Ex:
 ```js
 var car = {
   brand: 'Chevrolet',
@@ -82,20 +91,23 @@ Da mesma forma podemos fazer com funções :heart: {}
 
 Exemplo de **funções literais**.
 
+Ex:
 ```js
 function sum( x, y ) {
   return x + y;
 }
 ```
 
-Assim como no exemplo com o objeto *car* podemos atribuir uma variável à um objeto.
+Assim como no exemplo com o objeto *car* podemos atribuir **uma variável à um objeto.**
 
+Ex:
 ```js
 var obj = {};
 ```
 
-E com funções também :heart: {}
+**E com funções também** :heart: {}
 
+Ex:
 ```js
 var func = function func() {};
 ```
@@ -104,6 +116,7 @@ Obs: Podendo ser uma função nomeada ou anônima.
 
 Da mesma forma podemos **retornar um objeto dentro de uma função**.
 
+Ex:
 ```js
 function person() {
   return {
@@ -112,9 +125,11 @@ function person() {
   };
 }
 ```
+Neste exemplo temos como o retorno da função um **Objeto** retornado diretamente pela função :heart:
 
 Ou podemos fazer algo ainda mais simples, atribuindo as propriedades do objeto usando uma variável. E retornando a mesma.
 
+Ex:
 ```js
 function person() {
   var info: {
@@ -135,6 +150,8 @@ console.log( person().lastName );
 
 'Valente'
 ```
+Bem simples não é ? ;)
+
 # Introdução à programação funcional II
 
 Vimos que podemos retornar objetos de dentro de funções. E também podemos **retornar funções de dentro de funções** {} :heart:
@@ -152,6 +169,7 @@ No exemplo a cima temos uma função chamada *adder* que recebe um valor por par
 
 Usando outra abordagem teriamos o mesmo resultado mas a forma de escrita diferente. Agora criariamos uma outra função dentro da função *adder* e dentro dessa nova função chamada *addOther* retornamos a soma dos valores. E por fim retornamos a função *addOther*.
 
+Ex:
 ```js
 function adder( x ) {
   function addOther( y ) {
@@ -163,6 +181,7 @@ function adder( x ) {
 
 E por fim podemos executá-la da seguinte maneira:
 
+Ex:
 ```js
 var add2 = adder( 2 );
 add2( 3 ); // 5
@@ -170,9 +189,9 @@ add2( 3 ); // 5
 adder( 2 )( 3 ); // 5
 ```
 
-Temos uma variável *add2* **recebendo a função** *adder* e passando o valor 2 por parâmetro. Agora *add2* é uma função e lembrando bem que a função *adder* tem como seu retorno outra função. Passamos outro valor para a função add2 que por fim retorna a soma dos valores.
+No primeiro exemplo temos uma variável *add2* **recebendo a função adder** e passando o valor *2* por parâmetro. Agora *add2* é uma função e lembrando bem que a função *adder* tem como seu retorno outra função. Passamos outro valor para a função *add2* que por fim retorna a **soma dos valores.**
 
-Assim também acontece no segundo exemplo invocamos a função *adder*  passando o primeiro valor por parâmetro e invocamos novamente mas agora a outra função passando o outro valor. E assim retornando a soma dos mesmos.
+Assim também acontece no segundo exemplo invocamos a função *adder* passando o primeiro valor por parâmetro e invocamos novamente mas agora a outra função e passando outro valor. E assim retornando a soma dos mesmos.
 
 # Introdução à programação funcional III
 
@@ -181,6 +200,7 @@ Vimos que podemos retornar objetos de dentro de funções. E também podemos ret
 E agora vamos ver que também podemos passar objetos por parâmetros.
 :heart:
 
+Ex:
 ```js
 var car = {
   color: 'Blue';
@@ -207,9 +227,9 @@ showOtherFunction( function () {
 // 'Functional JS Ninja'
 ```
 
-Neste exemplo bem louco :smile: temos uma função chamada *showOtherFunction* que recebe por parâmetro uma função anônima *callback*
+Neste exemplo bem louco :smile: temos uma função chamada *showOtherFunction* que recebe por parâmetro uma função anônima/*callback*.
 
-OBS: Uma função callback é uma função passada a outra função como argumento, que é então invocado dentro da função externa para completar algum tipo de rotina ou ação.
+OBS: Uma função de **callback** é uma função passada a **outra função como argumento**, que é então invocado dentro da função externa para completar algum tipo de rotina ou ação.
 
 [Para saber mais sobre callback](https://developer.mozilla.org/pt-BR/docs/Glossario/Callback_function)
 
@@ -217,6 +237,7 @@ que por sua vez retorna uma string *'Functional JS Ninja!'*.
 
 Complementando os estudos.
 
+### Links:
 + [Funções - MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Guide/Fun%C3%A7%C3%B5es)
 + [Entendendo Programação Funcional em JavaScript de uma vez - Medium](https://medium.com/tableless/entendendo-programa%C3%A7%C3%A3o-funcional-em-javascript-de-uma-vez-c676489be08b)
 + [Programação funcional com JavaScript - DevMedia](https://www.devmedia.com.br/programacao-funcional-com-javascript/34377)
