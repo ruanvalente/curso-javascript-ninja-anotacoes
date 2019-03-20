@@ -30,13 +30,15 @@ Neste exemplo estamos atribuindo um valor primitivo para a váriavel nome, poré
 Aí entra em cena, os **construtores**. Mas o que são ?
 
 Construtores basicamente são funções que criam novos objetos.
-Onde internamente o Javascript **envolve a nossa declaração** transformando ela em um **objeto** do tipo String( como foi no exemplo a cima). Assim podendo usar a propriedade _length_, e após realizado isso o interpretador do Javascript cuida de tirar esse objeto de dentro da memória.
+Onde internamente o Javascript **envolve a nossa declaração** transformando ela em um **objeto** do tipo **String**( como foi no exemplo a cima), assim podendo usar a propriedade _length_, e após realizado o processo o interpretador do Javascript cuida de tirar esse objeto de dentro da memória.
+
+Ex:
 
 ```js
 var nome = new String('Ruan');
 
-nome;
-[String: 'Ruan']
+nome
+// [String: 'Ruan']
 
 nome.length; // 4
 nome.valueOf(); // 'Ruan'
@@ -44,7 +46,12 @@ nome.valueOf(); // 'Ruan'
 
 Neste exemplo podemos consultar o valor literal do objeto usando a função **valueOf()**.
 
+
+### Criando objetos.
+
 Podemos criar o objetos dessa seguinte forma.
+
+Ex:
 
 ```js
 var name = new String('Ruan');
@@ -53,6 +60,8 @@ var ninja = new Boolean(false);
 ```
 
 Quando usamos a palavra chave **new** estamos criando um novo objeto. Porém, se não usarmos a palavra chave **new** estamos apenas fazendo **uma conversão de tipos** basicamente.
+
+Ex:
 
 ```js
 var name = String(23);
@@ -109,6 +118,8 @@ Obs: Na primeira implementação do JavaScript, valores em JavaScript foram repr
 
 Sendo assim podemos confiar no **typeof** ? Apenas para valores **primitivos**.
 
+Ex:
+
 ```js
 function sum(number1, number2) {
   if (typeof number1 === "number" && typeof number2 === "number") {
@@ -117,8 +128,8 @@ function sum(number1, number2) {
   return "Entre apenas com números";
 }
 
-sum(1, "a");
-("Entre apenas com números");
+console.log(sum(1, "a"));
+// 'Entre apenas com números'
 ```
 
 Podemos testar os valores null usando o operado **strict equal** ( === ).
