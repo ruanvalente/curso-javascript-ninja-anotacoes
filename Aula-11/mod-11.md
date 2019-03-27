@@ -2,9 +2,11 @@
 
 A instrução do...while repetirá até que a condição especificada seja falsa.
 
-```
+Ex:
+
+```js
 do
-  declaracao
+  // declaracao
 while (condicao);
 ```
 
@@ -32,9 +34,11 @@ Neste exemplo o laço é executado pelo menos **uma vez** e irá executar até q
 A declaração for...in executa iterações a partir de uma variável específica, percorrendo todas as propriedades de um objeto.
 Para cada propriedade distinta, o JavaScript executará uma iteração. Segue a sintaxe:
 
-```
-for (variavel in objeto) {
-  declaracoes
+Ex:
+
+```js
+for (var prop in myObject) {
+  // ....
 }
 ```
 
@@ -59,6 +63,9 @@ model
 year
 */
 ```
+Podemos também acessar as propriedades do nosso objeto:
+
+Ex:
 
 ```js
 for (var prop in car) {
@@ -69,12 +76,13 @@ brand: Fiat
 model: Uno
 year: 2014
 */
-
 ```
 
 Basicamente criamos uma váriavel dentro do nosso loop chamada **prop** ( podendo ter qualquer nome ). E pecorremos todas as propriedades do objeto car.
 
 Podemos também usar o **in** para verificar se determinada propriedade existe dentro do nosso objeto retornando **true** ou **false**.
+
+Ex:
 
 ```js
 console.log("brand" in car); // true
@@ -83,11 +91,13 @@ console.log("new" in car); // false
 
 # Saltos
 
-Saltos em Javascript são basicamente instruções que usamos para pular determinado trecho de código.
+Saltos em Javascript são basicamente instruções que usamos para _"pular"_ determinado trecho de código.
 
 ## Return
 
 A instrução **return** faz o interpretador saltar uma chamada de função de volta ao código que a chamou e também fornecer o valor para a chamada.
+
+Ex:
 
 ```js
 function myFunction() {
@@ -109,6 +119,8 @@ Nesse exemplo é retornado false, pois o valor da váriavel number é 5 e não 1
 
 A instrução **break** faz o interpretador saltar para o final de um laço ou para outra instrução.
 
+Ex:
+
 ```js
 var number = 10;
 switch (number) {
@@ -129,7 +141,7 @@ switch (number) {
 }
 ```
 
-Neste caso é verificado qual caso ( case ) tem como seu valor 10, caso seja verdadeiro é retornado o valor 10 e terminado a instrução switch através da instrução **break**.
+Neste caso é verificado qual caso _( case )_ tem como seu valor 10, caso seja verdadeiro é retornado o valor 10 e terminado a instrução switch através da instrução **break**.
 
 OBS: Em casos como o da instrução switch, sem o uso do **break**, será passado por todas as instruções a serem verificadas dentro do switch. Gerando um retorno não esperado.
 
@@ -138,6 +150,8 @@ OBS: Em casos como o da instrução switch, sem o uso do **break**, será passad
 O **continue** faz o interpretador pular o restante do corpo de um laço e voltar ao início de um laço para começar uma nova interação.
 
 Javascript permitem que as instruções sejam nomeadas _( rotuladas )_, sendo que **break** e **continue** podem indentificar o laço de destino ou rótulo de instrução.
+
+Ex:
 
 ```js
 var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -149,4 +163,4 @@ for (var i = 0; i <= arr.length; i++) {
 }
 ```
 
-Neste exemplo dentro do if é perguntado se i tem como resto igual a zero. Se isso for verdade a instrução **continue** passará para a próxima instrução válida, ou seja retornando os valores ímpares
+Neste exemplo dentro do if é perguntado se i tem como resto igual a zero. Se isso for verdade a instrução **continue** passará para a próxima instrução válida, ou seja retornando os valores ímpares.
