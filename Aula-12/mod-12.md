@@ -1,6 +1,6 @@
 # Criação de objetos.
 
-Um objeto é uma coleção de dados e/ou funcionalidades relacionadas (que geralmente consistem em diversas variáveis e funções — que são chamadas de propriedades e métodos quando estão dentro de objetos).
+Um objeto é uma coleção de dados e/ou funcionalidades relacionadas (que geralmente consistem em diversas variáveis ou funções, que são chamadas de propriedades e métodos quando estão dentro de objetos).
 
 Em javascript objetos são:
 
@@ -9,7 +9,9 @@ Em javascript objetos são:
 
 ### Mutável.
 
-Mutável é o tipo da variável que pode ser alterada. Em JavaScript, somente objetos e arrays são mutáveis, valores primitivos não.
+**Mutável** é o tipo da variável que pode ser **alterada**. Em JavaScript, somente objetos e arrays são mutáveis, valores **primitivos não**.
+
+Ex:
 
 ```js
 var obj = { prop1: "1", prop2: "2" };
@@ -31,7 +33,7 @@ Ex:
 
 ```js
 delete obj.prop1;
-true;
+// true
 ```
 
 ### Manipulados por referência.
@@ -51,10 +53,11 @@ var obj = { prop1: "1", prop2: "2" };
 var obj2 = { prop1: "1", prop2: "2" };
 
 obj === obj2;
-false;
+
+// false
 ```
 
-Apesar dos dois objetos terem as mesmas propriedades, o mesmo não são iguais. Isso se dá o que foi dito a cima que quando usamos a anotação literal de objetos _{}_ estamos fazendo por debaixo dos panos a mesma coisa que _new Object()_. Por isso o resultado do exemplo acima deu false, porque são dois objetos diferentes! Cada um foi criado em um espaço diferente da memória!
+Apesar dos dois objetos terem as **mesmas propriedades**, o mesmo **não são iguais**. Isso se dá o que foi dito a cima que quando usamos a anotação literal de objetos _{}_ estamos fazendo por debaixo dos panos a mesma coisa que _new Object()_. Por isso o resultado do exemplo acima deu **false**, porque são dois objetos diferentes! Cada um foi criado em um **espaço diferente da memória**!
 
 O que acontece quando você cria um novo objeto e o atribui à uma variável ?
 
@@ -64,10 +67,11 @@ Ex:
 var objCopy = obj;
 
 obj === objCopy;
-true;
+
+// true
 ```
 
-O que acontece nesse caso é que não estamos passando o valor do _obj_ para a váriavel _objCopy_, e sim estamos **referenciando** o seu **endereço de memória** ! Assim temos a váriavel objCopy apontando para o mesmo endereço de memória de obj.
+O que acontece nesse caso é que não estamos passando o valor do _obj_ para a váriavel _objCopy_, e sim estamos **referenciando** o seu **endereço de memória** ! Assim temos a váriavel **objCopy apontando para o mesmo endereço de memória de obj**.
 
 E como objetos são mutáveis, significa que, mesmo após ter criado o objeto, você pode modificá-lo, adicionando ou removendo propriedades e métodos.
 
@@ -80,7 +84,7 @@ obj
 { prop1: '1', prop2: '2', prop3: '3' };
 ```
 
-Por temos modificado o objCopy que apontava para o mesmo endereço de memória de obj, o mesmo também foi alterado.
+Por temos modificado o objCopy que apontava para o mesmo endereço de memória de obj, **o mesmo também foi alterado**.
 
 ### Criação de objetos.
 
@@ -114,7 +118,7 @@ Todo o objeto tem como uma propriedade chamada **prototype** que ela é o **prot
 
 JavaScript é um pouco confuso para desenvolvedores com experiência em linguagens baseadas em classes (como Java ou C++), porque é dinâmico e não dispõe de uma implementação de class (através da palavra-chave reservada class e não pode ser usada com um nome de variável).
 
-Quando se trata de herança, JavaScript tem somente **um construtor: objetos**. Cada objeto tem um **link interno** para um outro objeto chamado **prototype**. Esse objeto prototype também tem um atributo prototype, e assim por diante até que null seja encontrado como em prototype. null 1 que, por definição, não tem prototype, e age como um link final nesta cadeia de protótipos **(prototype chain)**.
+Quando se trata de herança, JavaScript tem somente **um construtor: objetos**. Cada objeto tem um **link interno** para um outro objeto chamado **prototype**. Esse objeto prototype também tem um atributo prototype, e assim por diante até que o null seja encontrado como em prototype. null 1 que, por definição, não tem prototype, e age como um link final nesta cadeia de protótipos **(prototype chain)**.
 
 Ex:
 
@@ -129,6 +133,12 @@ Porém, diferente do que vimos anteriomente os objetos criados **são diferentes
 
 Porém podemos modificar o objeto pai ( obj ) e isso irá refletir no objeto filho ( obj2 ).
 
+Ex:
+
+```js
+obj.prop1 = 'prop modificada';
+obj2.prop1; // 'prop modificada'
+```
 PS: Quando criamos um objeto usando o _Object.create()_ o mesmo herda do prototype.
 
 ### Object.hasOwnProperty().
@@ -149,9 +159,11 @@ Neste exemplo usamos o for in para pecorrer o _obj2_, porém o mesmo não tem pr
 
 E aí é que entra o método **hasOwnProperty** que verifica se a propriedade passada é especifica ao objeto. Retornando _true_ ou _false_.
 
+Ex:
+
 ```js
 obj.hasOwnProperty("prop1");
-true;
+// true
 ```
 
 ```js
@@ -170,7 +182,7 @@ PS: O método **hasOwnProperty** verifica apenas por propriedades especificas e 
 
 ### Object.keys(obj)
 
-Object.keys() **retorna um array** cujo os elementos são strings correspondentes para a propriedade enumerável encontrada diretamento sobre o objeto. A ordenação das propriedades é a mesma que a dada pelo loop sobre as propriedades do objeto manualmente.
+Object.keys() **retorna um array** cujo os elementos são strings correspondentes para a propriedade enumerável encontrada no objeto. A ordenação das propriedades é a mesma que a dada pelo loop sobre as propriedades do objeto manualmente.
 
 Ex:
 
@@ -186,29 +198,33 @@ O método isPrototypeOf() checa **se um objeto existe em na cadeia de protótipo
 
 ```js
 obj.isPrototypeOf(obj2);
-true;
+// true
 ```
 
 ### JSON.stringify()
 
 O método JSON.stringify() **converte valores em javascript para uma String JSON**. Esses valores podem ser substituidos especificando a função replacer, ou incluindo somente as propriedades específicas, quando o array do replacer for especificado.
 
+Ex:
+
 ```js
 JSON.stringify(obj);
 
-('{"prop1":"prop1","prop2":"prop2"}');
+// '{"prop1":"prop1","prop2":"prop2"}'
 ```
 
 PS: Podemos voltar o objeto que convertemos para String em objeto novamente, usando o **JSON.parse(obj)**.
 
 Temos também o método **JSON.parse() que converte uma string para JSON**, opcionalmente transformando o valor produzido por conversão.
 
+Ex:
+
 ```js
-JSON.parse("{}"); // {}
-JSON.parse("true"); // true
+JSON.parse('{}'); // {}
+JSON.parse('true'); // true
 JSON.parse('"foo"'); // "foo"
 JSON.parse('[1, 5, "false"]'); // [1, 5, "false"]
-JSON.parse("null"); // null
+JSON.parse('null'); // null
 ```
 
 # Métodos de Array.
@@ -216,6 +232,8 @@ JSON.parse("null"); // null
 ### Push() - Modifica o Array.
 
 Adiciona um item ao final do array, retornando o tamanho atual do array.
+
+Ex:
 
 ```js
 var arr = [1, 2, 3, 4, 5];
@@ -232,7 +250,7 @@ Remove o último item do array, retornando o valor removido.
 
 ```js
 arr.pop();
-6;
+// 6
 ```
 
 # Métodos de Array II.
@@ -249,6 +267,8 @@ Separador:
 
 Específica uma string para separar cada elemento adjacente do array. O separador é convertido em uma string se necessário. Se omitido, os elementos do array são separados com uma vírgula (","). Se o separador for uma string vazia, todos os elementos são juntados sem nenhum caracter entre eles.
 
+Ex:
+
 ```js
 arr.join("-");
 
@@ -258,6 +278,8 @@ arr.join("-");
 ### Reverse() - Modifica o Array.
 
 O método _reverse()_ inverte os itens de um array. O primeiro elemento do array se torna o último e o último torna-se o primeiro.
+
+Ex:
 
 ```js
 arr.reverse();
@@ -291,6 +313,14 @@ arr.sort();
 
 - [Objetos - Referências de valores em JavaScript](https://blog.da2k.com.br/2017/01/25/objetos-referencias-de-valores-em-javascript/)
 
+#### TreinaWeb
+- [JavaScript: Métodos De Arrays Que Você Precisa Conhecer](https://www.treinaweb.com.br/blog/javascript-metodos-de-arrays-que-voce-precisa-conhecer/)
+
 #### Issues Do Curso
 - [Criar objetos com conteúdo igual mas com referência diferente #1075](https://github.com/da2k/curso-javascript-ninja/issues/1075)
 - [Wrapper Objects #882](https://github.com/da2k/curso-javascript-ninja/issues/882)
+
+#### Youtube - Lives Fernando Daciuk.
+
+- [JavaScript: métodos de array - Fernando Daciuk](https://www.youtube.com/watch?v=GDZswgpSYQg)
+- [JavaScript: métodos de array (parte 2) - Fernando Daciuk](https://www.youtube.com/watch?v=Dy1VDtPxCp0)
