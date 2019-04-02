@@ -6,7 +6,9 @@ O objeto Array do JavaScript é um objeto global usado na construção de 'array
 
 O método _toString()_ retorna uma string representando um array específico e seus elementos.
 
-O objeto Array substitui o método toString() de Object. Para objetos do tipo Array, o método toString() concatena todos os valores em apenas uma string
+O objeto Array substitui o método toString() de Object. Para objetos do tipo Array, o método toString() concatena todos os valores em apenas uma string.
+
+Ex:
 
 ```js
 var numbers = [1, 2, 3, 4];
@@ -27,12 +29,14 @@ concat não altera a si mesmo ou a qualquer um dos argumentos passados, apenas p
 
 - Strings e numbers (diferente dos objetos String e Number): concat copia os valores de strings e numbers para o novo array. Qualquer alteração no novo array não refletirá no original, e vice versa.
 
+Ex:
+
 ```js
 var alpha = ["a", "b", "c"];
 var numeric = [1, 2, 3];
+var alphaNumeric = alpha.concat(numeric);
 
 // creates array ["a", "b", "c", 1, 2, 3]; alpha and numeric are unchanged
-var alphaNumeric = alpha.concat(numeric);
 ```
 
 ### unshift() - Modifica o Array.
@@ -43,11 +47,15 @@ O método unshift insere os valores fornecidos no início de um objeto do tipo a
 
 unshift é intencionalmente genérico; este método pode ser called ou applied em objetos que se assemelham aos arrays. Objetos que não contêm uma propriedade length que reflete a última de uma série consecutiva de propriedades numéricas, iniciada por 0, podem não comportar-se de maneira significativa.
 
+Ex:
+
 ```js
 numbers;
 // [1, 2, 3, 4]
 
 numbers.unshift(0);
+// 5
+numbers;
 // [0, 1, 2, 3, 4]
 ```
 
@@ -58,6 +66,8 @@ O método _shift()_ remove o primeiro elemento de um array e retorna esse elemen
 O método shift remove o elemento de índice zero, diminuí em 1 os indices dos demais valores e retorna o valor removido. Se a propriedade length for 0, então undefined é retornado.
 
 shift é intencionalmente genérico; esse método pode ser chamado ou aplicado para objetos parecidos com arrays. Objetos que não contém a propriedade length representando o tamanho de uma série consecutiva, começando em zero, podem não se comportar de maneira correta.
+
+Ex:
 
 ```js
 numbers;
@@ -86,6 +96,8 @@ Elementos do array original são copiados para o array retornado da seguinte man
 
 Se um novo elemento é adicionado a qualquer array, o outro não é afetado.
 
+Ex:
+
 ```js
 numbers;
 // [ 1, 2, 3, 4 ]
@@ -100,7 +112,7 @@ O método _splice()_ altera o conteúdo de uma lista, adicionando novos elemento
 
 #### indice
 
-- Índice o qual deve iniciar a alteração da lista. Se maior que o tamanho total da mesma, nenhum elemento será alterado. Se negativo, irá iniciar a partir daquele número de elementos a partir do fim.
+- Índice o qual deve iniciar a alteração da lista. Se for maior que o tamanho total da mesma, nenhum elemento será alterado. Se negativo, irá iniciar a partir daquele número de elementos a partir do fim.
 
 #### deleteCount
 
@@ -120,6 +132,8 @@ Uma lista contendo os elementos removidos. Se apenas um elemento é removido, po
 
 Se você especificar um número diferente de elementos a inserir comparado ao número de elementos que você está removendo, a lista terá um tamanho diferente no final da execução.
 
+Ex:
+
 ```js
 numbers;
 // [ 1, 2, 3, 4 ]
@@ -132,6 +146,8 @@ Quando passamos apenas um valor por parâmetro para o método **splice** ele ape
 
 Porém podemos especificar de onde isso deve começar a terminar.
 
+Ex:
+
 ```js
 numbers = [1, 2, 3, 4];
 
@@ -143,6 +159,8 @@ Neste exemplo que foi feito a cima passamos para o método **splice** o index on
 
 Porém podemos ir além, podemos adicionar elementos usando o método **splice**.
 
+Ex:
+
 ```js
 numbers = [1, 2, 3, 4];
 
@@ -153,6 +171,8 @@ numbers.splice(1, 0, "a", "b", "c");
 Neste exemplo passamos o index onde irá começar a adição dos items e também dizemos que não queremos remover nenhum item, e sim que queremos passar os valores que iremos adicionar apartir do index que passamos no primeiro parâmetro.
 
 E também podemos substituir esses novos elementos que passamos para o nosso array ;)
+
+Ex:
 
 ```js
 numbers.splice(1, 3); // podemos passar mais elementos se quisermos adicionar dentro do array.
@@ -187,6 +207,8 @@ E esse método recebe alguns parâmetros são eles:
 
 forEach() executa a a função callback uma vez para cada elemento do array – diferentemente de map() ou reduce(), ele sempre retorna o valor undefined e não é encadeável. O caso de uso típico é alterar o array no final do loop.
 
+Ex:
+
 ```js
 var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 arr.forEach(function(item, index, arr) {
@@ -211,7 +233,12 @@ Usamos o método **forEach** quando precisamos fazer alguma interação dentro a
 
 Podemos usar para somar todos os elementos de um array por exemplo.
 
+Ex:
+
 ```js
+
+// arr - > [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
 var sum = 0;
 arr.forEach(function(item) {
   sum += item;
@@ -228,7 +255,11 @@ O método _every()_ testa se todos os elementos do array passam pelo teste imple
 
 **true** se a função de callback retorna um valor truthy para cada um dos elementos do array; caso contrário, **false**.
 
+Ex:
+
 ```js
+// arr -> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
 var every = arr.every(function(item) {
   return item < 5;
 });
@@ -245,7 +276,11 @@ O método _some()_ testa se alguns dos elementos no array passam no teste implem
 
 Esta função retorna **true** se a função callback retornar true **para qualquer elemento** do array; caso contrário, **false**.
 
+Ex:
+
 ```js
+// arr -> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
 var some = arr.some(function(item) {
   return item % 2 === 0;
 });
@@ -262,7 +297,10 @@ O método _map()_ invoca a função de callback passada por argumento para cada 
 
 O método map chama a função callback recebida por parâmetro para cada elemento do Array original, em ordem, e constrói um novo array com base nos retornos de cada chamada.
 
+Ex:
+
 ```js
+// arr -> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 var map = arr.map(function(item, index) {
   return { id: index, item: item };
 });
@@ -281,6 +319,7 @@ console.log(map);
   { id: 9, item: 10 } ]
 */
 ```
+Temos como retorno um array de objetos com os items do array.
 
 ### Filter
 
@@ -289,6 +328,8 @@ O método _filter()_ cria um novo array com todos os elementos que passaram no t
 E retorna um novo array com os elementos que passaram no teste pela nossa função.
 
 ```js
+// arr -> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
 var filter = arr.filter(function(item) {
   return item > 6;
 });
@@ -299,6 +340,8 @@ console.log(filter);
 ```
 
 PS: Podemos encadear os métodos ;) assim retornando um único valor.
+
+Ex:
 
 ```js
 var map = arr
