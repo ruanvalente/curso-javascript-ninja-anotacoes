@@ -25,23 +25,23 @@ PS: Aqui você pode ver todo o conteúdo do curso disponível:
 - [x] Array - método "push()" e Loop "for" / revisado
 - [x] A importância de nomear funções / revisado
 - [x] Introdução à Functional Programming / revisado
-- [x] Escopo de funções
-- [x] Hoisting
-- [x] IIFE - Immediately Invoked Function Expression
-- [x] Wrapper Objects
-- [x] typeof
-- [x] Laços (Loops)
-- [x] Saltos
-- [x] Criação de objetos
-- [x] Criação de objetos - Object.create
-- [x] Métodos de objeto
-- [x] Array - Métodos
-- [x] Array - toString, concat, unshift, shift
-- [x] slice e splice
-- [x] forEach, every, some
-- [x] map, filter
-- [x] reduce() e reduceRight()
-- [x] indexOf(), lastIndexOf() e isArray()
+- [x] Escopo de funções / revisado
+- [x] Hoisting / revisado
+- [x] IIFE - Immediately Invoked Function Expression / revisado
+- [x] Wrapper Objects / revisado
+- [x] typeof / revisado
+- [x] Laços (Loops) / revisado
+- [x] Saltos / revisado
+- [x] Criação de objetos / revisado
+- [x] Criação de objetos - Object.create / revisado
+- [x] Métodos de objeto / revisado
+- [x] Array - Métodos / revisado
+- [x] Array - toString, concat, unshift, shift / revisado
+- [x] slice e splice / revisado
+- [x] forEach, every, some / revisado
+- [x] map, filter / revisado
+- [x] reduce() e reduceRight() / revisado
+- [x] indexOf(), lastIndexOf() e isArray() / revisado
 - [x] JS no browser
 - [x] this
 - [x] Objeto arguments
