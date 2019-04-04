@@ -42,13 +42,13 @@ PS: Aqui você pode ver todo o conteúdo do curso disponível:
 - [x] map, filter / revisado
 - [x] reduce() e reduceRight() / revisado
 - [x] indexOf(), lastIndexOf() e isArray() / revisado
-- [x] JS no browser
-- [x] this
-- [x] Objeto arguments
-- [x] use strict - Criação de variáveis sem o "var"
-- [x] use strict - Uso do width e global this === undefined
-- [x] O operador delete, objetos e funções
-- [x] Objeto String
+- [x] JS no browser / revisado
+- [x] this / revisado
+- [x] Objeto arguments / revisado
+- [x] use strict - Criação de variáveis sem o "var" / revisado
+- [x] use strict - Uso do width e global this === undefined / revisado
+- [x] O operador delete, objetos e funções / revisado
+- [x] Objeto String / revisado
 - [x] Regex
 - [x] Regex - Negação
 - [x] Regex - Repetidores
