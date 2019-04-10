@@ -1,6 +1,6 @@
 # Regex I.
 
-Expressões regulares são padrões utilizados para selecionar combinações de caracteres em uma string. Em JavaScript, expressões regulares também são objetos. Elas podem ser utilizadas com os métodos **exec** e **test** do objeto **RegExp**, e com os métodos **match**, replace, **search**, e **split** do objeto **String**
+Expressões regulares são padrões utilizados para selecionar combinações de caracteres em uma string. Em JavaScript, expressões regulares também são objetos. Elas podem ser utilizadas com os métodos **exec** e **test** do objeto **RegExp**, e com os métodos **match**, **replace**, **search**, e **split** do objeto **String**
 
 ### Criando uma Expressão Regular
 
@@ -8,48 +8,50 @@ Há duas maneiras de construir uma expressão regular:
 
 Usando uma expressão literal, que consiste em um padrão fechado entre barras, como o exemplo a seguir:
 
+Ex:
+
 ```js
 var re = /ab+c/;
 ```
 
-As expressões regulares na forma literal são compiladas quando o script é carregado. Esta forma de construção possui melhor performace quando a expressão regular utilizada é uma constante, ou seja, não muda durante a execução.
+As expressões regulares na forma literal são compiladas quando o script é carregado. Esta forma de construção possui melhor performace quando a expressão regular utilizada é uma constante, ou seja, **não muda durante a execução**.
 
 Quando precisamos encontrar algum tipo de caractere dentro da nossa regex, podemos contar com o auxilio das **flags**.
 
 ### g - Global.
 
-A flag global é usada quando precisamos encontra em toda a expressão por um caractere.
+A flag global é usada quando precisamos encontra em **toda** a **expressão** por um **caractere**.
 
-Exemplo:
+Ex:
 
 ```js
-var text = "Este é um texto simples para exemplo";
+var text = 'Este é um texto simples para exemplo';
 console.log(text.match(/e/g));
 // [ 'e', 'e', 'e', 'e', 'e' ]
 ```
 
-Neste exemplo usando o método match, a minha regex procura pela letra _e_ de forma global _g_. E no final é retornado um Array com os elementos encontrados.
+Neste exemplo usando o método match, a minha regex procura pela letra _e_ de forma global _g_. E no final é retornado um **Array** com os elementos encontrados.
 
 ### i - Ignore Case.
 
 A flag ignore case traz como resultado da regex por letras maiúsculas e minúsculas.
 
-Exemplo:
+Ex:
 
 ```js
 console.log(text.match(/e/gi));
 // [ 'E', 'e', 'e', 'e', 'e', 'e' ]
 ```
 
-Tendo como o mesmo resultado como no exemplo anterior agora porém retornando a letra _e_ maiúscula também.
+Tendo como o mesmo resultado como no exemplo anterior agora porém retornando a letra _E_ maiúscula também.
 
 ## Objeto RegeExp()
 
 Temos o método de String chamado **match()**.
 
-O método match() recupera as correspondências ao testar uma string com uma expressão regular.
+O método **match()** recupera as correspondências ao testar uma string com uma expressão regular.
 
-Exemplo:
+Ex:
 
 ```js
 console.log(text.mach(/texto/));
@@ -69,6 +71,8 @@ PS: Quando não passamos nenhuma **flag** é retornado como saída da regex algu
 - e o grupo.
 
 Ou podemos usar da forma que estamos trabalhando até o momento.
+
+Ex:
 
 ```js
 console.log(text.match(/simples/gi));
@@ -91,6 +95,8 @@ Agora vamos ver alguns **termos**
 
 ### \w - Caracteres alfanumérico e \_
 
+Ex:
+
 ```js
 console.log(text.match(/\w/));
 /*
@@ -101,11 +107,13 @@ console.log(text.match(/\w/));
 */
 ```
 
-O exemplo a cima retorna para mim o primeiro match relizado dentro da nossa regex.
+O exemplo a cima retorna para mim **o primeiro match** relizado dentro da nossa regex.
 
-PS: Sempre que a regex não conseguir fazer um match, é retornado null.
+PS: Sempre que a regex não conseguir fazer um match, é **retornado null**.
 
 ### \d - Números (digitos).
+
+Ex:
 
 ```js
 text = "Este é um texto simples para exemplo em 21/11/2018";
@@ -113,10 +121,13 @@ text = "Este é um texto simples para exemplo em 21/11/2018";
 console.log(text.match(/\d/g));
 // [ '2', '1', '1', '1', '2', '0', '1', '8' ]
 ```
+Da mesma forma como no exemplo anterior, se a regex não conseguir realizar o **match**, o seu retorno é **null**.
 
 ### Classes de caracteres - Listas[].
 
 Usando os [] podemos passar os caracteres que queremos que a regex retorne. Porém cada elemento passado dentro dos [] seguirá o padrão lógico **OU**.
+
+Ex:
 
 ```js
 console.log(text.match(/[123]/g));
@@ -127,6 +138,8 @@ Neste exemplo estamos dizendo para regex encontrar os números(digitos) 1 ou 2 o
 
 Poderiamos ainda escrever está forma.
 
+Ex:
+
 ```js
 console.log(text.match(/1|2|3/g));
 // [ '2', '1', '1', '1', '2', '1' ]
@@ -134,13 +147,13 @@ console.log(text.match(/1|2|3/g));
 
 Que irá retornar o mesmo resultado.
 
-PS: O elemento da regex passado dentro de [] não significa que estamos procurando pelo valor [123] e sim por qualquer um desses valores.
+PS: O elemento da regex passado dentro de [] **não significa** que estamos procurando pelo valor **[123]** e sim por **qualquer um desses valores**.
 
 ### Agrupamento de caracteres - ().
 
 Quando precisamos retornar um elemento agrupado podemos ultilizar os ().
 
-Exemplo:
+Ex:
 
 ```js
 console.log(text.match(/(2018)|(11)|(21)/g));
@@ -149,10 +162,13 @@ console.log(text.match(/(2018)|(11)|(21)/g));
 
 PS: Podemos também usar dentro das listas intervalos de valores que queremos que a nossa regex retorne.
 
+Ex:
+
 ```js
 console.log(text.match(/[A-Z]/g));
 // [ 'E' ]
 ```
+Ex:
 
 ```js
 console.log(text.match(/[0-9]/g));
@@ -169,6 +185,8 @@ o padrão consiste de pouco mais de 107 mil caracteres, um conjunto de diagramas
 
 Voltando para as nossas regex, temos um seguinte problema. Usando os intervalos dentro das listas para fazer a seguinte regex:
 
+Ex:
+
 ```js
 console.log(text.match(/[A-z]/g));
 ```
@@ -177,20 +195,24 @@ Poderiamos esperar algo como, o retorno de todos o caracteres maiúsculos de A-Z
 
 Porém não é exatamente isso, dentro da tabela unicode temos alguns caracteres que aparecem entre esse intervalo de A-z.
 
+PS: No final tem uma referência para o assunto ;)
+
 ### .replace()
 
-Um método String que executa uma pesquisa por uma correspondência em uma string, e substitui a substring correspondênte por uma substring de substituição.
+Um método que executa uma **pesquisa** por uma **correspondência** em uma string, e **substitui** a **substring** **correspondênte** por uma **substring** de **substituição**.
 
-o método .replace() ele suporta regex :smile: podemos fazer muitas coisas dentro dele.
+o método _.replace()_ suporta regex :smile: podemos fazer muitas coisas dentro dele veja alguns exemplos :smile:
 
-Exemplo:
+Ex:
 
 ```js
 console.log(text.replace(/simples/g, "simplesmente"));
 // 'Este é um texto simplesmente para exemplo em  21/11/2018'
 ```
 
-Dentro do .replace podemos fazer agrupamentos de caracteres e retornando referente a sua respetiva captura (\$1).
+Dentro do método _.replace_ também podemos fazer agrupamentos de caracteres e retornando a sua referente captura **(\$1)**.
+
+Ex:
 
 ```js
 console.log(text.replace(/(les)/g, "--$1--"));
@@ -201,7 +223,7 @@ PS: Se quisermos mais de uma captura, podemos utilizar $1$2 e assim sucessivamen
 
 Ou podemos usar o \$& onde ele irá pegar todas as capturas.
 
-Exemplo:
+Ex:
 
 ```js
 console.log(text.replace(/(te)|(le)/g, "--$&--"));
@@ -209,6 +231,8 @@ console.log(text.replace(/(te)|(le)/g, "--$&--"));
 ```
 
 E podemos ir além, dentro do método .replace usando regex podemos usar funções :smile:
+
+Ex:
 
 ```js
 console.log(
@@ -238,7 +262,7 @@ Em seu retorno temos um Array onde temos.
 
 PS: A função retorna undefined pois não informamos o que a mesma deveria retornar.
 
-Exemplo:
+Ex:
 
 ```js
 var name = "Ruan Valente";
