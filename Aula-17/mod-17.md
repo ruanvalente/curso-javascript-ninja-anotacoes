@@ -292,3 +292,5 @@ Regex é de mais :smile: ( literalmente )
 - [Tabela unicode](https://unicode-table.com/pt/#latin-1-supplement)
 
 - [Regex 101](https://regex101.com/)
+
+- [Desvendando a linguagem JavaScript - #10 - Expressões Regulares - Rodrigo Branas](https://www.youtube.com/watch?v=9r48XuOB4DA&list=PLQCmSnNFVYnT1-oeDOSBnt164802rkegc&index=10)
