@@ -4,33 +4,57 @@ O que vimos na aula passada ?
 
 ### Listas [].
 
-Um conjunto de caracteres. Corresponde qualquer um dos caracteres cercados. Você pode especificar uma extensão de caracteres usando um hífen.
+Um conjunto de caracteres que corresponde a qualquer um dos caracteres cercados. Você pode especificar uma extensão de caracteres usando um hífen.
 
-> [Aa-Bb]
+Ex:
+
+```js
+// /[Aa-Bb]/;
+```
 
 ### Grupo ().
 
 Corresponde ao item capturado e memoriza a correspondência. Esses são chamados parênteses de captura.
 
-> (2018)|(2019)
+Ex:
+
+```js
+// /(2018)|(2019)/;
+```
 
 ### \w.
 
-Corresponde qualquer caractere alfanumérico do alfabeto, incluindo o underline.
+Corresponde qualquer caractere alfanumérico do alfabeto, incluindo o **underline**.
 
-> [A-Za-z0-9_]
+Ex:
+
+```js
+// /[A-Za-z0-9_]/;
+```
 
 ### \d.
 
 Corresponde um caractere de dígito no alfabeto.
 
-> [0-9]
+Ex:
+
+```js
+// /[0-9]/;
+```
 
 E agora vamos ver alguns novos.
 
 ### \s
 
-Corresponde um único caractere de espaço em branco, incluindo espaço, tabulação (tab), quebra de página, nova linha (LF) e outros espaços Unicode.
+Corresponde um único caractere de espaço em branco, incluindo espaço, **tabulação** (tab), **quebra de página**, **nova linha** (LF) e outros espaços **Unicode**.
+
+Ex:
+
+```js
+// 'Um texto  com espaço '.match(/\s/g);
+// [ ' ', ' ', ' ', ' ', ' ' ]
+```
+Assim me retornando todos os espaços que contém no texto.
 
 ### \n.
 
