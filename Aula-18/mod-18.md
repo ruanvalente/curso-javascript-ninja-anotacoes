@@ -4,27 +4,51 @@ O que vimos na aula passada ?
 
 ### Listas [].
 
-Um conjunto de caracteres que corresponde a qualquer um dos caracteres cercados. Você pode especificar uma extensão de caracteres usando um hífen.
+Um conjunto de caracteres que corresponde a **qualquer um dos caracteres cercados**. Você pode especificar uma **extensão de caracteres usando um hífen**.
 
 Ex:
 
 ```js
-// /[Aa-Bb]/;
+var text =
+  'Manuel Marques de Sousa, Conde de Porto Alegre (Rio Grande, 13 de junho de 1804 – Rio de Janeiro, 18 de julho de 1875), apelidado de "O Centauro de Luvas", foi um militar, político, abolicionista e monarquista brasileiro.';
+
+console.log(text.match(/[ab]/gi));
+/* 
+[ 'a',
+  'a',
+  'a',
+  'A',
+  'a',
+  'a',
+  'a',
+  'a',
+  'a',
+  'a',
+  'a',
+  'a',
+  'b',
+  'a',
+  'a',
+  'a',
+  'b',
+  'a' ]
+*/
 ```
 
 ### Grupo ().
 
-Corresponde ao item capturado e memoriza a correspondência. Esses são chamados parênteses de captura.
+Corresponde ao **item capturado** e **memoriza a correspondência**. Esses são chamados **parênteses de captura**.
 
 Ex:
 
 ```js
-// /(2018)|(2019)/;
+console.log(text.match(/(1875)/g));
+// ['1875']
 ```
 
 ### \w.
 
-Corresponde qualquer caractere alfanumérico do alfabeto, incluindo o **underline**.
+Corresponde a **qualquer caractere alfanumérico do alfabeto**, incluindo o **underline**.
 
 Ex:
 
@@ -34,12 +58,14 @@ Ex:
 
 ### \d.
 
-Corresponde um caractere de dígito no alfabeto.
+Corresponde a um caractere de dígito no alfabeto.
 
 Ex:
 
 ```js
 // /[0-9]/;
+console.log(text.match(/\d/g));
+// [ '1', '3', '1', '8', '0', '4', '1', '8', '1', '8', '7', '5' ]
 ```
 
 E agora vamos ver alguns novos.
@@ -51,20 +77,21 @@ Corresponde um único caractere de espaço em branco, incluindo espaço, **tabul
 Ex:
 
 ```js
-// 'Um texto  com espaço '.match(/\s/g);
+'Um texto  com espaço '.match(/\s/g);
 // [ ' ', ' ', ' ', ' ', ' ' ]
 ```
+
 Assim me retornando todos os espaços que contém no texto.
 
 ### \n.
 
-Representa a quebra de linha ( nova linha )
+Representa a **quebra de linha** ( nova linha ).
 
 > \n
 
 ### . (ponto)
 
-Representa qualquer caractere ( exceto quebra de linha)
+Representa **qualquer caractere** ( exceto quebra de linha ).
 
 > .
 
@@ -74,9 +101,9 @@ Representa qualquer caractere ( exceto quebra de linha)
 
 ### [^abc].
 
-O match deve ser feito com qualquer item, **menos** com os da **lista**: a,b,c.
+O match deve ser feito com qualquer item, **menos** com os da **lista** por exemplo: a,b,c.
 
-PS: Precisamos usar ^ sempre dentro da lista [].
+PS: Precisamos usar **^** sempre dentro da lista [].
 
 ### \W.
 
@@ -105,16 +132,15 @@ Neste exemplo passamos para a regex que queremos que no minimo tenha 2 digitos e
 
 ### Intervalo aberto de repetidores
 
-> {n,}
-> **intervalo aberto - item anterior **n\*\* ou mais vezes
+**{n,} intervalo aberto** - item anterior **n** ou mais vezes.
 
 ### Intervalo
 
-> {n} item anterior exatamente **n** vezes
+**{n}** item anterior exatamente **n** vezes.
 
 ### ?. Opcional.
 
-Opcional - zero ou uma ocorrência do item anterior.
+Opcional - **zero ou uma ocorrência do item anterior**.
 
 > \s\d?
 
@@ -122,7 +148,7 @@ PS: Neste exemplo sobre o caractere **\\s** estamos pedindo que ele faça uma ma
 
 ### +
 
-Uma ou mais ocorrência do item anterior.
+**Uma ou mais ocorrência do item anterior**.
 
 > s+
 
@@ -140,9 +166,11 @@ Retorna qualquer palavra seguido de qualquer caractere alfanumérico.
 
 ### Validação de uma url.
 
+Ex:
+
 ```js
 var url =
-  "http://www.google.com.br https://meusite.org, hstps//site.site, hts//outro.site";
+  'http://www.google.com.br https://meusite.org, hstps//site.site, hts//outro.site';
 
 console.log(url.match(/https?:\/\/\w+\w[.\w]+/g));
 
@@ -153,17 +181,21 @@ Este exemplo usamos a regex para validar algumas urls.
 
 Queremos qualquer caractere que começe com **http** seguido **s** de forma opcional. Seguida de **:** e **//** que dentro da regex precisamos escapar usando a **\\**.
 
-Após isso dizemos que queremos qualquer caractere uma ou **+** mais ocorrência do caractere anterior.
+Após isso dizemos que queremos qualquer caractere uma ou **+** mais ocorrências do caractere anterior.
 
-E passamos dentro de uma lista que queremos que também contenham um **.** (ponto) seguido de qualquer caractere uma ou mais ocrrência do caractere anterior.
+E passamos dentro de uma lista que queremos que também contenham um **.** (ponto) seguido de qualquer caractere uma ou mais ocorrência do caractere anterior.
 
-E por fim usamos a flag **g** global para trazer todas as ocorrências dentro da String de URLS
+E por fim usamos a flag **g** global, para trazer todas as ocorrências dentro da String de URLS.
 
 ### Validação de um e-mail.
 
+Temos um novo exemplo, agora para validação de um e-mail.
+
+Ex:
+
 ```js
 var emails =
-  "ruan@email.com jose@hotmail.com, maria+arroz@gmail.com.br maria+arroz@gmail.com.br.lu.a";
+  'ruan@email.com jose@hotmail.com, maria+arroz@gmail.com.br maria+arroz@gmail.com.br.lu.a';
 
 console.log(emails.match(/[\w+]+@\w+\.\w+.?([\w]{2})?/g));
 
@@ -184,13 +216,15 @@ Ex:
 > ?s=lala&b=bebe&c=cce
 
 ```js
-var queryString = "?s=lala&b=bebe&c=cce";
+var queryString = '?s=lala&b=bebe&c=cce';
 
 console.log(queryString.match(/[?&](\w+)=(\w+)/g));
 //[ '?s=lala', '&b=bebe', '&c=cce' ]
 ```
 
 Se precisarmos verificar o conteúdo retornado por essa regex ? Poderiamos usar o método .replace().
+
+Ex:
 
 ```js
 console.log(
