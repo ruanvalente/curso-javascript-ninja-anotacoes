@@ -5,6 +5,7 @@
 ## Sumário
 
 PS: Aqui você pode ver todo o conteúdo do curso disponível:
+
 - [x] Variáveis e tipos de dados / revisado
 - [x] Operadores'aritméticos / revisado
 - [x] Operadores de igualdade e relacionais / revisado
@@ -49,9 +50,9 @@ PS: Aqui você pode ver todo o conteúdo do curso disponível:
 - [x] use strict - Uso do width e global this === undefined / revisado
 - [x] O operador delete, objetos e funções / revisado
 - [x] Objeto String / revisado
-- [x] Regex
-- [x] Regex - Negação
-- [x] Regex - Repetidores
+- [x] Regex / revisado
+- [x] Regex - Negação / revisado
+- [x] Regex - Repetidores / revisado
 - [x] Conhecendo outros símbolos usados na Regex
 - [x] Métodos de string onde podemos usar regex
 - [x] o objeto RegExp()
