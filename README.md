@@ -53,9 +53,9 @@ PS: Aqui você pode ver todo o conteúdo do curso disponível:
 - [x] Regex / **revisado**
 - [x] Regex - Negação / **revisado**
 - [x] Regex - Repetidores / **revisado**
-- [x] Conhecendo outros símbolos usados na Regex
-- [x] Métodos de string onde podemos usar regex
-- [x] o objeto RegExp()
+- [x] Conhecendo outros símbolos usados na Regex / **revisado**
+- [x] Métodos de string onde podemos usar regex / **revisado**
+- [x] o objeto RegExp() / **revisado**
 - [x] Js no browser - Selecionar elementos no DOM
 - [x] Js no browser - Formulário e eventos
 - [x] Sync vs async
