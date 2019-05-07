@@ -8,11 +8,13 @@ Tivemos uma pequena falha de alguns minutos no áudio do próximo vídeo, dessa 
 
 Basicamente estávamos falando sobre **passar parâmetros para a IIFE**. A ideia é que você possa passar parâmetros para a IIFE que são **globais** na sua aplicação, para acessá-los de forma **local**, **dentro da IIFE**. Já vimos que, em Javascript, **o escopo é a função em que o código está inserido**, correto?
 
-Sempre que criarmos uma variável fora de uma função, é possível acessá-la dentro de qualquer função que esteja no mesmo escopo. O mesmo não acontece para variáveis criadas dentro de funções. Sempre que você cria uma variável dentro de uma função, essa variável não está acessível fora dela.
+Sempre que criarmos uma variável **fora de uma função**, **é possível acessá-la dentro de qualquer função que esteja no mesmo escopo**. O mesmo não acontece para variáveis **criadas dentro de funções**. Sempre que você cria uma variável **dentro de uma função**, essa variável **não está acessível fora dela**.
 
-E qualquer variável criada dentro de uma função, que tenha o mesmo nome de uma variável criada fora dessa função (em escopo global), a variável mais interna terá precedência sobre a variável externa.
+E qualquer variável **criada dentro de uma função**, que tenha o mesmo nome de uma variável criada fora dessa função (em escopo global), a variável **mais interna terá precedência sobre a variável externa**.
 
 Um exemplo seria o seguinte:
+
+Ex:
 
 ```js
 var name = 'daciuk';
@@ -25,25 +27,31 @@ console.log(name); // 'daciuk'
 
 Veja que, no código acima, temos duas variáveis name : uma criada dentro da função, e outra criada fora da função. Quando você usa o console.log dentro da função, é mostrado o valor da variável interna. E quando você chama o console.log fora da função, o valor é da variável externa. Ou seja: dentro da função, ainda que você crie uma variável com o mesmo nome da variável de fora, essa terá precedência. Simples, não?
 
-Agora, sobre a IIFE: quando temos **objetos globais**, nós podemos passar por **parâmetro para a IIFE**, para que esses parâmetros sejam uma representação do **objeto externo (global)**, mas usados de forma **local**. Isso tem várias vantagens que veremos em alguma aula futura, como minificação de código, por exemplo :)
+Agora, sobre a **IIFE**: quando temos **objetos globais**, nós podemos passar por **parâmetro para a IIFE**, para que esses parâmetros sejam uma representação do **objeto externo (global)**, mas usados de forma **local**. Isso tem várias vantagens que veremos em alguma aula futura, como minificação de código, por exemplo :)
 
 Mas a ideia é: sempre que você tiver **objetos globais**, e precisar usar dentro da IIFE, **não use diretamente o objeto global. Passe-o por parâmetro, e use-o como uma referência local**:
 
+Um exemplo seria o objeto **Window**:
+
+Ex:
+
 ```js
 (function(win) {
-  console.log(win === window);
+  console.log(win === window); // true
 })(window);
 ```
 
 O código acima mostra uma mensagem no console true , pois **win é uma referência local ao objeto window global**.
 
-O outro assunto do qual falamos nesses 5 minutos foi sobre como podemos utilizar if's de uma única linha sem a necessidade das chaves.
+O outro assunto do qual falamos nesses 5 minutos foi sobre como podemos utilizar **if's de uma única linha sem a necessidade das chaves**.
 
 Nos nossos códigos, nós vamos procurar evitar ao máximo utilizar if's. E, sempre que necessário, vamos ao máximo evitar else, pois isso deixa o código mais complexo e difícil de entender.
 
 E sempre que utilizarmos if, vamos tentar manter o código dentro do if pequeno, com no máximo uma única linha (não se preocupe, vou mostrar como podemos fazer isso na maior parte dos casos em breve :D).
 
 E para esses casos, **sempre que usarmos ifs de uma única linha, nós podemos simplificar o seu uso, removendo as chaves**. O mesmo vale para **while e for**. Vou mostrar alguns exemplos:
+
+Ex:
 
 ```js
 (function(win) {
@@ -55,6 +63,8 @@ Executando o código acima, você poderá ver que a mensagem win é uma referên
 
 Para garantir que está realmente funcionando, inverta a condição:
 
+Ex:
+
 ```js
 (function(win) {
   if (win !== window) console.log('win é uma referência local à window');
@@ -64,6 +74,8 @@ Para garantir que está realmente funcionando, inverta a condição:
 Agora nada é logado no console!
 
 E para ver que, sem as chaves, só a primeira linha é avaliada, você pode testar o seguinte:
+
+Ex:
 
 ```js
 (function(win) {
@@ -90,42 +102,52 @@ Um grande abraço!
 
 # Objeto Window.
 
-O objeto window representa uma janela que contém um elemento DOM; a propriedade document aponta para o documento DOM document carregado naquela janela. Uma janela para um dado documento pode ser obtido usando a propriedade document.defaultView.
+O objeto window **representa uma janela que contém um elemento DOM**; a propriedade **document aponta para o documento DOM**, carregado naquela janela. Uma janela para um dado documento pode ser obtido usando a **propriedade document.defaultView**.
 
 Dentro do objeto **Window** temos alguns métodos são:
 
 ## **window.alert()**.
 
-O método Window.alert() mostra uma caixa de diálogo de aviso com o conteúdo opcionalmente especificado e um botão OK.
+O método **Window.alert()** mostra uma **caixa de diálogo** de aviso com o conteúdo opcionalmente especificado e um botão OK.
+
+Ex:
 
 ```js
 (function(win) {
   'use strict';
+
   win.alert('Olá'); // Abre uma caixa de diálogo dentro do navegador mostrando o texto olá.
 })(window);
 ```
 
-PS: Todos os métodos dentro de **Window** chamar sem precisar da palavra **window.** seguido do método. Podemos fazer simplesmente **alert()**.
+PS: Todos os métodos dentro de **Window** podemos chamar sem a palavra **window.** seguido do método. Podemos fazer simplesmente **alert()**.
 
 Dessa forma o Javascript irá entender que estamos chamando o método **global** de **window**.
 
 ## **window.prompt()**.
 
-O Window.prompt() exibe uma caixa de diálogo com uma mensagem opcional solicitando ao usuário a entrada de algum texto.
+O **Window.prompt()** exibe uma caixa de diálogo com uma mensagem opcional **solicitando ao usuário a entrada de algum texto**.
+
+Ex:
 
 ```js
 (function(win) {
   'use strict';
+
   var name = win.prompt('Entre com o seu nome');
+
   // ou podemos apenas chamar a método prompt.
   // var name = prompt('Entre com o seu nome');
-  console.log('Seja bem vindo ', name);
+
+  console.log('Seja bem vindo', name);
 })(window);
 ```
 
 ## **window.confirm()**.
 
-O método Window.confirm() mostra uma janela modal com uma mensagem opcional e dois botões, OK e Cancelar.
+O método **Window.confirm()** mostra uma janela modal com uma mensagem opcional e dois botões, OK e Cancelar.
+
+Ex:
 
 ```js
 (function(win) {
@@ -145,13 +167,13 @@ O método **window.confirm** retorna **true** quando clicamos em ok e **false** 
 
 ## **window.document()**.
 
-Retorna a referência para o documento contido na janela.
+Retorna a **referência** para o documento contido na janela.
 
 Mas onde é pega essa referência para o documento ?
 
 ## DOM.
 
-O **Modelo de Objeto de Documento (DOM)**é uma interface de programação para documentos **HTML e XML**. Ele provê uma representação estruturada do documento e define um meio pelo qual a estrutura pode ser acessada por programas permitindo-os alterar a estrutura do documento, estilo e conteúdo. O DOM provê uma representação do documento como um conjunto estruturado de nós e objetos que têm propriedades e métodos. Essencialmente ele conecta páginas de internet a scripts ou linguagens de programação.
+O **Modelo de Objeto de Documento (DOM)**é uma interface de programação para documentos **HTML e XML**. Ele provê uma representação estruturada do documento e define um meio pelo qual a estrutura pode ser acessada por programas permitindo-os alterar a estrutura do documento, estilo e conteúdo. O DOM **provê uma representação do documento como um conjunto estruturado de nós e objetos que têm propriedades e métodos**. Essencialmente ele conecta páginas de internet a scripts ou linguagens de programação.
 
 Uma página de internet é um documento. Este documento pode ser exibido numa janela de navegador, ou como código-fonte HTML. Mas é o mesmo documento em ambos os casos. O Document Object Model (DOM) provê uma outra forma de representar, armazenar e manipular o mesmo documento. O DOM é uma representação orientada a objeto completa da página, e pode ser modificada com uma linguagem de script como o JavaScript.
 
@@ -175,27 +197,29 @@ Em outras palavras seria algo representado dessa forma:
 </html>
 ```
 
-Para cada página carregada no browser, existe um objeto Document. A interface Document serve como um ponto de entrada para o conteúdo da Página ( a árvore DOM, incluindo elementos como **\<body> e \<table>**) e provê funcionalidades globais ao documento (como obter a URL da página e criar novos elementos no documento).
+Para cada página carregada no browser, existe um objeto Document. A interface Document serve como um ponto de entrada para o conteúdo da Página ( a árvore DOM, incluindo elementos como **\<body> e \<table>**) e provê funcionalidades globais ao documento **(como obter a URL da página e criar novos elementos no documento)**.
 
 Podemos acessar esses elementos da seguinte forma:
 
 ### **document.getElementById('element')**
 
-- Usamos quando queremos acessar um elemento apartir de um id.
+- Usamos quando queremos acessar **um elemento apartir de um id**.
 
 ### **document.getElementsByClassName('element')**
 
-- Usamos quando queremos acessar elementos apartir de uma classe.
+- Usamos quando queremos acessar **elementos apartir de uma classe**.
 
 ### **document.getElementsByTagName('tag')**
 
-- Usamos quando queremos acessar um elemento apartir de uma tag html.
+- Usamos quando queremos acessar **um elemento apartir de uma tag html**.
 
 ### **document.getElementByName('name')**
 
-- Usamos quando queremos acessar um elemento apartir de um nome.
+- Usamos quando queremos acessar **um elemento apartir de um nome**.
 
 Exemplo de uma página html.
+
+Ex:
 
 ```html
 <!DOCTYPE html>
@@ -265,6 +289,8 @@ PS: A interface HTMLCollection representa uma coleção genérica (objeto array)
 
 Retorna o primeiro elemento dentro do documento (usando ordenação em profundidade, pré-ordenada e transversal dos nós do documento) que corresponde ao grupo especificado de seletores.
 
+Ex:
+
 ```js
 (function(win, doc) {
   'use strict';
@@ -274,7 +300,9 @@ Retorna o primeiro elemento dentro do documento (usando ordenação em profundid
 
 ### **document.querySelectorAll(element)**.
 
-Retorna uma lista de elementos presentes no documento (usando ordenação em profundidade, pré-ordenada e transversal dos nós do documento) que coincidam com o grupo de seletores especificado. O objeto retornado é uma NodeList.
+Retorna uma lista de elementos presentes no documento (usando ordenação em profundidade, pré-ordenada e transversal dos nós do documento) que coincidam com o grupo de seletores especificado. O objeto retornado é uma **NodeList**.
+
+Ex:
 
 ```js
 (function(win, doc) {
@@ -285,24 +313,26 @@ Retorna uma lista de elementos presentes no documento (usando ordenação em pro
 
 PS: A forma de acessar os elementos usando os métodos querySelector e querySelectorAll é através da anotação de css.
 
-Exemplo:
+Ex:
 
 ```js
-(function() {
+(function(win, doc) {
   'use strict';
   console.log(doc.querySelectorAll('.myInput')); // retornando uma NodeList contendo todos os items com a class .myInput
-})();
+})(window, document);
 ```
 
 PS: **O que é uma NodeList ?**
 
-As funções que acessam e selecionam elementos HTM em um página web retornam sempre um conjunto de elementos. Esse conjunto é denominado NodeList.
+As funções que acessam e selecionam elementos HTML em um página web retornam sempre um **conjunto de elementos**. Esse conjunto é denominado **NodeList**.
 
 # Formulários
 
 ### **.value**
 
-Pega os valores de um input de uma formulário.
+Pega os valores de um input de um formulário.
+
+Ex:
 
 ```js
 (function(win, doc) {
@@ -328,7 +358,7 @@ PS: A propriedade **value** pode ter dois comportamentos: Como um **Getter** ou 
 
 - Setar os valores que foram retornados de um campo de input.
 
-Exemplo:
+Ex:
 
 ```js
 (function(win, doc) {
@@ -385,7 +415,7 @@ Cancela o evento se for cancelável, sem parar a propagação do mesmo.
 
 Ou em outras palavras prevenimos a ação padrão que o navegador tem ao ter um evento.
 
-Exemplo:
+Ex:
 
 ```html
 <!DOCTYPE html>
