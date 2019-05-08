@@ -56,8 +56,8 @@ PS: Aqui você pode ver todo o conteúdo do curso disponível:
 - [x] Conhecendo outros símbolos usados na Regex / **revisado**
 - [x] Métodos de string onde podemos usar regex / **revisado**
 - [x] o objeto RegExp() / **revisado**
-- [x] Js no browser - Selecionar elementos no DOM
-- [x] Js no browser - Formulário e eventos
+- [x] Js no browser - Selecionar elementos no DOM / **revisado**
+- [x] Js no browser - Formulário e eventos / **revisado**
 - [x] Sync vs async
 - [x] setTimeout
 - [x] setTimeout vs setInterval
