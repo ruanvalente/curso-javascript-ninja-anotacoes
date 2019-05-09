@@ -58,9 +58,9 @@ PS: Aqui você pode ver todo o conteúdo do curso disponível:
 - [x] o objeto RegExp() / **revisado**
 - [x] Js no browser - Selecionar elementos no DOM / **revisado**
 - [x] Js no browser - Formulário e eventos / **revisado**
-- [x] Sync vs async
-- [x] setTimeout
-- [x] setTimeout vs setInterval
+- [x] Sync vs async / **revisado**
+- [x] setTimeout / **revisado**
+- [x] setTimeout vs setInterval / **revisado**
 - [x] Propriedades e métodos de funções
 - [x] Prototype
 - [x] Array-like e editorconfig
