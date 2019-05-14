@@ -61,9 +61,9 @@ PS: Aqui você pode ver todo o conteúdo do curso disponível:
 - [x] Sync vs async / **revisado**
 - [x] setTimeout / **revisado**
 - [x] setTimeout vs setInterval / **revisado**
-- [x] Propriedades e métodos de funções
-- [x] Prototype
-- [x] Array-like e editorconfig
+- [x] Propriedades e métodos de funções / **revisado**
+- [x] Prototype / **revisado**
+- [x] Array-like e editorconfig / **revisado**
 - [x] Debug
 - [x] Modularização de código
 - Javascript inline
