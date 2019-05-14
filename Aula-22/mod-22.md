@@ -6,6 +6,8 @@ O construtor Function cria um novo objeto Function. Em JavaScript cada função 
 
 Indica o nome da função criada ou "anônimo" para uma função anônima.
 
+Ex:
+
 ```js
 function myFunction() {}
 
@@ -18,7 +20,9 @@ new Function().name;
 
 ## .length
 
-A propriedade length dentro da função ela conta quantos parâmetros a função pode receber.
+A propriedade length dentro da função ela conta **quantos parâmetros** a função pode receber.
+
+Ex:
 
 ```js
 function myFunction(a, b, c) {}
@@ -37,29 +41,32 @@ Em Javascript todos os objetos tem o seu método .toString. Porém a forma é va
 
 Por exemplo:
 
+Ex:
+
 ```js
 var arr = [1, 2, 3, 4, 5];
 var obj = { course: 'JS-Ninja' };
 var regex = new RegExp();
 
 console.log(arr.toString()); // '1,2,3,4,5'
-console.log(obj.toString()); // '[object Object]' ?
-// Lá na frente isso terá um bom uso ;)
+console.log(obj.toString()); // '[object Object]' ?  Lá na frente isso terá um bom uso ;)
 console.log(regex.toString()); // '/(?:)/'
 ```
 
-E como fica em usando funções ?
+E como fica em funções ?
+
+Ex:
 
 ```js
 console.log(myFunction.toString());
 // 'function myFunction(a,b,c) {}'
 ```
 
-A função é mostra de forma literal em formato de String.
+A função é mostra de forma literal/textual em formato de String.
 
 ## .call()
 
-O método call() invoca uma função com um dado valor this e argumentos passados individualmente.
+O método **call()** invoca uma função com um dado valor **this** e **argumentos** passados individualmente.
 
 > fun.call(thisArg[, arg1[, arg2[, ...]]])
 
@@ -74,6 +81,8 @@ O método call() invoca uma função com um dado valor this e argumentos passado
 Quando criamos um novo objeto apartir do **new** estamos criando um novo objeto apartir de um construtor onde o _this_ faz referência ao objeto criado.
 
 Porém se usarmos o método **call** e passar o _this_ para o mesmo, dessa forma podemos dizer quem será o _this_ para aquela função.
+
+Ex:
 
 ```js
 (function() {
@@ -90,9 +99,11 @@ Porém se usarmos o método **call** e passar o _this_ para o mesmo, dessa forma
 
 O que acontece é que dentro da função **myFunction** temos o **this.name.** onde até o momento o **this**, aponta para **undefined**.
 
-Porém quando usamos o método **.call(this)** passando _this_ como argumento, podemos dizer quem será o this dessa função, no caso myName.
+Porém quando usamos o método **.call(this)** passando _this_ como argumento, podemos dizer quem será o this dessa função, no caso **myName**.
 
 E podemos referênciar outros objetos também, que contenham a propriedade _name_.
+
+Ex:
 
 ```js
 (function() {
@@ -108,11 +119,15 @@ E podemos referênciar outros objetos também, que contenham a propriedade _name
 })();
 ```
 
+Assim, dessa forma temos o valor do _this_ sendo váriado de acordo como ele é referenciado.
+
 # Propriedades e métodos de funções - parte 2
 
 Da mesma forma que passamos argumentos para funções o método **.call()** também aceita, porém o seu primeiro parâmetros é o _this_ da função seguido dos respectivos parâmetros.
 
 > .call(this, arg1, arg2, arg3...)
+
+Ex:
 
 ```js
 (function() {
@@ -128,7 +143,9 @@ Da mesma forma que passamos argumentos para funções o método **.call()** tamb
 })();
 ```
 
-OBS: Quando não for preciso dizer quem é o this da função, podemos passar a própria função como parâmetro do método call. Na verdade podendo ser qualquer tipo de objeto, mas por boa prática passamos a própria função.
+OBS: Quando não for preciso dizer quem é o this da função, podemos passar a própria função como parâmetro do método call. Na verdade, pode ser qualquer tipo de objeto, mas por boa prática passamos a própria função.
+
+Ex:
 
 ```js
 (function() {
@@ -146,7 +163,9 @@ OBS: Quando não for preciso dizer quem é o this da função, podemos passar a 
 
 ## .apply()
 
-O método apply() chama uma função com um dado valor this e arguments providos como uma array (ou um objeto parecido com um array).
+O método **apply()** chama uma função com um dado valor **this** e **arguments** providos como uma **array** (ou um objeto parecido com um array).
+
+Ex:
 
 ```js
 (function() {
@@ -165,6 +184,10 @@ O método apply() chama uma função com um dado valor this e arguments providos
 ```
 
 A sintaxe desta função é quase idêntica a essa da call(), a diferença é que call() aceita uma lista de argumentos, enquanto apply() aceita um array de argumentos.
+
+Um pouco da diferença de ambos:
+
+Ex:
 
 ```js
 (function() {
@@ -185,7 +208,9 @@ A sintaxe desta função é quase idêntica a essa da call(), a diferença é qu
 
 Prototype são o mecanismo pelo qual objetos JavaScript herdam características um do outro.
 
-Em outras palavras apartir do Prototype podemos extender objetos, realizar herança.
+Em outras palavras apartir do Prototype podemos extender objetos e realizar herança.
+
+Ex:
 
 ```js
 (function() {
@@ -206,11 +231,13 @@ Em outras palavras apartir do Prototype podemos extender objetos, realizar heran
 })();
 ```
 
-Neste exemplo criamos uma função construtora que tem name e lastName.
+Neste exemplo criamos uma função construtora que tem as propriedades **name** e **lastName**.
 
 Após isso, **extendemos** a função construtora e criamos apartir do seu protótipo o método **fullName**. Que retorna a propriedade _this.name_ e _this.lastName._
 
 Podemos também adicionar propriedades mesmo após de criar os nossos objetos.
+
+Ex:
 
 ```js
 (function() {
@@ -228,9 +255,11 @@ Podemos também adicionar propriedades mesmo após de criar os nossos objetos.
 })();
 ```
 
-Percebemos que não temos a propriedade age dentro da nossa instância, porém podemos criar essa propriedade utilizando o prototype.
+Percebemos que não temos a propriedade **age** dentro da nossa instância, porém podemos criar essa propriedade utilizando o **prototype** do objeto.
 
-Podemos também sobrescrever própriedades que definimos através do prototype.
+Podemos também sobrescrever própriedades que definimos através do **prototype**.
+
+Ex:
 
 ```js
 (function() {
@@ -251,7 +280,9 @@ Podemos também sobrescrever própriedades que definimos através do prototype.
 })();
 ```
 
-Outro caso interessante é a maneira como a linguagem se comporta com propriedades de objetos. Se uma determinada propriedade existir a mesma não será modificada através do prototype, caso contrário podemos modificar.
+Outro caso interessante, é a maneira como a linguagem se comporta com propriedades de objetos. Se uma determinada propriedade existir a mesma não será modificada através do prototype, caso contrário podemos modificar.
+
+Ex:
 
 ```js
 (function() {
@@ -289,7 +320,9 @@ Aí entra o prototype :smile:
 
 Dessa forma estamos chamando o método _forEach_ do objeto _Array_. Assim, podemos interar sobre objetos array-like.
 
-Só que antes disso, precisamos entender que cada método como, _forEach_, _map_, _reduce_ etc.. eles aceitam um segundo parâmetro. Que é o this.
+Só que antes disso, precisamos entender que cada método como, _forEach_, _map_, _reduce_ etc.. eles aceitam um segundo parâmetro. Que é o **this**.
+
+Ex:
 
 ```js
 (function() {
@@ -317,6 +350,8 @@ Porém nesta abordagem a interação vai de acordo com o tamanho do array.
 
 Porém temos outra forma de interar o arguments usando os métodos de array.
 
+Ex:
+
 ```js
 (function() {
   'use strict';
@@ -328,14 +363,24 @@ Porém temos outra forma de interar o arguments usando os métodos de array.
   }
 
   myFunction(1, 2, 3, 4, 5);
+
+  /*
+    1 0
+    2 1
+    3 2
+    4 3
+    5 4
+  */
 })();
 ```
 
 Dessa forma podemos usar métodos do Objeto _Array_ de forma simples e invocando através do método call.
 
-Onde passamos o this, que nesse caso é o proprio arguments seguido da função que irá realizar a interação.
+Onde passamos o this, que nesse caso é o próprio arguments seguido da função que irá realizar a interação.
 
-OBS: Da mesma forma podemos usar o apply, porém a forma que passamos os segundo parâmetro como um Array.
+OBS: Da mesma forma podemos usar o apply, porém a forma que passamos o segundo parâmetro é como um Array.
+
+Ex:
 
 ```js
 (function() {
@@ -350,6 +395,13 @@ OBS: Da mesma forma podemos usar o apply, porém a forma que passamos os segundo
   }
 
   myFunction(1, 2, 3, 4, 5);
+  /*
+    1 0
+    2 1
+    3 2
+    4 3
+    5 4
+  */
 })();
 ```
 
