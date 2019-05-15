@@ -4,7 +4,7 @@
 
 Basicamente seria inspecionar uma base de código de programação e modificá-la afim de eliminar um ou mais de um bugue.
 
-Já que essa parte do curso é relacionada a apenas algumas dicas de como usar o **DevTools** para inspecionar o código.
+Já que essa parte do curso é relacionada a apenas algumas dicas de como usar o **DevTools** para inspecionar o código dentro do navegador, será apenas referenciado alguns links para consulta referente a **aula23** do curso.
 
 ### Links:
 
