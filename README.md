@@ -64,7 +64,7 @@ PS: Aqui você pode ver todo o conteúdo do curso disponível:
 - [x] Propriedades e métodos de funções / **revisado**
 - [x] Prototype / **revisado**
 - [x] Array-like e editorconfig / **revisado**
-- [x] Debug
+- [x] Debug / **revisado**
 - [x] Modularização de código
 - Javascript inline
 - Eventos inline
