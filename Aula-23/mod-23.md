@@ -14,6 +14,14 @@ Já que essa parte do curso é relacionada a apenas algumas dicas de como usar o
 - [Debugando seu código com Google Chrome - Devmedia](https://www.devmedia.com.br/debugando-seu-codigo-com-google-chrome/29137)
 - [Usando o FireBug para debugar um javascript - Devmedia](https://www.devmedia.com.br/usando-o-firebug-para-debugar-um-javascript/7143)
 
+### MDN
+
+- [Console API](https://developer.mozilla.org/pt-BR/docs/Web/API/console/log)
+
+### iMasters
+
+- [O poder do console do navegador](https://imasters.com.br/desenvolvimento/o-poder-do-console-do-navegador)
+
 ### Vídeos:
 
 - [Debugging JavaScript - Chrome DevTools 101](https://www.youtube.com/watch?v=H0XScE08hy8)
