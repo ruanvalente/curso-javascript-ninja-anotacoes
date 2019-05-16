@@ -65,7 +65,7 @@ PS: Aqui você pode ver todo o conteúdo do curso disponível:
 - [x] Prototype / **revisado**
 - [x] Array-like e editorconfig / **revisado**
 - [x] Debug / **revisado**
-- [x] Modularização de código
+- [x] Modularização de código / **revisado**
 - Javascript inline
 - Eventos inline
 - Remover eventos
