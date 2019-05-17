@@ -66,10 +66,10 @@ PS: Aqui você pode ver todo o conteúdo do curso disponível:
 - [x] Array-like e editorconfig / **revisado**
 - [x] Debug / **revisado**
 - [x] Modularização de código / **revisado**
-- Javascript inline
-- Eventos inline
-- Remover eventos
-- Eventos como métodos
+- [x] Javascript inline / **revisado**
+- [x] Eventos inline / **revisado**
+- [x] Remover eventos / **revisado**
+- [x] Eventos como métodos / **revisado**
 - DOM
 - documentFragments
 - Dicas de performance
