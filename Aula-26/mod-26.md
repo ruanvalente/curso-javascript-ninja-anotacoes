@@ -368,3 +368,266 @@ O mesmo retorno mostrando quantos elementos contêm dentro de um no.
 # Métodos ( Para a manipulação do DOM )
 
 ## .hasAttribute(name)
+
+O método _Element.hasAttribute()_ retorna um valor booleano indicando se o elemento especificado tem o atributo especificado ou não.
+
+Ex:
+
+```js
+(function(doc) {
+  'use strict';
+
+  var $main = doc.querySelector('.main');
+
+  console.log($main.hasAttribute('class')); // true
+  console.log($main.hasAttribute('data-js')); // false
+})(document);
+```
+
+## .hasAttributes()
+
+O método _hasAttributes()_ da interface do elemento retorna um Boolean indicando se o **elemento atual tem quaisquer atributos ou não**.
+
+Ex:
+
+```js
+(function(doc) {
+  'use strict';
+
+  var $main = doc.querySelector('.main-content');
+
+  console.log($main.firstElementChild.firstElementChild.hasAttributes()); // false
+
+  console.log($main.firstElementChild.hasAttributes()); // true
+})(document);
+```
+
+## .appendChild(child)
+
+Adiciona um nó ao final da lista de filhos de um nó pai especificado. **Se o nó já existir no documento, ele é removido de seu nó pai atual** antes de ser adicionado ao novo pai.
+
+Ex:
+
+```js
+(function(doc) {
+  'use strict';
+
+  var $mainContent = doc.querySelector('.main-content');
+  var $mainHeader = doc.querySelector('.main-header');
+
+  $mainContent.appendChild($mainHeader);
+})(document);
+```
+
+Neste exemplo estamos selecionando _\$mainContent_ e _\$mainHeader_. Após está seleção dos elementos adicionamos o _\$mainHeader_ dentro de _\$mainContent_, assim basicamente removemos todo o conteúdo contido dentro de _\$mainHeader_ para dentro de _\$mainContent_. Isso com elementos já existentes.
+
+## .insertBefore(node, beforeWhom)
+
+O método _insertBefore()_ insere um nó como uma child, antes de uma child existente que você especificar.
+
+Ex:
+
+```js
+(function(doc) {
+  'use strict';
+
+  var $main = doc.querySelector('.main');
+  var $mainContent = doc.querySelector('.main-content');
+  var $mainHeader = doc.querySelector('.main-header');
+  var $firstText = $mainContent.firstChild;
+  $mainContent.appendChild($mainHeader);
+  $mainContent.inserBefore($mainHeader, $firstText);
+})(document);
+```
+
+Com este exemplo adicionamos a _\$mainHeader_ antes do conteúdo contido dentro da variável _\$firstText_.
+
+## .cloneNode(boolean)
+
+O método _cloneNode()_ cria uma cópia de um nó e retorna o clone.
+
+Ex:
+
+```js
+(function(doc) {
+  'use strict';
+
+  var $main = doc.querySelector('.main');
+  var $mainContent = doc.querySelector('.main-content');
+  var $mainHeader = doc.querySelector('.main-header');
+  var $firstText = $mainContent.firstChild;
+  var $cloneMainHeader = $mainHeader.cloneNode(true);
+
+  $mainContent.appendChild($cloneMainHeader);
+  console.log(doc.querySelectorAll('.main-header').length); // 2
+})(document);
+```
+
+O método _cloneNode()_ clones todos os atributos e seus valores.
+
+PS: Se for passada **false** como parâmetro para o método _cloneNode_, no momento da clonagem do elemento o mesmo virá sem nenhuma propriedade. Utilizando o parâmetro **true**, isto já é o inverso. Pois irá acontecer a clonagem com cada propriedade e conteúdo do elemento.
+
+## .hasChildNodes()
+
+O método _hasChildNodes()_ retorna **true** se o nó especificado tiver quaisquer nós filho, caso contrário, **false**.
+
+Ex:
+
+```js
+(function(doc) {
+  'use strict';
+  var $main = doc.querySelector('.main');
+  var $mainHeader = doc.querySelector('.main-header');
+  var $h1 = $mainHeader.firstElementChild;
+  console.log($h1.hasChildNodes()); // true
+})(document);
+```
+
+Neste caso já que temos um no de texto que é o conteúdo contido dentro da variável _\$h1_, se esse conteúdo de texto não estivesse presente o mesmo iria retorna **false**.
+
+## .removeChild(child)
+
+O método _removeChild()_ remove um nó filho especificado do elemento passado.
+
+Ex:
+
+```js
+(function(doc) {
+  'use strict';
+  var $main = doc.querySelector('.main');
+  var $mainHeader = doc.querySelector('.main-header');
+  var $h1 = $mainHeader.firstElementChild;
+  $mainHeader.removeChild($h1);
+})(document);
+```
+
+Neste exemplo removemos o no filho de _\$mainHeader_, e quando nosso página é carregada o mesmo já não está dentro do DOM.
+
+PS: Retorna o nó removido como um objeto de nó, ou null se o nó não existe.
+
+## .replaceChild(new, old)
+
+O método _replaceChild()_ substitui um nó filho com um novo nó.
+O novo nó pode ser um nó existente no documento, ou você pode criar um novo nó.
+
+Ex:
+
+```js
+(function(doc) {
+  'use strict';
+
+  var $main = doc.querySelector('.main');
+  var $mainHeader = doc.querySelector('.main-header');
+  var $cloneMainHeader = $mainHeader.cloneNode(true);
+  var $mainFooter = doc.querySelector('.main-footer');
+
+  $main.replaceChild($cloneMainHeader, $mainFooter);
+})(document);
+```
+
+Neste exemplo temos um clone de _\$mainHeader_, e com esse clone fazemos o replace no lugar de _\$mainFooter_. Assim temos dois _\$mainHeader_ dentro da nossa página.
+
+## document.createTextNode(text)
+
+O método _createTextNode()_ cria um nó de texto com o texto especificado.
+
+Ex:
+
+```js
+(function(doc) {
+  'use strict';
+
+  var $main = doc.querySelector('.main');
+  var newMyText = doc.createTextNode('Curso JS Ninja');
+  $main.appendChild(newMyText); // Curso JS Ninja
+})(document);
+```
+
+Usando o método _createTextNode()_ criamos um nó de texto dentro da nossa página e adicionamos ela ao final, usando o método _appendChild()_.
+
+## document.createElement(tagName)
+
+O método _document.createElement()_ cria um nó de elemento com o nome especificado.
+
+Ex:
+
+```js
+(function(doc) {
+  'use strict';
+
+  var $main = doc.querySelector('.main');
+  var $newP = doc.createElement('p');
+  var newMyText = doc.createTextNode('Curso JS Ninja');
+
+  $newP.appendChild(newMyText);
+  $main.appendChild($newP); // <p>Curso JS Ninja</p>
+})(document);
+```
+
+Neste exemplo pegamos o nó de texto do exemplo anterior e agora criamos uma tag \<p> e adicionamos o conteúdo do nó de texto dentro da tag. E por fim adicionamos ela ao final da página usando o _appendChild_. Assim criamos um elemento simples como exemplo.
+
+# Atributos
+
+Basicamente podemos manipular os atributos dentro do DOM usando os atributos padrão dentro do HTML.
+
+## element(.)id
+
+Ex:
+
+```js
+(function(doc) {
+  'use strict';
+
+  var $main = doc.querySelector('.main');
+  console.log($main.className); // main
+  console.log(($main.id = 'meu-id')); // meu-id
+})(document);
+```
+
+Usando a propriedade _className_ podemos ter como retorno qualquer propriedade HTML.
+
+Quando não passamos uma propriedade que não existe não é retornado nada, porém essas propriedade se comportam como **getters** e **setters**. Como no exemplo a cima não temos o id _'meu-id'_, criamos isso dinamicamente através de um setters.
+
+Porém tem outra forma que podemos pegar os nosso atributos.
+
+## .getAttribute(attr)
+
+_getAttribute()_ retorna o valor de um argumento específico do elemento. Se o atributo não existir, o valor retornado será null ou "" (string vazia).
+
+Ex:
+
+```js
+(function(doc) {
+  'use strict';
+
+  var $main = doc.querySelector('.main');
+  console.log($main.getAttribute('class')); // main
+})(document);
+```
+
+PS: O retorno do getAttribute sempre será uma **String**.
+
+## setAttribute(attr, value)
+
+O método _setAttribute()_ adiciona o atributo especificado para um elemento e atribui o valor especificado.
+
+Se o atributo especificado já existir, somente o valor é conjunto/alterado.
+
+Ex:
+
+```js
+(function(doc) {
+  'use strict';
+
+  var $main = doc.querySelector('.main');
+  console.log($main.setAttribute('class', 'data-js')); // data-js
+})(document);
+```
+
+Dessa forma alteramos o atributo de main, alteramos a **class="main"** para **data-js**, usando o método _setAttribute_.
+
+### Links:
+
+- [w3schools - DOM](https://www.w3schools.com/jsref/dom_obj_all.asp)
+
+- [Web API - MDN](https://developer.mozilla.org/pt-BR/docs/Web/API)
