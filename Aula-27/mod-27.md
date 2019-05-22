@@ -169,3 +169,160 @@ Ex:
   doc.body.appendChild(fragment);
 })(document);
 ```
+
+# Dicas sobre eventos.
+
+### Posição dos scripts no HTML **importa**.
+
+Vamos imaginar que a tag que contém o arquivo de script da nossa página passe a ser chamada dentro da tag head ao invés do que estamos acostumados hoje em dia, com a tag script no final do nosso documento. O que isso poderia acarreta na nossa página ?
+
+Neste exemplo onde usamos o _createDocumentFragment_, qual resultado que poderia nos mostrar ?
+
+Quando o arquivo de script é carregado antes do documento, é gerado um erro onde a propriedade _appendChild_ não pode ler de **null**. E isso acontece devido a forma do carregamento da página porque nesse momento a tag **body** ainda não foi carregada.
+
+O carregamento acontece de cima para baixo, passando por cada elemento até o final. Porém, neste caso onde a nossa tag script está sendo carregada dentro da tag **head** e quando o browser encontra o arquivo de script ele faz o parse e assim executa o que estiver dentro do script, por isso o erro pois ainda nesse momento não foi carregado a tag **body** dentro da nossa página.
+
+Para resolver esse problema temos:
+
+### document = DOMContentLoaded.
+
+O evento _DOMContentLoaded_ é acionado quando todo o HTML foi completamente carregado e analisado, sem aguardar pelo CSS, imagens, e subframes para encerrar o carregamento.
+
+Ex:
+
+```js
+(function(doc) {
+  'use strict';
+  function afterDomContent() {
+    var fragment = doc.createDocumentFragment();
+    var childP = doc.createElement('p');
+    var childTextP = doc.createTextNode('Curso JavaScript Ninja');
+    childP.appendChild(childTextP);
+
+    fragment.appendChild(childP);
+    doc.body.appendChild(fragment);
+  }
+  doc.addEventListener('DOMContentLoaded', afterDomContent, false);
+})(document);
+```
+
+Dessa forma estamos dizendo que somente quando o document estiver pronto o evento _DOMContentLoaded_ é disparado. Pois ele espera o carregamento de todo o documento para somente depois executar o script que ainda está dentro da tag **head**, assim não gerando mais nenhum erro e criando o fragmento que pedimos :smile:.
+
+PS: Sempre mantenha o seu script dentro de body como boa prática :smile:
+
+### window = load
+
+O evento _load_ é disparado quando carregar a página inteira, incluindo todos os recursos dependentes como imagens de folhas de estilo. Isto está em contraste com _DOMContentLoaded_, que é acionado assim que o DOM da página tiver sido carregado, sem esperar por recursos terminar carregamento.
+
+Ex:
+
+```js
+(function(doc, win) {
+  'use strict';
+  function afterDomContent() {
+    var fragment = doc.createDocumentFragment();
+    var childP = doc.createElement('p');
+    var childTextP = doc.createTextNode('Curso JavaScript Ninja');
+    childP.appendChild(childTextP);
+
+    fragment.appendChild(childP);
+    doc.body.appendChild(fragment);
+  }
+
+  function afterWindowLoad() {
+    alert('Carregamento completado');
+  }
+
+  doc.addEventListener('DOMContentLoaded', afterDomContent, false);
+  win.addEventListener('load', afterWindowLoad, false);
+})(document, window);
+```
+
+Então no final ele vai esperar no primeiro carregamento desde que não seja assíncrono tudo aquilo que está dentro de window carregar primeiro para depois disparar o evento.
+
+# Técnicas Ninja
+
+Algumas dicas ninjas para se dar bem na linguagem. :smile:
+
+- 1 **Copiar Arrays**:
+
+> Array.prototype.slice
+
+Ex:
+
+```js
+(function(doc) {
+  'use strict';
+  var arr = [1, 2, 3, 4, 5];
+  var arr2 = arr.slice(0);
+  console.log(arr, arr2, arr === arr2); // false
+
+  var $divs = doc.querySelectorAll('div');
+  var $divCopy = Array.prototype.slice.call($divs);
+  console.log($divs, $divCopy, $divs === $divCopy); // false
+})(document);
+```
+
+Nestes dois exemplos temos o seguinte caso, no primeiro precisamos de uma cópia do array, porém se fizemos apenas uma atribuição o mesmo terá o mesmos elementos do Array e apontando para o mesmo endereço de memória.
+
+Neste caso, usamos o método _slice_ que de acordo com seu parâmetro podemos dizer quantos elementos queremos nesse novo array. E assim temos uma cópia com os mesmos elementos porém apontando para endereços diferentes na memória.
+
+No segundo exemplo podemos fazer o mesmo com elementos Array-like, chamando do _prototype_ de _Array_ o método _slice_ e passando como _this_ os elementos selecionados no DOM. :smile:
+
+- 2 **Saber o tipo de dado real**:
+
+> Object.prototype.toString
+
+Ex:
+
+```js
+(function(doc) {
+  'use strict';
+
+  var arr = [1, 2, 3, 4];
+  var myObject = { prop: 1, prop2: 2 };
+  var myRegex = new RegExp();
+  var myFunction = function() {};
+
+  console.log(Object.prototype.toString.call(arr)); // [object Array]
+  console.log(Object.prototype.toString.call(myObject)); // [object Object]
+  console.log(Object.prototype.toString.call(myRegex)); //  [object RegExp]
+  console.log(Object.prototype.toString.call(myFunction)); // [object Function]
+})(document);
+```
+
+Pegamos os tipos de objeto de forma simples acesando o _prototype_ de _Object_ usando o método _toString_. Passando o _this_ para o método podemos ter como resultado o tipo do Objeto que estamos trabalhando.
+
+Muito legal né :smile:, poderiamos criar funções para verificar se determinado elemento é um tipo de objeto especifico !
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+
+  function is(obj) {
+    return Object.prototype.toString.call(obj);
+  }
+
+  function isArray(obj) {
+    return is(obj) === '[object Array]';
+  }
+
+  function isObject(obj) {
+    return is(obj) === '[object Object]';
+  }
+
+  function isFunction(obj) {
+    return is(obj) === '[object Function]';
+  }
+})();
+```
+
+Dessa forma podemos fazer uma função para cada tipo e assim testar os tipos exatos de cada objeto.
+
+## Links:
+
+- [Window - MDN](https://developer.mozilla.org/en-US/docs/Web/API/Window)
+- [w3schools - DOM](https://www.w3schools.com/jsref/dom_obj_all.asp)
+- [Javascript Secrets - Fernando Daciuk - Front in Floripa 2015](https://www.youtube.com/watch?v=7Ur9zN2vMcs)
