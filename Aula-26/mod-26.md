@@ -192,7 +192,7 @@ Basicamente cada elemento representa um valor numérico que o identifica dentro 
 - Element = 1
 - Text = 3
 - Comments = 8
-- DocumentFragment = 22
+- DocumentFragment = 11
 
 PS: Raramente iremos usar dessa forma pois não iremos decorar cada número o qual identifica cada elemento, usaremos variáveis para facilitar o entendimento do nosso código.
 
