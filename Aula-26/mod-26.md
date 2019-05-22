@@ -6,7 +6,7 @@ O **'Modelo de Objeto de Documento (DOM)'** é uma interface de programação pa
 
 ![DOM API](https://www.w3schools.com/js/pic_htmltree.gif)
 
-_Representação da API DOM._
+> Representação da API DOM
 
 PS: Com outras linguagem podemos também consultar a a API DOM.
 
@@ -16,7 +16,7 @@ Agora como podemos pecorrer estes elementos ? Para isso temos algumas **propried
 
 ## .parentNode
 
-É uma propriedade DOM somente leitura que retorna o nó (node) parente de um Node referenciado na árvore DOM. No caso o pai.
+É uma propriedade DOM somente leitura que **retorna o nó** (node) parente de um Node referenciado na árvore DOM. No caso o pai.
 
 Ex:
 
@@ -96,17 +96,13 @@ Ex:
 // NodeList(7) [ #text, header.main-header, #text, section.main-content, #text, footer.main-footer, #text]
 ```
 
-Neste exemplo temos uma nodeList que mostra todos os filhos de **.main**. Porém precisamos nos atentar que quando usamos a propriedade _.childNodes_ ela retorna também **espaços em branco** e também **quebra de linha**.
+Neste exemplo temos uma **nodeList** que mostra todos os filhos de **.main**. Porém precisamos nos atentar que quando usamos a propriedade _.childNodes_ ela retorna também **espaços em branco** e também **quebra de linha**.
 
-Se tirarmos as quebras de linhas e os espaçamentos teriamos o header como primeiro elemento filho.
+Se tirarmos as **quebras de linhas** e os **espaçamentos** teriamos o **header** como primeiro elemento filho.
 
 ## .firstChild
 
-É uma propriedade do tipo somente leitura que retorna o node (nó) do primeiro elemento filho de uma árvore DOM ou null no caso do elemento não ter filhos (children).
-
-**node:** elemento node (nó pai) de referência para busca do seu primeiro filho (firstChild) considerada a estrutura DOM.
-
-**childNode:** elemento node (nó filho) considerado como primeiro filho (firstChild) de node (pai).
+É uma propriedade do tipo somente leitura que retorna o node (nó) do **primeiro elemento filho de uma árvore DOM** ou null no caso do elemento não ter filhos (children).
 
 Ex:
 
@@ -116,16 +112,14 @@ Ex:
 
   var $main = doc.querySelector('.main');
   console.log($main.firstChild);
-})(document);
-
-// #text
+})(document); // #text
 ```
 
 Como o nome diz retorna o primeiro filho do elemento .main. Vimos que é retornado um **#text**, devido ao espaços/quebras de linhas que contém no nosso documento. Porém se removemos esses espaçamentos é retornado o elemento **\<header class="main-header">** como primeiro filho de main.
 
 ## .lastChild
 
-É uma propriedade do tipo somente leitura (read-only) que retorna **o último elemento filho** (node) de uma estrutura DOM. Se seu parentNode for um Element, ele retornará um Element node, um text node, ou um comment node. Retornará null se o elemento de referência não tiver elementos filhos child.
+É uma propriedade do tipo somente leitura (read-only) que retorna **o último elemento filho** (node) de uma estrutura DOM. Se seu parentNode for **um Element, ele retornará um Element node, um text node, ou um comment node**. Retornará null se o elemento de referência não tiver elementos filhos child.
 
 Ex:
 
@@ -135,9 +129,7 @@ Ex:
 
   var $main = doc.querySelector('.main');
   console.log($main.lastChild);
-})(document);
-
-// #text
+})(document); // #text
 ```
 
 Assim como os demais se tivessimos removido os espaçamentos entre os elementos teriamos como o ultimo filho no caso **\<footer class="main-footer">**.
@@ -146,7 +138,7 @@ PS: Precisamos sempre contar os espaçamentos quando formos utilizar as propried
 
 ## .nextSibling
 
-Retorna o nó seguinte ao especificado dentro do lista de filhos do seu pai(childNodes), ou null se o nó especificado for o último nó da lista.
+Retorna o nó **seguinte ao especificado** dentro do lista de filhos do seu pai(childNodes), ou null se o nó especificado for o último nó da lista.
 
 Ex:
 
@@ -156,16 +148,14 @@ Ex:
 
   var $main = doc.querySelector('.main');
   console.log($main.nextSibling);
-})(document);
-
-//#text
+})(document); //#text
 ```
 
 É me retornado o irmão de main. Como temos espaçamentos e quebras de linha se removemos isso teremos a tag **\<script>** como irmão direto de main.
 
 ## .previousSibling
 
-Retorna o nó que precede o nó especificado na lista de childNodes do nó pai, retorna null se o nó especificado é o primeiro desta lista. Caso contrário retorna o anterior.
+Retorna o nó que **precede o nó especificado** na lista de childNodes do nó pai, retorna null se o nó especificado é o primeiro desta lista. Caso contrário **retorna o anterior**.
 
 Ex:
 
@@ -175,8 +165,7 @@ Ex:
 
   var $main = doc.querySelector('.main');
   console.log($main.previousSibling);
-})(document);
-// #text
+})(document); // #text
 ```
 
 É retornado um **#text** por conta dos espaçamentos e agora se removemos os espaçamentos é retornado **null**.
@@ -225,7 +214,7 @@ Ex:
 
 ## .nodeName
 
-A propriedade **.nodeName** mostra o nome do no atual.
+A propriedade **.nodeName** mostra o nome do nó atual.
 
 Ex:
 
@@ -243,7 +232,7 @@ Ex:
 
 ## .children ( Não padronizada )
 
-**.children** retorna uma coleção de elementos filho do elemento determinado.
+**.children** retorna uma **coleção de elementos filho** do elemento determinado.
 
 Ex:
 
@@ -259,11 +248,11 @@ Ex:
 })(document);
 ```
 
-PS: Similar ao _childNodes_ a propriedade _children_ retorna somente os nos que são elementos _html_ no caso uma **HTMLCollection** em quanto o _childNodes_ retorna uma **nodeList**.
+PS: Similar ao _childNodes_ a propriedade _children_ retorna somente os nó que são elementos _html_ no caso uma **HTMLCollection** em quanto o _childNodes_ retorna uma **nodeList**.
 
 ## .firstElementChild
 
-Assim como a propriedade _firstChild_ a propriedade _firstElementChild_ retorna o primeiro no que é um elemento **HTML**.
+Assim como a propriedade _firstChild_ a propriedade _firstElementChild_ retorna o primeiro nó que é um elemento **HTML**.
 
 Ex:
 
@@ -278,7 +267,7 @@ Ex:
 })(document);
 ```
 
-E neste exemplo a usando a propriedade _firstElementChild_ o Javascript pula os demais nos e trás somente o no correspondente ao um elemento **HTML**.
+E neste exemplo a usando a propriedade _firstElementChild_ o Javascript pula os demais nó atrás somente do nó correspondente ao elemento **HTML**.
 
 ## .lastElementChild
 
@@ -299,7 +288,7 @@ Ex:
 
 ## .nextElementSibling
 
-Basicamente assim como a propriedade _nextSibling_ ela devolve o irmão direto do no do elemento **HTML**.
+Basicamente assim como a propriedade _nextSibling_ ela devolve o irmão direto do nó do elemento **HTML**.
 
 Ex:
 
@@ -316,7 +305,7 @@ Ex:
 
 ## .previousElementSibling
 
-A propriedade _previousElementSibling_ retorna o elemento anterior do elemento especificado, no mesmo nível de árvore.
+A propriedade _previousElementSibling_ **retorna o elemento anterior do elemento especificado**, no mesmo nível de árvore.
 
 Ex:
 
@@ -333,9 +322,9 @@ Ex:
 
 A diferença entre essa propriedade e _previousSibling_, é aquele _previousSibling_ retorna o nó **irmão anterior como um nó de elemento, um nó de texto ou um nó de comentário**, enquanto _previousElementSibling_ retorna **o nó irmão anterior como um nó de elemento (ignora o texto e nós de comentário)**.
 
-## childElementCount
+## .childElementCount
 
-Basicamente a propriedade conta quantos elementos HTML estão presentes.
+Basicamente a propriedade **conta quantos elementos HTML estão presentes**.
 
 Ex:
 
@@ -363,7 +352,7 @@ Ex:
 })(document);
 ```
 
-O mesmo retorno mostrando quantos elementos contêm dentro de um no.
+O mesmo retorno mostrando quantos elementos contêm dentro de um nó.
 
 # Métodos ( Para a manipulação do DOM )
 
@@ -444,7 +433,7 @@ Com este exemplo adicionamos a _\$mainHeader_ antes do conteúdo contido dentro 
 
 ## .cloneNode(boolean)
 
-O método _cloneNode()_ cria uma cópia de um nó e retorna o clone.
+O método _cloneNode()_ **cria uma cópia de um nó** e retorna o clone.
 
 Ex:
 
@@ -463,9 +452,9 @@ Ex:
 })(document);
 ```
 
-O método _cloneNode()_ clones todos os atributos e seus valores.
+O método _cloneNode()_ clona todos os atributos e seus valores.
 
-PS: Se for passada **false** como parâmetro para o método _cloneNode_, no momento da clonagem do elemento o mesmo virá sem nenhuma propriedade. Utilizando o parâmetro **true**, isto já é o inverso. Pois irá acontecer a clonagem com cada propriedade e conteúdo do elemento.
+PS: Se for passado **false** como parâmetro para o método _cloneNode_, no momento da clonagem do elemento o mesmo virá sem nenhuma propriedade. Utilizando o parâmetro **true**, isto já é o inverso. Pois irá acontecer a clonagem com cada propriedade e conteúdo do elemento.
 
 ## .hasChildNodes()
 
@@ -483,7 +472,7 @@ Ex:
 })(document);
 ```
 
-Neste caso já que temos um no de texto que é o conteúdo contido dentro da variável _\$h1_, se esse conteúdo de texto não estivesse presente o mesmo iria retorna **false**.
+Neste caso já que temos um nó de texto que é o conteúdo contido dentro da variável _\$h1_, se esse conteúdo de texto não estivesse presente o mesmo iria retorna **false**.
 
 ## .removeChild(child)
 
@@ -501,7 +490,7 @@ Ex:
 })(document);
 ```
 
-Neste exemplo removemos o no filho de _\$mainHeader_, e quando nosso página é carregada o mesmo já não está dentro do DOM.
+Neste exemplo removemos o nó filho de _\$mainHeader_, e quando nosso página é carregada o mesmo já não está dentro do DOM.
 
 PS: Retorna o nó removido como um objeto de nó, ou null se o nó não existe.
 
@@ -588,7 +577,7 @@ Usando a propriedade _className_ podemos ter como retorno qualquer propriedade H
 
 Quando não passamos uma propriedade que não existe não é retornado nada, porém essas propriedade se comportam como **getters** e **setters**. Como no exemplo a cima não temos o id _'meu-id'_, criamos isso dinamicamente através de um setters.
 
-Porém tem outra forma que podemos pegar os nosso atributos.
+Porém temos outra forma que podemos pegar os nossos atributos.
 
 ## .getAttribute(attr)
 
