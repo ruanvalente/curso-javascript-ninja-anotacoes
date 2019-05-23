@@ -76,8 +76,8 @@ PS: Aqui você pode ver todo o conteúdo do curso disponível:
 - [x] Eventos para carregamento da tela / **revisado**
 - [x] Copiar arrays / **revisado**
 - [x] Pegar tipo correto de objetos / **revisado**
-- Ajax - método GET
-- try / catch
+- [x] Ajax - método GET / **revisado**
+- [x] try / catch / **revisado**
 - Tratamento de dados via entrada do usuário
 - Module Pattern
 - Closures
