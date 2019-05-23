@@ -318,6 +318,156 @@ A forma padrão de manipulação da resposta é usando _ajax.responseXML_
 
 Retorna os dados de resposta como dados XML.
 
+Ex:
+
+```js
+(function() {
+  'use strict';
+  var ajax = new XMLHttpRequest();
+  ajax.open('GET', 'data/data.xml');
+  ajax.send();
+
+  console.log('Carregando...');
+  ajax.addEventListener(
+    'readystatechange',
+    function() {
+      if (isRequestOk()) {
+        console.log('Requisição ok', ajax.responseXML);
+      }
+    },
+    false
+  );
+
+  function isRequestOk() {
+    return ajax.readyState === 4 && ajax.status === 200;
+  }
+})();
+```
+
+# Ajax parte 4, try catch.
+
+### Tratamento de erros.
+
+Por diversas vezes dentro da nossas aplicações lidamos com erros. E vamos imaginar o seguinte cenário.
+
+Estamos fazendo uma requisição para uma um arquivo _data.xml_, até ai nada de mais, porém se aplicarmos um método de parse nesses dados ? Estamos de alguma forma tentando transformar esses dados em objeto _JSON_ o que isso pode acarretar ?
+
+> Uncaught SyntaxError: Unexpected token <
+
+O erro é bem claro o _JSON.parse_ não conseguiu fazer o parse para _JSON_ dos dados xml.
+
+Dentro do Javascript temos como trabalhar com tratamento de erros usando _throw_.
+
+### throw
+
+A instrução _throw_ permite criar erros personalizados.
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+  var ajax = new XMLHttpRequest();
+  ajax.open('GET', 'data/data.xml');
+  ajax.send();
+
+  console.log('Carregando...');
+  ajax.addEventListener(
+    'readystatechange',
+    function() {
+      if (isRequestOk()) {
+        throw new Error('Messagem de erro');
+      }
+    },
+    false
+  );
+
+  function isRequestOk() {
+    return ajax.readyState === 4 && ajax.status === 200;
+  }
+})();
+```
+
+> Uncaught Error: Messagem de erro
+
+Dessa forma temos uma messagem de erro um pouco mais amigável e personalizável :smile:.
+
+E agora como podemos capturar esses erros ? Usando _try/catch_.
+
+### try/catch
+
+A instrução _try_ permite testar um bloco de código para erros.
+
+A instrução _catch_ permite manipular o erro.
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+  var ajax = new XMLHttpRequest();
+  ajax.open('GET', 'data/data.xml');
+  ajax.send();
+
+  console.log('Carregando...');
+  ajax.addEventListener(
+    'readystatechange',
+    function() {
+      if (isRequestOk()) {
+        try {
+          throw new Error('Messagem de erro');
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    },
+    false
+  );
+
+  function isRequestOk() {
+    return ajax.readyState === 4 && ajax.status === 200;
+  }
+})();
+```
+
+Neste exemplo a instrução _try/catch_ funciona basicamente da seguinte maneira. Quando o erro é disparado dentro da cláusula _try_ esse erro não será mostrado para o usuário. O erro em questão será passado para cláusula _catch_, com o erro que foi disparado no seu parâmetro e assim tendo como sua saida no console.
+
+Ou poderiamos fazer dessa forma:
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+  var ajax = new XMLHttpRequest();
+  ajax.open('GET', 'data/data.xml');
+  ajax.send();
+
+  console.log('Carregando...');
+  var response = '';
+  ajax.addEventListener(
+    'readystatechange',
+    function() {
+      if (isRequestOk()) {
+        try {
+          response = JSON.parse(ajax.responseText);
+        } catch (error) {
+          response = ajax.responseText;
+        }
+        console.log(response);
+      }
+    },
+    false
+  );
+
+  function isRequestOk() {
+    return ajax.readyState === 4 && ajax.status === 200;
+  }
+})();
+```
+
+Dessa forma se não conseguimos fazer o _parse_ é retornado o próprio xml como uma String no lugar do erro.
+
 ### Links
 
 - [Ajax - MDN](https://developer.mozilla.org/pt-BR/docs/Web/Guide/AJAX/Getting_Started)
@@ -333,3 +483,9 @@ Retorna os dados de resposta como dados XML.
 - [AJAX - The XMLHttpRequest Object](https://www.w3schools.com/js/js_ajax_http.asp)
 
 - [O que é o HTTP? Como funcionam requests e responses?.](http://gabsferreira.com/o-que-e-o-http-como-funciona-request-respose/)
+
+- [Error - MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Error)
+
+- [JSON vs XML](https://www.w3schools.com/js/js_json_xml.asp)
+
+- [JavaScript Errors - Throw and Try to Catch](https://www.w3schools.com/js/js_errors.asp)
