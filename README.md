@@ -70,12 +70,12 @@ PS: Aqui você pode ver todo o conteúdo do curso disponível:
 - [x] Eventos inline / **revisado**
 - [x] Remover eventos / **revisado**
 - [x] Eventos como métodos / **revisado**
-- DOM
-- documentFragments
-- Dicas de performance
-- Eventos para carregamento da tela
-- Copiar arrays
-- Pegar tipo correto de objetos
+- [x] DOM / **revisado**
+- [x] documentFragments / **revisado**
+- [x] Dicas de performance / **revisado**
+- [x] Eventos para carregamento da tela / **revisado**
+- [x] Copiar arrays / **revisado**
+- [x] Pegar tipo correto de objetos / **revisado**
 - Ajax - método GET
 - try / catch
 - Tratamento de dados via entrada do usuário
