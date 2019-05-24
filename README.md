@@ -78,7 +78,7 @@ PS: Aqui você pode ver todo o conteúdo do curso disponível:
 - [x] Pegar tipo correto de objetos / **revisado**
 - [x] Ajax - método GET / **revisado**
 - [x] try / catch / **revisado**
-- Tratamento de dados via entrada do usuário
+- [x] Tratamento de dados via entrada do usuário / **revisado**
 - Module Pattern
 - Closures
 - Exportar módulo para usar em outros módulos
