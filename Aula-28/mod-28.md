@@ -29,8 +29,6 @@ O protocolo HTTP define oito métodos **(GET, HEAD, POST, PUT, DELETE, TRACE, OP
 
 Uma solicitação HTTP, ou HTTP Request é uma maneira do navegador mostrar uma página da internet utilizando um dos oito métodos de solicitação do protocolo HTTP.
 
-Uma solicitação HTTP, ou HTTP Request é uma maneira do navegador mostrar uma página da internet utilizando um dos oito métodos de solicitação do protocolo HTTP.
-
 Além de solicitar um determinado arquivo, envia várias informação para o servidor, sendo elas: o seu IP, a versão do navegador que está usando, que página utilizou para pedir a HTTP Request e a idioma que você usa, entre outros.
 
 ### GET
