@@ -80,31 +80,31 @@
     return Array.prototype.some.apply(this.element, arguments);
   };
 
-  DOM.prototype.isArray = function isArray(obj) {
+  DOM.isArray = function isArray(obj) {
     return Object.prototype.toString.call(obj) === '[object Array]';
   };
 
-  DOM.prototype.isObject = function isObject(obj) {
+  DOM.isObject = function isObject(obj) {
     return Object.prototype.toString.call(obj) === '[object Object]';
   };
 
-  DOM.prototype.isFunction = function isFunction(obj) {
+  DOM.isFunction = function isFunction(obj) {
     return Object.prototype.toString.call(obj) === '[object Function]';
   };
 
-  DOM.prototype.isNumber = function isNumber(obj) {
+  DOM.isNumber = function isNumber(obj) {
     return Object.prototype.toString.call(obj) === '[object Number]';
   };
 
-  DOM.prototype.isString = function isString(obj) {
+  DOM.isString = function isString(obj) {
     return Object.prototype.toString.call(obj) === '[object String]';
   };
 
-  DOM.prototype.isBoolean = function isBoolean(obj) {
+  DOM.isBoolean = function isBoolean(obj) {
     return Object.prototype.toString.call(obj) === '[object Boolean]';
   };
 
-  DOM.prototype.isNull = function isNull(obj) {
+  DOM.isNull = function isNull(obj) {
     return (
       Object.prototype.toString.call(obj) === '[object Null]' ||
       Object.prototype.toString.call(obj) === '[object Undefined]'
@@ -198,4 +198,5 @@
   function replaceCEP(message) {
     return message.replace('[CEP]', clearCEP());
   }
+  console.log(DOM.isArray([]));
 })(document);
