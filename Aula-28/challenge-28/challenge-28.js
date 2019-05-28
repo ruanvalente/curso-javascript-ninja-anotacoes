@@ -198,5 +198,4 @@
   function replaceCEP(message) {
     return message.replace('[CEP]', clearCEP());
   }
-  console.log(DOM.isArray([]));
 })(document);
