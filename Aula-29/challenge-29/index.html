@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>JS Ninja - Cars</title>
+    <style>
+      body {
+        font-family: 'IBM Plex Mono';
+      }
+
+      .title-company {
+        text-align: center;
+      }
+
+      form,
+      table {
+        float: left;
+        width: 50%;
+      }
+
+      ul {
+        list-style: none;
+      }
+
+      li {
+        margin-bottom: 15px;
+      }
+
+      label {
+        display: block;
+      }
+
+      input {
+        padding: 10px;
+        border: 1px solid #333;
+        width: 320px;
+        border-radius: 10px;
+      }
+
+      button {
+        cursor: pointer;
+        font-size: 1em;
+        border-radius: 5px;
+        padding: 8px;
+        width: 180px;
+        color: #fff;
+        background-color: #6ee09f;
+        border: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h2 class="title-company">
+        <span data-js="company-name">JS-Ninja</span> -
+        <span data-js="company-phone">Cars</span>
+      </h2>
+    </header>
+
+    <form action="/">
+      <ul>
+        <li>
+          <label>Imagem do carro:</label>
+          <input type="url" />
+        </li>
+        <li>
+          <label>Marca / Modelo:</label>
+          <input type="text" />
+        </li>
+        <li>
+          <label>Ano:</label>
+          <input type="text" />
+        </li>
+        <li>
+          <label>Placa:</label>
+          <input type="text" />
+        </li>
+        <li>
+          <label>Cor:</label>
+          <input type="text" />
+        </li>
+        <li>
+          <button type="submit">Cadastrar</button>
+        </li>
+      </ul>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Imagem do Carro</th>
+          <th>Marca / Modelo</th>
+          <th>Ano</th>
+          <th>Placa</th>
+          <th>Cor</th>
+        </tr>
+      </thead>
+
+      <tbody></tbody>
+    </table>
+    <script src="dom.js"></script>
+    <script src="challenge-29.js"></script>
+  </body>
+</html>
