@@ -38,6 +38,11 @@
         width: 320px;
         border-radius: 10px;
       }
+      td,
+      th {
+        padding: 5px 15px;
+        border: 1px solid #ccc;
+      }
 
       button {
         cursor: pointer;
@@ -54,12 +59,12 @@
   <body>
     <header>
       <h2 class="title-company">
-        <span data-js="company-name">JS-Ninja</span> -
-        <span data-js="company-phone">Cars</span>
+        <span data-js="company-name"></span> -
+        <span data-js="company-phone"> </span>
       </h2>
     </header>
 
-    <form action="/">
+    <form action="/" data-js="form-register">
       <ul>
         <li>
           <label>Imagem do carro:</label>
