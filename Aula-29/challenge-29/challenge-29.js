@@ -1,4 +1,4 @@
-(function(DOM) {
+(function($) {
   'use strict';
   /*
   Vamos estruturar um pequeno app utilizando módulos.
@@ -34,10 +34,49 @@
   E aqui nesse arquivo, faça a lógica para cadastrar os carros, em um módulo
   que será nomeado de "app".
   */
-  function app() {
+  var app = (function(doc) {
     return {
       init: function init() {
         this.companyInfo();
+        this.initEvents();
+      },
+
+      initEvents: function initEvents() {
+        $('[data-js="form-register"]').on('submit', this.handleSubmitForm);
+      },
+
+      handleSubmitForm: function handleSubmitForm(event) {
+        event.preventDefault();
+        var $tableCar = $('[data-js="table-car"]').get();
+        $tableCar.appendChild(app.createNewCar());
+      },
+
+      createNewCar: function createNewCar() {
+        var $fragmet = doc.createDocumentFragment();
+        var $tr = doc.createElement('tr');
+        var $tdImage = doc.createElement('td');
+        var $image = doc.createElement('img');
+        var $tdBrand = doc.createElement('td');
+        var $tdYear = doc.createElement('td');
+        var $tdPlate = doc.createElement('td');
+        var $tdColor = doc.createElement('td');
+
+        $image.setAttribute('src', $('[data-js="image"]').get().value);
+        $tdImage.appendChild($image);
+
+        // $tdImage.textContent = $('[data-js="image"]').get().value;
+        $tdBrand.textContent = $('[data-js="brand-model"]').get().value;
+        $tdYear.textContent = $('[data-js="year"]').get().value;
+        $tdPlate.textContent = $('[data-js="plate"]').get().value;
+        $tdColor.textContent = $('[data-js="color"]').get().value;
+
+        $tr.appendChild($tdImage);
+        $tr.appendChild($tdBrand);
+        $tr.appendChild($tdYear);
+        $tr.appendChild($tdPlate);
+        $tr.appendChild($tdColor);
+
+        return $fragmet.appendChild($tr);
       },
 
       companyInfo: function companyInfo() {
@@ -48,23 +87,22 @@
       },
 
       getCompanyInfo: function getCompanyInfo() {
-        if (!app().isRequestOk.call(this)) {
+        if (!app.isRequestOk.call(this)) {
           return;
         }
 
         var data = JSON.parse(this.responseText);
-        var $companyPhone = new DOM('[data-js="company-phone"]');
-        var $companyName = new DOM('[data-js="company-name"]');
+        var $companyPhone = $('[data-js="company-phone"]').get();
+        var $companyName = $('[data-js="company-name"]').get();
 
-        $companyName.get()[0].textContent = data.name;
-        $companyPhone.get()[0].textContent = data.phone;
+        $companyName.textContent = data.name;
+        $companyPhone.textContent = data.phone;
       },
 
       isRequestOk: function isRequestOk() {
         return this.readyState === 4 && this.status === 200;
       }
     };
-  }
-
-  app().init();
-})(window.DOM);
+  })(document);
+  app.init();
+})(window.DOM, document);
