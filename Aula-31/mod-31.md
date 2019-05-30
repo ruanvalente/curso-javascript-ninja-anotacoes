@@ -224,3 +224,313 @@ Ex:
   $form.insertAdjacentHTML('afterend', $form.outerHTML);
 })();
 ```
+
+# O objeto Date
+
+O objeto _Date_ é usado para trabalhar com datas e horas.
+
+O objeto _Date_ são criados com a _new Date()_;
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+  var date = new Date();
+  console.log(date);
+  // Thu May 30 2019 11:39:18 GMT-0300 (Horário Padrão de Brasília)
+})();
+```
+
+A variável date agora é uma instância do objeto _Date_, que por fim temos o horário atual, segundos e milisegundos o dia, mês e ano no seu retorno.
+
+Podemos passar esses valores para o seu construtor.
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+  var year = 1995;
+  var month = 1;
+  var day = 15;
+  var hour = 10;
+  var min = 10;
+  var sec = 0;
+  var milliseconds = 0;
+  var date = new Date(year, month, day, hour, min, sec, milliseconds);
+  console.log(date);
+
+  // Wed Feb 15 1995 10:10:00 GMT-0300 (Horário Padrão de Brasília)
+})();
+```
+
+PS: O mês tem como base zero, e neste caso o mês 1 seria Fevereiro e não Janeiro.
+
+Com isso temos a data alterada conforme os argumentos passados para o contrutor.
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+  var months = [
+    'Janeiro',
+    'Fevereiro',
+    'Março',
+    'Abril',
+    'Maio',
+    'Junho',
+    'Julho',
+    'Agost',
+    'Setembro',
+    'Outubro',
+    'Novembro',
+    'Dezembro'
+  ];
+  var year = 1995;
+  var month = months.indexOf('Fevereiro');
+  var day = 15;
+  var hour = 10;
+  var min = 10;
+  var sec = 0;
+  var milliseconds = 0;
+  var date = new Date(year, month, day, hour, min, sec, milliseconds);
+  console.log(date);
+})();
+```
+
+Com base nos meses definidos a cima podemos pegar o o seu index usando o _indexOf_ retornando o index de acordo com o mês desejado.
+
+# O Objeto Date - Propriedade e métodos
+
+### Date.now()
+
+_Date.now()_ é um método estático que retorne o número de milisegundos desde _1970/01/01._
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+  console.log(Date.now()); //1559230108425
+})();
+```
+
+Alguns métodos básicos.
+
+### getDate():
+
+- Retorna o dia do mês (de 1 a 31)
+
+### getDay():
+
+- Retorna o dia da semana (de 0-6)
+
+### getFullYear():
+
+- Retorna o ano (2019)
+
+### getHours():
+
+- Retorna a hora (de 0-23)
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+  var date = new Date();
+  console.log(
+    date.getDate(),
+    date.getDay(),
+    date.getFullYear(),
+    date.getHours()
+  );
+  // 30 4 2019 12
+})();
+```
+
+# Conhecendo o Objeto Math.
+
+O objeto _Math_ permite que você execute tarefas matemáticas.
+
+O objeto _Math_ não é um construtor. Todas as propriedades/métodos de _Math_ pode ser chamados usando o _Math_ como um objeto.
+
+### Math.PI
+
+Retorna o valor de PI.
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+  console.log(Math.PI);
+  // 3.141592653589793;
+})();
+```
+
+### Math.abs(x)
+
+Retorna o valor absoluto de x.
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+  console.log(Math.abs(-10));
+  // 10
+})();
+```
+
+### Math.ceil(x)
+
+Retorna x, arredondado para cima até o inteiro mais próximo.
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+  console.log(Math.ceil(1.1));
+  // 2
+})();
+```
+
+### Math.floor(x)
+
+Retorna x, arredondado para baixo até o inteiro mais próximo.
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+  console.log(Math.floor(1.1));
+  // 1
+})();
+```
+
+### Math.round()
+
+Faz o aredondamento de x para o inteiro mais próximo.
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+  console.log(Math.round(11.2));
+  // 11
+})();
+```
+
+### Math.sqrt(x)
+
+Retorna a raiz quadrada de x.
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+  console.log(Math.sqrt(25));
+  // 5
+})();
+```
+
+### Math.cbrt(x)
+
+Retorna a raiz cúbica de x.
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+  console.log(Math.cbrt(25));
+  // 2.924017738212866
+})();
+```
+
+### Math.max([x1, x2, x3])
+
+Retorna o número com o valor mais alto.
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+  console.log(Math.max(25, 2, 89, 2));
+  // 89
+})();
+```
+
+### Math.min([x1, x2, x3])
+
+Retorna o número com o valor mais baixo.
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+  console.log(Math.min(25, 2, 89, 2));
+  // 2
+})();
+```
+
+PS Podemos fazer de uma forma inda mais simples.
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+  var numbers = [2, 89, 29, -10, 2];
+  console.log(Math.max.apply(Math, numbers)); // 89
+  console.log(Math.min.apply(Math, numbers)); // -10
+})();
+```
+
+### Math.random()
+
+Retorna um número aleatório entre 0 e 1.
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+  console.log(Math.random());
+  // 0.7413825105109522
+})();
+```
+
+Ainda podemos fazer com arredondamento para cima usando o _Math.ceil_
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+  console.log(Math.ceil(Math.random() * 10)); // 1
+})();
+```
+
+Assim temos números aleatórios de 1 até 10.
+
+### Links:
+
+- [HTML DOM insertAdjacentHTML() Method](https://www.w3schools.com/jsref/met_node_insertadjacenthtml.asp)
+
+- [HTML DOM innerHTML Property](https://www.w3schools.com/jsref/prop_html_innerhtml.asp)
+
+- [Data Object](https://www.w3schools.com/jsref/jsref_obj_date.asp)
+
+- [Date.now()](https://www.w3schools.com/jsref/jsref_now.asp)
+
+- [Math Object](https://www.w3schools.com/jsref/jsref_obj_math.asp)
