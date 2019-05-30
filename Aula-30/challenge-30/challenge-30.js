@@ -29,4 +29,6 @@ nesse arquivo, dentro do `console.log`, o link para o pull request no seu
 projeto.
 */
 
-console.log('Link do pull request do seu projeto');
+console.log(
+  'https://github.com/ruanvalente/final-challenge-javascript-ninja/commit/3e8d2d7388d2898b9a4f857abb4b08be5e95f4cd'
+);
