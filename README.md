@@ -79,14 +79,14 @@ PS: Aqui você pode ver todo o conteúdo do curso disponível:
 - [x] Ajax - método GET / **revisado**
 - [x] try / catch / **revisado**
 - [x] Tratamento de dados via entrada do usuário / **revisado**
-- Module Pattern
-- Closures
-- Exportar módulo para usar em outros módulos
-- instanceof
-- element.classList
-- innerHTML, outerHTML e insertAdjacentHTML
-- Objeto Date
-- Objeto Math
+- [x] Module Pattern / **revisado**
+- [x] Closures / **revisado**
+- [x] Exportar módulo para usar em outros módulos / **revisado**
+- [x] instanceof / **revisado**
+- [x] element.classList / **revisado**
+- [x] innerHTML, outerHTML e insertAdjacentHTML / **revisado**
+- [x] Objeto Date / **revisado**
+- [x] Objeto Math / **revisado**
 - Ajax - outros verbos
 - Backend para mostrar como ele recebe os dados do client
 - Enviar dados via Ajax
