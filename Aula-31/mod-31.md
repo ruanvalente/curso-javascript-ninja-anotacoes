@@ -137,7 +137,90 @@ O método insertAdjacentHTML() insere um texto como HTML, para uma posição esp
 
 Valores de posição jurídica são:
 
-- "afterbegin"
-- "afterend"
-- "beforebegin"
-- "beforeend"
+- "afterbegin":
+  - Após o início do elemento (como o primeiro filho)
+- "afterend":
+  - Após o elemento.
+- "beforebegin":
+  - Antes do elemento.
+- "beforeend":
+  - Antes do final do elemento (como o último filho).
+
+Ex:
+
+```html
+<!-- beforebegin -->
+<p>
+  <!-- afterbegin -->
+
+  foo
+
+  <!-- beforeend -->
+</p>
+
+<!-- afterend -->
+```
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+  var $form = document.querySelector('[data-js="form"]');
+  $form.insertAdjacentHTML('beforebegin', '<h1>Meu formulário</h1>');
+})();
+```
+
+Neste exemplo adicionamos o nosso elmento antes da tag _form_ a qual selecionamos dentro do nosso Javascript e passamos uma nova tag, a tag _h1_ com o um conteúdo.
+
+E se quisermos adicionar a nossa tag dentro da tag de formulário usamos _afterbegin_
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+  var $form = document.querySelector('[data-js="form"]');
+  $form.insertAdjacentHTML('afterbegin', '<h1>Meu formulário</h1>');
+})();
+```
+
+E quando precisamos adicionar ao final da nossa tag usamos _beforeend_
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+  var $form = document.querySelector('[data-js="form"]');
+  $form.insertAdjacentHTML('beforeend', '<h1>Meu formulário</h1>');
+})();
+```
+
+E quando precisamos adicionar ao final usamos o _afterend_.
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+  var $form = document.querySelector('[data-js="form"]');
+  $form.insertAdjacentHTML('afterend', '<h1>Meu formulário</h1>');
+})();
+```
+
+A vantagem de se usar o _insertAdjacentHTML_ é dizer onde vamos setar os elementos dentro do nosso documento.
+
+PS: O método _insertAdjacentHTML_ aceita apenas textos no formato de String e envolvidas por uma tag HTML. Sem isso o mesmo irá converter para String o elemento passado. Assim não retornando uma tag HTML.
+
+Porém podemos usar a propriedade _outerHTML_ que é representação em String do nosso elemento.
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+  var $form = document.querySelector('[data-js="form"]');
+  $form.insertAdjacentHTML('afterend', $form.outerHTML);
+})();
+```
