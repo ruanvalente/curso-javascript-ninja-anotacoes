@@ -309,3 +309,240 @@ Já falamos bastante sobre Ajax mas vamos ver alguns outros métodos e parâmetr
 ```
 ajax.send(<GET>, <url>, <async>)
 ```
+
+Podemos usar o Ajax de forma síncrona, dentro do método _send_ no terceiro parâmetro definimos como **false** isso quer dizer que a nossa requisição será feita de forma síncrona.
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+
+  var ajax = new XMLHttpRequest();
+  ajax.open('GET', 'http://localhost:3000/users/ruan', false);
+  ajax.send();
+  console.log(ajax.responseText);
+})();
+```
+
+Dessa forma já pegamos a resposta diretamente sem o uso de algum listener de evento, porém isso pode prejudicar a experiência do usuário.
+
+### ajax.abort()
+
+Cancela a solicitação atual.
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+
+  var ajax = new XMLHttpRequest();
+  ajax.open('GET', 'http://localhost:3000/users/ruan', true);
+  ajax.send();
+  ajax.addEventListener(
+    'readystatechange',
+    function(e) {
+      if (ajax.readyState === 2) {
+        console.log('Headers OK!', ajax.status);
+        ajax.abort();
+      }
+    },
+    false
+  );
+})();
+```
+
+Neste exemplo dizemos para que quando os Headers da requisição estiverem OK dizemos que não queremos mais nada e abortamos a requisição através do método _ajax.abort()_
+
+Dependendo da requisição a resposta pode ser gigante e usando o método _ajax.abort_ pode pegar apenas o que queremos e abortar a requisição quando esses dados já estiverem prontos.
+
+### POST
+
+Da mesma forma que usamos o verbo _GET_ dentro da abertura da requisição faremos o mesmo para o verbo _POST_ da seguinte maneira.
+
+Ex:
+
+```js
+ajax.open('POST', url);
+```
+
+### ajax.setRequestHeader(<key>, <value>)
+
+O método _ajax.setRequestHeader_ adiciona um rótulo/valor par ao cabeçalho para ser enviado.
+
+Ex:
+
+```js
+ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+```
+
+Basicamente quando precisamos mandar um _POST_ para o servidor precisamos dizer no _header_ o tipo do conteúdo que estamos mandando.
+
+Feito isso iremos fazer um _send_ passando a nossa _chave_ e o _valor_ no formato de **query string**.
+
+Ex:
+
+```js
+ajax.send('key1=value1&key2=value2');
+```
+
+# Ajax - POST parte 2.
+
+Vamos continuar e agora vamos fazer um _POST_ para um nosso servidor.
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+
+  var ajax = new XMLHttpRequest();
+  ajax.open('POST', 'http://localhost:3000/users');
+  ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  ajax.send('username=roberto&lastName=silva&age=23');
+
+  ajax.onreadystatechange = function(e) {
+    if (ajax.readyState === 4) {
+      console.log('Usuário criado', ajax.responseText);
+    }
+  };
+})();
+```
+
+Como vimos nas aulas anteriores estamos enviando um _POST_ para o nosso servidor e estamos dizendo o tipo do nosso conteúdo usando o método _ajax.setRequestHeader_ e logo abaixo enviamos o nosso conteúdo através do método _ajax.send_.
+
+Agora dentro do backend precisamos pegar essas informações convertidas em objetos. Essa resposta vem no _body_ da requisição e para podemos converter essa resposta em objeto usamos o módulo _body-parser_.
+
+```
+npm install --save body-parser
+```
+
+Após a sua instalação podemos importar dentro do nosso projeto.
+
+Ex:
+
+```js
+'use strict';
+
+var express = require('express');
+var bodyParser = require('body-parser');
+var cors = require('cors');
+var app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors());
+
+var users = {
+  ruan: {
+    username: 'Ruan',
+    lastName: 'Valente',
+    age: 24
+  },
+
+  lorena: {
+    username: 'Lorena',
+    lastName: 'Torres',
+    age: 26
+  },
+
+  victoria: {
+    username: 'Victoria',
+    lastName: 'Borralho',
+    age: 14
+  },
+
+  carlos: {
+    username: 'Carlos',
+    lastName: 'Borralho',
+    age: 53
+  }
+};
+
+app.get('/', function(req, res) {
+  res.send('<h1>Hello World</h1>');
+});
+
+app.get('/users/:username', function(req, res) {
+  var username = req.params.username;
+  if (users[username]) {
+    return res.json(users[username]);
+  }
+  res.status(404).json({ erro: 'User not found' });
+});
+
+app.post('/users', function(req, res) {
+  var username = req.body.username;
+  var lastName = req.body.lastName;
+  var age = req.body.age;
+  res.json({ username: username, lastName: lastName, age: age });
+});
+
+app.listen(3000, function() {
+  console.log('Server listen 3000');
+});
+```
+
+Com isso retornamos um JSON com os dados e dizendo que o usuário foi criado com sucesso.
+
+Podemos melhor um pouco o nosso verbo _GET_
+
+Ex:
+
+```js
+'use strict';
+
+var express = require('express');
+var bodyParser = require('body-parser');
+var cors = require('cors');
+var app = express();
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cors());
+
+var users = [{ username: 'ruan', name: 'ruan', age: 23 }];
+
+app.get('/', function(req, res) {
+  res.send('<h1>Hello World</h1>');
+});
+
+app.get('/users/:username', function(req, res) {
+  var username = req.params.username;
+  var hasUserName = users.some(function(user) {
+    return user.username === username;
+  });
+  if (hasUserName) {
+    return res.json(
+      users.filter(function(user) {
+        return user.username === username;
+      })
+    );
+  }
+  res.status(404).json({ erro: 'User not found' });
+});
+
+app.post('/users', function(req, res) {
+  var username = req.body.username;
+  var lastName = req.body.lastName;
+  var age = req.body.age;
+  res.json({ username: username, lastName: lastName, age: age });
+});
+
+app.listen(3000, function() {
+  console.log('Server listen 3000');
+});
+```
+
+:smile: Assim procuramos por cada usuário usando a função some e se esse usuário existir usando o método filter retornamos a reposta para o cliente.
+
+### Links:
+
+- [Ajax - primeiros passos](https://developer.mozilla.org/pt-BR/docs/Web/Guide/AJAX/Getting_Started)
+
+- [readystatechange](https://developer.mozilla.org/pt-BR/docs/Web/Events/readystatechange)
+
+- [Cross-Origin Resource Sharing (CORS)](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Controle_Acesso_CORS)
+
+- [AJAX - The XMLHttpRequest Object](https://www.w3schools.com/js/js_ajax_http.asp)
+
+- [Content-Type](https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Headers/Content-Type)
