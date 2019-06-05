@@ -535,6 +535,88 @@ app.listen(3000, function() {
 
 :smile: Assim procuramos por cada usuário usando a função some e se esse usuário existir usando o método filter retornamos a reposta para o cliente.
 
+# Ajax - POST parte 3.
+
+Agora nesta útima etapa, vamos melhorar um pouco mais as coisas. Baseado no Array de objetos (usuários) que temos dentro da nossa aplicação vamos adicionar dinamicamente esse usuários atráves do verbo _POST_.
+
+**Front**
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+
+  // POST - Para enviar os dados.
+
+  var ajax = new XMLHttpRequest();
+  ajax.open('POST', 'http://localhost/user');
+  ajax.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  ajax.send('username=joao&name=João&age=23');
+
+  console.log('Criando usuário');
+
+  ajax.addEventListener(
+    'readystatechange',
+    function(e) {
+      if (ajax.readyState === 4 && ajax.status === 2000) {
+        console.log(ajax.responseText);
+      }
+    },
+    false
+  );
+})();
+
+/// GET - Para pegar os dados.
+
+(function() {
+  'use strict';
+
+  var get = XMLHttpRequest();
+  get.open('GET', 'http://localhost/user/joao');
+  get.send();
+  get.addEventListener(
+    'readystatechange',
+    function(e) {
+      if (get.readyState === 4 && get.status === 200) {
+        console.log(get.responseText, get.status);
+      }
+    },
+    false
+  );
+})();
+```
+
+Com base nisso enviamos ao backend os dados do usuário que desejamos criar. E dentro do backend vamos adicionar esse usuário dentro do nosso Array de (users).
+
+**Back**
+
+Ex:
+
+```js
+app.post('/user', function(req, res) {
+  var username = req.body.username;
+  var name = req.body.name;
+  var age = req.body.age;
+  var hasUserName = users.some(function(user) {
+    return user.username === username;
+  });
+
+  if (!hasUserName) {
+    users.push({
+      username: username,
+      name: name,
+      age: age
+    });
+  }
+  res.json({ users });
+});
+```
+
+Como vimos pegamos os dados vindos do cliente através do _req.body_, criamos uma função _hasUserName_ que irá retornar **true** se o username passado estiver contido dentro objeto users. E por fim fazemos uma pequena verificação se o _hasUserName_ não existir dentro do nosso Array de objetos o mesmo será adicionado e por fim será retornado um _JSON_ com todos os users criados. :smile:
+
+PS: Usamos a função _hasUserName_ para impedir que o mesmo usuário seja cadastrado novamente dentro do nosso objeto.
+
 ### Links:
 
 - [Ajax - primeiros passos](https://developer.mozilla.org/pt-BR/docs/Web/Guide/AJAX/Getting_Started)
