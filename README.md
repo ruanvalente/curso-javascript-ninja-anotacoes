@@ -87,11 +87,11 @@ PS: Aqui você pode ver todo o conteúdo do curso disponível:
 - [x] innerHTML, outerHTML e insertAdjacentHTML / **revisado**
 - [x] Objeto Date / **revisado**
 - [x] Objeto Math / **revisado**
-- Ajax - outros verbos
-- Backend para mostrar como ele recebe os dados do client
-- Enviar dados via Ajax
-- Enviar cabeçalhos via Ajax
-- Abortar requisição Ajax
+- [x] Ajax - outros verbos / **revisado**
+- [x] Backend para mostrar como ele recebe os dados do client / **revisado**
+- [x] Enviar dados via Ajax / **revisado**
+- [x] Enviar cabeçalhos via Ajax / **revisado**
+- [x] Abortar requisição Ajax / **revisado**
 - Testes (TDD, BDD)
 - Ferramentas para escrever testes
 - Aula bônus
