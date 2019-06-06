@@ -92,6 +92,6 @@ PS: Aqui você pode ver todo o conteúdo do curso disponível:
 - [x] Enviar dados via Ajax / **revisado**
 - [x] Enviar cabeçalhos via Ajax / **revisado**
 - [x] Abortar requisição Ajax / **revisado**
-- Testes (TDD, BDD)
-- Ferramentas para escrever testes
+- [x] Testes (TDD, BDD) / **revisado**
+- [x] Ferramentas para escrever testes / **revisado**
 - Aula bônus
