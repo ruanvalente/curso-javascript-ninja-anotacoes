@@ -498,3 +498,285 @@ Agora é mostrado que a String a e b passadas por parâmetro foram concatenadas,
 Agora vamos fazer com que o nosso teste venha passar.
 
 # Escrevendo mais testes.
+
+Continuando vamos fazer com que o nosso teste passe.
+
+Ex:
+
+```js
+'use strict';
+
+function sum(number1, number2) {
+  if (!number1 || !number2) {
+    return new Error('Passe dois números por parâmetro');
+  }
+
+  if (typeof number1 !== 'number' || typeof number2 !== 'number') {
+    return new Error('Os parâmetros devem ser números');
+  }
+
+  return number1 + number2;
+}
+
+module.exports = sum;
+```
+
+```
+# SUM
+    ✓ Should SUM module to be a function
+    ✓ Should SUM return 10 when I pass 1 and 9
+    ✓ Should SUM return 5 when I pass 2 and 3
+    ✓ Should SUM return an error if it receive just onde parameter
+    ✓ Should SUM return an error if the parameter has not number
+
+
+  5 passing (8ms)
+```
+
+Com isso temos o nossos 5 teste passando, agora temos como melhorar isso ? Sim !
+
+Ex:
+
+```js
+'use strict';
+
+function sum(number1, number2) {
+  if (isEmpty(number1) || isEmpty(number2)) {
+    return new Error('Passe dois números por parâmetro');
+  }
+
+  if (!isNumber(number1) || !isNumber(number2)) {
+    return new Error('Os parâmetros devem ser números');
+  }
+
+  function isEmpty(arg) {
+    return !arg;
+  }
+
+  function isNumber(arg) {
+    return Object.prototype.toString.call(arg) === '[object Number]';
+  }
+
+  return number1 + number2;
+}
+
+module.exports = sum;
+```
+
+```
+  # SUM
+    ✓ Should SUM module to be a function
+    ✓ Should SUM return 10 when I pass 1 and 9
+    ✓ Should SUM return 5 when I pass 2 and 3
+    ✓ Should SUM return an error if it receive just onde parameter
+    ✓ Should SUM return an error if the parameter has not number
+
+
+  5 passing (9ms)
+```
+
+Criamos duas funções _isEmpty_ e _isNumber_ onde _isEmpty_ verifica se o parâmetro é passado se não é retornado um erro enquanto _isNumber_ verifica se o parâmetro passado é um número, caso não for um número é retornado um erro.
+
+Uma das premissa do TDD/BDD é que as implementações feitas **não podem quebra** os testes anteriores. Dessa forma o teste deve funcionar perfeitamente.
+
+# TDD Style
+
+### Formato TDD
+
+Basicamente o TDD se baseia em pequenos ciclos de repetições, onde para cada funcionalidade do sistema um teste é criado antes. Este novo teste criado inicialmente falha, já que ainda não temos a implementação da funcionalidade em questão e, em seguida, implementamos a funcionalidade para fazer o teste passar! Simples assim!
+
+Ex:
+
+```js
+'use strict';
+
+var sum = require('../src/sum');
+var expect = require('chai').expect;
+
+describe('# SUM', function() {
+  it('Should SUM module to be a function', function() {
+    expect(sum).to.be.a('function');
+  });
+
+  it('Should SUM return 10 when I pass 1 and 9', function() {
+    expect(sum(1, 9)).to.be.equal(10);
+  });
+
+  it('Should SUM return 5 when I pass 2 and 3', function() {
+    expect(sum(2, 3)).to.be.equal(5);
+  });
+
+  it('Should SUM return an error if it receive just onde parameter', function() {
+    expect(sum(1)).to.be.an('error');
+  });
+
+  it('Should SUM return an error if the parameter has not number', function() {
+    expect(sum('a', 'b')).to.be.an('error');
+  });
+
+  // Use assert module Node
+
+  it('Assert', function() {
+    var assert = require('assert');
+    assert.equal(sum(20, 30), 50, 'Message');
+  });
+});
+```
+
+```
+  # SUM
+    ✓ Should SUM module to be a function
+    ✓ Should SUM return 10 when I pass 1 and 9
+    ✓ Should SUM return 5 when I pass 2 and 3
+    ✓ Should SUM return an error if it receive just onde parameter
+    ✓ Should SUM return an error if the parameter has not number
+    ✓ Assert
+
+
+  6 passing (10ms)
+```
+
+Neste formato _TDD_ fazemos o _require('assert')_ que é um módulo padrão do Node. Depois usamos o método _equal_ onde, passamos o nosso módulo no caso a função _sum_ com os valores que queremos, seu valor de retorno e a sua messagem.
+
+Neste formato é similar ao BDD que facilita a leitura dos nossos testes.
+
+Uma coisa interessante é que o _assert.equal_, **não faz a verificação pelo tipo da variável**. A sua verificação é similar ao **==**, porém para isso temos o **assert.strictEqual**, que verifica também pelo **tipo da variável**.
+
+Ex:
+
+```js
+'use strict';
+
+var sum = require('../src/sum');
+var expect = require('chai').expect;
+
+describe('# SUM', function() {
+  it('Should SUM module to be a function', function() {
+    expect(sum).to.be.a('function');
+  });
+
+  it('Should SUM return 10 when I pass 1 and 9', function() {
+    expect(sum(1, 9)).to.be.equal(10);
+  });
+
+  it('Should SUM return 5 when I pass 2 and 3', function() {
+    expect(sum(2, 3)).to.be.equal(5);
+  });
+
+  it('Should SUM return an error if it receive just onde parameter', function() {
+    expect(sum(1)).to.be.an('error');
+  });
+
+  it('Should SUM return an error if the parameter has not number', function() {
+    expect(sum('a', 'b')).to.be.an('error');
+  });
+
+  it('Assert', function() {
+    var assert = require('assert');
+    assert.equal(sum(20, 30), '50', 'Message');
+  });
+});
+```
+
+```
+  # SUM
+    ✓ Should SUM module to be a function
+    ✓ Should SUM return 10 when I pass 1 and 9
+    ✓ Should SUM return 5 when I pass 2 and 3
+    ✓ Should SUM return an error if it receive just onde parameter
+    ✓ Should SUM return an error if the parameter has not number
+    ✓ Assert
+
+
+  6 passing (9ms)
+```
+
+Nosso exemplo continua funcionando, porém estamos dizendo que o seu valor de retorno deve ser uma String, porém como foi dito a cima o _assert.equal_ **não faz a verificação pelo tipo da variável**. E aconteceu a conversão automática dos tipos.
+
+Agora usando o _assert.strictEqual_ acontece o contrário.
+
+Ex:
+
+```js
+'use strict';
+
+var sum = require('../src/sum');
+var expect = require('chai').expect;
+
+describe('# SUM', function() {
+  it('Should SUM module to be a function', function() {
+    expect(sum).to.be.a('function');
+  });
+
+  it('Should SUM return 10 when I pass 1 and 9', function() {
+    expect(sum(1, 9)).to.be.equal(10);
+  });
+
+  it('Should SUM return 5 when I pass 2 and 3', function() {
+    expect(sum(2, 3)).to.be.equal(5);
+  });
+
+  it('Should SUM return an error if it receive just onde parameter', function() {
+    expect(sum(1)).to.be.an('error');
+  });
+
+  it('Should SUM return an error if the parameter has not number', function() {
+    expect(sum('a', 'b')).to.be.an('error');
+  });
+
+  it('Assert', function() {
+    var assert = require('assert');
+    assert.strictEqual(sum(20, 30), '50', 'Message');
+  });
+});
+```
+
+```
+  # SUM
+    ✓ Should SUM module to be a function
+    ✓ Should SUM return 10 when I pass 1 and 9
+    ✓ Should SUM return 5 when I pass 2 and 3
+    ✓ Should SUM return an error if it receive just onde parameter
+    ✓ Should SUM return an error if the parameter has not number
+    1) Assert
+
+
+  5 passing (9ms)
+  1 failing
+
+  1) # SUM
+       Assert:
+     AssertionError [ERR_ASSERTION]: Message
+      at Context.<anonymous> (test/sum.test.js:29:12)
+```
+
+Dessa forma mostrando o erro e a linha onde aconteceu o erro, e percebemos que o tipo que estamos tentando fazer a soma de dois números e ter como resultado uma String. Dessa forma a conversão automática não acontece.
+
+## Code coverage
+
+**Cobertura de teste** é uma medida usada para descrever o grau em que o código-fonte de um programa é executado quando um determinado conjunto de testes é executado.
+
+## Istanbul
+
+Para fazer essa cobertura de teste vamos usar o módulo _istanbul_ que irá mostrar a quantidade de código que está coberto por teste.
+
+```
+npm install istanbul -g
+```
+
+Rodando o módulo podemos ter a cobertura completa do nosso código e os demais detalhes.
+
+## Links:
+
+- [Test-Driven Development - Caelum](https://tdd.caelum.com.br/)
+- [BDD – Foco no comportamento do sistema - Matera](http://www.matera.com/blog/post/bdd-validando-o-comportamento-sistema)
+- [Pensando TDD com Javascript - Da2k](https://blog.da2k.com.br/2015/01/06/pensando-tdd-com-javascript/)
+- [BDD para iniciantes com Node.JS, Mocha e Chai - Medium](https://medium.com/@hbarcelos/bdd-para-iniciantes-com-node-js-mocha-and-chai-649d13f9564)
+- [TDD com Javascript - Marcelo Bohn](https://www.youtube.com/watch?v=H3_UtPZSw94)
+
+### Documentações das ferramentas.
+
+- [Assert - NodeJS](https://nodejs.org/dist/latest-v10.x/docs/api/assert.html)
+- [Mocha](https://mochajs.org/)
+- [Chai](https://www.chaijs.com/api/bdd/)
+- [Istanbul](https://istanbul.js.org/)
