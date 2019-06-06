@@ -191,3 +191,310 @@ E o nosso teste **precisa continuar passando** mesmo com as pequenas alteraçõe
 Com isso voltamos ao ciclo, só que agora faremos novas funcionalidades para a nossa calculadora.
 
 # Entendendo o escopo Red, Green e Blue.
+
+Seguindo a premissa do TDD/BDD entendemos que:
+
+### Red:
+
+Escrevemos um teste que falhe.
+
+### Green
+
+Escrevemos um teste que passe, com minimo de código possível.
+
+### Blue:
+
+Seria a refatoração, onde refatoramos o nosso código com alguma melhoria.
+
+Voltando ao ciclo, vamos agora fazer um teste que falhe.
+
+Ex:
+
+```js
+'use strict';
+
+var sum = require('../src/sum');
+var expect = require('chai').expect;
+
+describe('# SUM', function() {
+  it('Should SUM module to be a function', function() {
+    expect(sum).to.be.a('function');
+  });
+
+  it('Should SUM return 10 when I pass 1 and 9', function() {
+    expect(sum(1, 9)).to.be.equal(10);
+  });
+});
+```
+
+Fazemos mais um teste, onde dizemos que estamos esperando que sum, recebendo dois valores, no caso do exemplo 1 e 9 e esperamos que o seu retorno seja igual a 10.
+
+Rodamos o teste e o nosso teste falha.
+
+```
+  # SUM
+    ✓ Should SUM module to be a function
+    1) Should SUM return 10 when I pass 1 and 9
+
+
+  1 passing (9ms)
+  1 failing
+
+  1) # SUM
+       Should SUM return 10 when I pass 1 and 9:
+     AssertionError: expected undefined to equal 10
+      at Context.<anonymous> (test/sum.test.js:12:29)
+```
+
+Onde o erro diz que era esperado que _undefined_ fosse igual a 10. O retorno é _undefined_ pois a nossa função não está retornando nada. Então vamos fazer com que o nosso teste passe da forma mais simples possível usando o conceito de **baby steps**.
+
+### Baby steps.
+
+Basicamente baby steps é um termo utilizado em XP que em excência significa realizar **pequenas mudanças**, ter então a certeza de que ela esteja madura e segura ao máximo e só então realizar a próxima.
+
+Sabendo disso, vamos começar a implementar a o minimo de código possível para que o teste passe.
+
+Ex:
+
+```js
+'use strict';
+
+function sum() {
+  return 10;
+}
+
+module.exports = sum;
+```
+
+Agora o nosso teste está passando !
+
+```
+  # SUM
+    ✓ Should SUM module to be a function
+    ✓ Should SUM return 10 when I pass 1 and 9
+
+
+  2 passing (8ms)
+```
+
+Mas se você for perceber não estamos somando nada, estamos apenas retornando o valor 10. Mas isso é o fim ? Podemos melhorar isso é claro. Mas para isso vamos fazer mais um teste.
+
+Ex:
+
+```js
+'use strict';
+
+var sum = require('../src/sum');
+var expect = require('chai').expect;
+
+describe('# SUM', function() {
+  it('Should SUM module to be a function', function() {
+    expect(sum).to.be.a('function');
+  });
+
+  it('Should SUM return 10 when I pass 1 and 9', function() {
+    expect(sum(1, 9)).to.be.equal(10);
+  });
+
+  it('Should SUM return 5 when I pass 2 and 3', function() {
+    expect(sum(2, 3)).to.be.equal(5);
+  });
+});
+```
+
+Com isso temos o seguinte resultado:
+
+```
+  # SUM
+    ✓ Should SUM module to be a function
+    ✓ Should SUM return 10 when I pass 1 and 9
+    1) Should SUM return 5 when I pass 2 and 3
+
+
+  2 passing (10ms)
+  1 failing
+
+  1) # SUM
+       Should SUM return 5 when I pass 2 and 3:
+
+      AssertionError: expected 10 to equal 5
+      + expected - actual
+
+      -10
+      +5
+
+      at Context.<anonymous> (test/sum.test.js:16:29)
+```
+
+O erro mostra que no teste que fizemos estamos dizendo que estamos esperando que o resultado seja 5, porém o seu valor atual é 10.
+
+Podemos melhorar isso de forma simples.
+
+Ex:
+
+```js
+'use strict';
+
+function sum(number1, number2) {
+  return number1 + number2;
+}
+
+module.exports = sum;
+```
+
+```
+  # SUM
+    ✓ Should SUM module to be a function
+    ✓ Should SUM return 10 when I pass 1 and 9
+    ✓ Should SUM return 5 when I pass 2 and 3
+
+
+  3 passing (8ms)
+```
+
+Com isso temos o nosso teste passando e dentro da função sum, passamos duas variáveis por parâmetro que irão realizar o processo de soma.
+
+Agora vamos fazer mais um teste onde vamos verificar se somente um parâmetro for passado irá ser retornado um **erro**.
+
+Ex:
+
+```js
+'use strict';
+
+var sum = require('../src/sum');
+var expect = require('chai').expect;
+
+describe('# SUM', function() {
+  it('Should SUM module to be a function', function() {
+    expect(sum).to.be.a('function');
+  });
+
+  it('Should SUM return 10 when I pass 1 and 9', function() {
+    expect(sum(1, 9)).to.be.equal(10);
+  });
+
+  it('Should SUM return 5 when I pass 2 and 3', function() {
+    expect(sum(2, 3)).to.be.equal(5);
+  });
+
+  it('Should SUM return an error if it receive just onde parameter', function() {
+    expect(sum(1)).to.be.an('error');
+  });
+});
+```
+
+```
+# SUM
+    ✓ Should SUM module to be a function
+    ✓ Should SUM return 10 when I pass 1 and 9
+    ✓ Should SUM return 5 when I pass 2 and 3
+    1) Should SUM return an error if it receive just onde parameter
+
+
+  3 passing (9ms)
+  1 failing
+
+  1) # SUM
+       Should SUM return an error if it receive just onde parameter:
+     AssertionError: expected NaN to be an error
+      at Context.<anonymous> (test/sum.test.js:20:26)
+```
+
+O erro mostra que _NaN_ era esperado que fosse um erro, pois já que passamos apenas um valor como parâmetro da função o segundo valor é _undefined_ logo a soma irá resultar em _NaN_.
+
+Agora vamos fazer com que o nosso teste passe.
+
+Ex:
+
+```js
+'use strict';
+
+var sum = require('../src/sum');
+var expect = require('chai').expect;
+
+describe('# SUM', function() {
+  it('Should SUM module to be a function', function() {
+    expect(sum).to.be.a('function');
+  });
+
+  it('Should SUM return 10 when I pass 1 and 9', function() {
+    expect(sum(1, 9)).to.be.equal(10);
+  });
+
+  it('Should SUM return 5 when I pass 2 and 3', function() {
+    expect(sum(2, 3)).to.be.equal(5);
+  });
+
+  it('Should SUM return an error if it receive just onde parameter', function() {
+    expect(sum(1)).to.be.an('error');
+  });
+});
+```
+
+```
+  # SUM
+    ✓ Should SUM module to be a function
+    ✓ Should SUM return 10 when I pass 1 and 9
+    ✓ Should SUM return 5 when I pass 2 and 3
+    ✓ Should SUM return an error if it receive just onde parameter
+
+
+  4 passing (9ms)
+```
+
+Agora vamos fazer mais um teste onde vamos testar se os números passados são realmente números para poder realizar a soma. Caso contrário é retornado um erro.
+
+Ex:
+
+```js
+'use strict';
+
+var sum = require('../src/sum');
+var expect = require('chai').expect;
+
+describe('# SUM', function() {
+  it('Should SUM module to be a function', function() {
+    expect(sum).to.be.a('function');
+  });
+
+  it('Should SUM return 10 when I pass 1 and 9', function() {
+    expect(sum(1, 9)).to.be.equal(10);
+  });
+
+  it('Should SUM return 5 when I pass 2 and 3', function() {
+    expect(sum(2, 3)).to.be.equal(5);
+  });
+
+  it('Should SUM return an error if it receive just onde parameter', function() {
+    expect(sum(1)).to.be.an('error');
+  });
+
+  it('Should SUM return an error if the parameter has not number', function() {
+    expect(sum('a', 'b')).to.be.an('error');
+  });
+});
+```
+
+```
+  # SUM
+    ✓ Should SUM module to be a function
+    ✓ Should SUM return 10 when I pass 1 and 9
+    ✓ Should SUM return 5 when I pass 2 and 3
+    ✓ Should SUM return an error if it receive just onde parameter
+    1) Should SUM return an error if the parameter has not number
+
+
+  4 passing (10ms)
+  1 failing
+
+  1) # SUM
+       Should SUM return an error if the parameter has not number:
+     AssertionError: expected 'ab' to be an error
+      at Context.<anonymous> (test/sum.test.js:24:33)
+```
+
+Agora é mostrado que a String a e b passadas por parâmetro foram concatenadas, com isso era esperado um error.
+
+Agora vamos fazer com que o nosso teste venha passar.
+
+# Escrevendo mais testes.
