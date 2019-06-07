@@ -64,7 +64,7 @@ Como podemos ver o uglify minifica o nosso código e isso é aceito em nosso nav
 Ex:
 
 ```
-uglify --output main.min.js -- main.js
+uglifyjs --output main.min.js -- main.js
 ```
 
 Dessa forma estamos dizendo ao uglify que o nosso arquivo de _output_ será o _main.min.js_ que será o nosso arquivo minificado. E passamos em seguida após os -- o arquivo que desejamos que seja minificado, que seria o _main.js_.
@@ -86,7 +86,7 @@ Podemos deixar o nosso arquivo ainda menor passando a _flag_ _--compress_, isso 
 Ex:
 
 ```
-uglify --output main.min.js --compress -- main.js
+uglifyjs --output main.min.js --compress -- main.js
 ```
 
 ## Uglify parte 2.
@@ -100,7 +100,7 @@ Vamos utilizar a _flag_ _--mangle_. Que basicamente substitui os nomes das vari�
 Ex:
 
 ```
-uglify --mangle -- main.js
+uglifyjs --mangle -- main.js
 ```
 
 Dessa forma o uglify irá substitui os nomes de variáveis possíveis dentro da nossa aplicação.
@@ -110,7 +110,88 @@ Então podemos deixar o nosso arquivo simplesmente menor usando:
 Ex:
 
 ```
-uglify --output main.min.js --mangle --compress -- main.js
+uglifyjs --output main.min.js --mangle --compress -- main.js
 ```
 
 Com isso o nosso arquivo fica ainda menor e melhorando ainda mais a nossa performance :smile:
+
+Mas com isso temos um problema, como podemos debugar um código minificado ? Imagine que na nossa aplicação aconteceu um bug mas pelo código está minificado fica um pouco difícil de saber onde esse bug ocorreu.
+
+Dentro do navegador temos uma função chamada _pretty print_ que pode ajuda um pouco nesses casos, mas ainda não é o suficiente. Pois na nossa minificação o uglify altera os nomes das variáveis/funções e com isso vamos supor que ocorreu um erro dentro da nossa aplicação na função _n_ ? Como podemos debugar e tentar entender o que está acontecendo ? Ai entra o sourcemaps.
+
+# Sourcemaps
+
+Quando você tem um código minificado, e adiciona a ele uma referência a um sourcemap, o sourcemap faz uma varredura no arquivo, e gera todas as referências ao número de linhas, nomes de variáveis e funções, etc., para que você possa debugar no arquivo “desminificado”.
+
+O uglify nos fornece uma _flag_ para configurar o nosso sourcemap, a _flag_ --source-map.
+
+Ex:
+
+```
+uglify --source-map main.source.map --output main.min.js --mangle --compress -- main.js
+```
+
+Com isso o uglify irá fazer uma mapa do nosso código que quando o navegador detectar irá mostrar esse mapa, assim deixando muito simples o processo de debugger.
+
+# Uso correto do ternário.
+
+O uso do ternário **não é uma estrutura condicional** e sim, uma **expressão** que retorna um valor.
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+
+  var ninja = false;
+
+  ninja === true ? console.log('Ninja') : console.log('Ainda não é Ninja');
+})();
+```
+
+O uso do ternário dentro do nosso código geralmente é dentro de funções, dentro de variáveis ou diretamente no console.log.
+
+Ex:
+
+> Função
+
+```js
+(function() {
+  'use strict';
+  var ninja = false;
+  function hasNinja() {
+    return ninja === true ? 'Sim, é ninja' : 'Ainda não é ninja';
+  }
+
+  console.log(hasNinja());
+})();
+```
+
+Ex:
+
+> Variável
+
+```js
+(function() {
+  'use strict';
+  var ninja = false;
+  var result = ninja === true ? 'Sim, é ninja' : 'Ainda não é ninja';
+  console.log(result);
+})();
+```
+
+Ex:
+
+> Console
+
+```js
+(function() {
+  'use strict';
+
+  var ninja = false;
+
+  console.log(ninja === true ? 'Sim, é ninja' : 'Ainda não é ninja');
+})();
+```
+
+# Diferenças entre console.log e return.
