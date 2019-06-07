@@ -195,3 +195,170 @@ Ex:
 ```
 
 # Diferenças entre console.log e return.
+
+Basicamente a diferença entre os dois é que o _return_ **retorna um valor** já o _console.log_ apenas **mostra uma messagem** na tela.
+
+Vamos para um exemplo.
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+
+  function isNumber(value) {
+    console.log(Object.prototype.toSting.call(value) === '[object Number]');
+  }
+
+  isNumber(2); // true
+  isNumber('js-ninja'); // false
+})();
+```
+
+Até aí nada de mais, temos o nosso resultado esperado. Agora vamos supor que queremos atribuir o resultado da função em uma variável chamada _result_.
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+
+  function isNumber(value) {
+    console.log(Object.prototype.toSting.call(value) === '[object Number]');
+  }
+
+  isNumber(2); // true
+  isNumber('js-ninja'); // false
+
+  var result = isNumber(5);
+  console.log('Is Number ?', result); // Is number? undefined
+})();
+```
+
+Como assim _undefined_ ? A nossa função _isNumber_ **não está retornando nenhum valor** ela apenas está **mostrando uma messagem na tela** através do método log de console. Quando a função não tem um retorno a mesma retorna **undefined**.
+
+Para retornar o valor da função usamos o _return_.
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+
+  function isNumber(value) {
+    return Object.prototype.toSting.call(value) === '[object Number]';
+  }
+
+  console.log(isNumber(2)); // true
+  console.log(isNumber('js-ninja')); // false
+
+  var result = isNumber(5);
+  console.log('Is Number ?', result); // Is number? true
+})();
+```
+
+# Objetos e Encerramento.
+
+Vamos entender um pouco mais sobre Objetos em Javascript.
+
+Objetos são passados por referência, e são mutáveis.
+
+Vamos entender melhor isso:
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+
+  var a = { prop: '1' };
+  var b = a;
+
+  console.log(a === b); // true
+})();
+```
+
+Neste exemplo a variável a tem uma propriedade chamada prop com o valor '1'. Depois criamos a variável b atribuindo a ela a variável a.
+
+Depois fazemos uma comparação, e o resultado é true. Mas o resultado é true por conta do valor contido que são iguais ou por serem o mesmo objeto ?
+
+Agora vamos dizer que que a variável b tem uma propriedade chamada _prop2_ com o valor '2', isso irá afetar o objeto a ?
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+
+  var a = { prop: '1' };
+  var b = a;
+
+  b.prop2 = '2';
+
+  console.log(a, b);
+  // {prop: "1", prop2: "2"} {prop: "1", prop2: "2"}
+})();
+```
+
+Como pudemos ver modificamos o objeto _a_ através do objeto _b_. Isso significa que quando atribuimos o valor de _a_ para _b_ fizemos uma **referência** (ponteiro) ao objeto _a_. Com isso o objeto _b_ tem uma **referência** ao objeto _a_ e assim quando modificamos o objeto _b_, o objeto _a_ também é modificado.
+
+Ex:
+
+```js
+(function() {
+  'use strict';
+
+  var a = { prop: '1' };
+  var b = { prop: '1' };
+
+  console.log(a, b, a === b);
+
+  // {prop: "1"} {prop: "1"} false
+})();
+```
+
+Veja que apesar do objeto _a_ e objeto _b_ terem os mesmos valores é a sua comparação é **false**. Pois, quando usamos **{}** estamos criando um novo objeto em memória assim como **new Object()**.
+
+# Garbage collection
+
+Linguagens de baixo nível, como C, tem primitivas de gerenciamento de memória de baixo nível como malloc() e free(). Em contrapartida, os valores do JavaScript são alocados quando coisas (objetos, strings, etc.) são criadas e "automaticamente" liberadas quando não são mais usadas. Este último processo se chama garbage collection.
+
+Como foi mencionado acima, em geral o problema de automaticamente descobrir se a memória "não é mais necessária" é indecidível. Como consequência, os garbage collections implementam uma limitação de uma solução ao problema em geral.
+
+## Links:
+
+- [Uglify - NPM](https://www.npmjs.com/package/uglify-js)
+
+- [Deprecated and obsolete features - MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Deprecated_and_obsolete_features)
+
+- [Sourcemaps - Debugando JS e CSS minificados - Blog Da2k](https://blog.da2k.com.br/2015/02/21/sourcemaps-debugando-js-e-css-minificados/)
+
+- [Objetos - Referências de valores em JavaScript - Blog Da2k](https://blog.da2k.com.br/2017/01/25/objetos-referencias-de-valores-em-javascript/)
+
+- [Gerenciamento de Memória - MDN](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Memory_Management)
+
+## Livros:
+
+- [Functional JavaScript: Introducing Functional Programming with Underscore.js 1st Edition](https://www.amazon.com/Functional-JavaScript-Introducing-Programming-Underscore-js/dp/1449360726)
+
+- [Código limpo](https://www.amazon.com.br/C%C3%B3digo-limpo-Robert-C-Martin/dp/8576082675?tag=goog0ef-20&smid=A1ZZFT5FULY4LN&ascsubtag=go_726685122_54292137521_242594579893_aud-519888259198:pla-398510646161_c_)
+
+- [JavaScript: O Guia Definitivo](https://www.amazon.com.br/JavaScript-Guia-Definitivo-David-Flanagan/dp/856583719X)
+
+- [JavaScript de Alto Desempenho](https://novatec.com.br/livros/javascript-de-alto-desempenho/)
+
+- [Segredos do Ninja JavaScript](https://novatec.com.br/livros/ninja-javascript/)
+
+- [ Estruturas de dados e algoritmos com JavaScript - 2ª edição](https://novatec.com.br/livros/estruturas-de-dados-algoritmos-em-javascript-2ed/)
+
+- [Construindo aplicações com NodeJS - 2ª edição](https://novatec.com.br/livros/nodejs-2ed/)
+
+- [Expressões Regulares - 5ª Edição](https://novatec.com.br/livros/expressoes-regulares-5ed/)
+
+- [Princípios de Orientação a Objetos em JavaScript](https://novatec.com.br/livros/orientacaoobjetosjavascript/)
+
+# FIM :heart:
+
+Isso é apenas o começo de uma bela jornada :smile:
+
+#RumoAoNívelJSNinja :smile:
