@@ -94,4 +94,4 @@ PS: Aqui você pode ver todo o conteúdo do curso disponível:
 - [x] Abortar requisição Ajax / **revisado**
 - [x] Testes (TDD, BDD) / **revisado**
 - [x] Ferramentas para escrever testes / **revisado**
-- Aula bônus
+- [x] Aula bônus / **revisado**
